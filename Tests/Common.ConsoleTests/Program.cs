@@ -32,7 +32,7 @@ namespace Wanderer.Library.Common.ConsoleTests
                                                       d = Math.Log10(d) * d;
                                                   }
                                               };
-            for (var i = 0;i < 5;++i)
+            for (var i = 0;i < 6;++i)
             {
                 var iterations = 1 + i * 500;
 

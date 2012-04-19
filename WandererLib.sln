@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.ConsoleTests", "Tests\Common.ConsoleTests\Common.ConsoleTests.csproj", "{B8A38096-E635-4C6A-935F-BE9A783B2174}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.UnitTests", "Tests\Extensions.UnitTests\Extensions.UnitTests.csproj", "{2A785D78-D536-40E7-B0C2-6E74D7E72D01}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = WandererLib.vsmdi
@@ -95,6 +97,16 @@ Global
 		{B8A38096-E635-4C6A-935F-BE9A783B2174}.Release|Mixed Platforms.Build.0 = Release|x86
 		{B8A38096-E635-4C6A-935F-BE9A783B2174}.Release|x86.ActiveCfg = Release|x86
 		{B8A38096-E635-4C6A-935F-BE9A783B2174}.Release|x86.Build.0 = Release|x86
+		{2A785D78-D536-40E7-B0C2-6E74D7E72D01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A785D78-D536-40E7-B0C2-6E74D7E72D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A785D78-D536-40E7-B0C2-6E74D7E72D01}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2A785D78-D536-40E7-B0C2-6E74D7E72D01}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2A785D78-D536-40E7-B0C2-6E74D7E72D01}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2A785D78-D536-40E7-B0C2-6E74D7E72D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A785D78-D536-40E7-B0C2-6E74D7E72D01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A785D78-D536-40E7-B0C2-6E74D7E72D01}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2A785D78-D536-40E7-B0C2-6E74D7E72D01}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2A785D78-D536-40E7-B0C2-6E74D7E72D01}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,5 +115,6 @@ Global
 		{8416AA26-A31D-4C86-B17F-E4E214682411} = {4C95AAC7-15FC-48A2-966B-B97646EE9770}
 		{3D2C906A-D800-4683-A72B-777530E57836} = {4C95AAC7-15FC-48A2-966B-B97646EE9770}
 		{B8A38096-E635-4C6A-935F-BE9A783B2174} = {4C95AAC7-15FC-48A2-966B-B97646EE9770}
+		{2A785D78-D536-40E7-B0C2-6E74D7E72D01} = {4C95AAC7-15FC-48A2-966B-B97646EE9770}
 	EndGlobalSection
 EndGlobal
