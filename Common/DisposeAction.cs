@@ -3,6 +3,9 @@ using System.Diagnostics.Contracts;
 
 namespace Wanderer.Library.Common
 {
+    /// <summary>
+    /// Helper class for using <see cref="IDisposable"/> interface.
+    /// </summary>
     public sealed class DisposeAction : IDisposable
     {
         #region Variables
@@ -10,6 +13,10 @@ namespace Wanderer.Library.Common
         private bool _disposed;
         #endregion
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="disposeAction">action that should be called in <see cref="IDisposable.Dispose"/> method</param>
         public DisposeAction(Action disposeAction)
         {
             Contract.Requires<ArgumentNullException>(disposeAction != null);
@@ -21,11 +28,18 @@ namespace Wanderer.Library.Common
             _disposed = false;
         }
 
+        /// <summary>
+        /// Finalizer.
+        /// </summary>
         ~DisposeAction()
         {
             Dispose(false);
         }
 
+        #region IDisposable implementation
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resource.
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);
@@ -47,5 +61,6 @@ namespace Wanderer.Library.Common
                 _disposed = true;
             }
         }
+        #endregion
     }
 }
