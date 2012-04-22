@@ -4,12 +4,14 @@ namespace Wanderer.Library.Common.ConsoleTests
 {
     internal class BindableObjectForTest : BindableObject
     {
+        #region Variables
         private string _useString;
         private string _useStringVerified;
         private string _useExpression;
         private string _useExpressionVerified;
         private string _useMethodBase;
         private string _useMethodBaseVerified;
+        #endregion
 
         public string UseString
         {

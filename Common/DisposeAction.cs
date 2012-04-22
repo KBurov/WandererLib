@@ -5,6 +5,11 @@ namespace Wanderer.Library.Common
 {
     public sealed class DisposeAction : IDisposable
     {
+        #region Variables
+        private readonly Action _disposeAction;
+        private bool _disposed;
+        #endregion
+
         public DisposeAction(Action disposeAction)
         {
             Contract.Requires<ArgumentNullException>(disposeAction != null);
@@ -42,10 +47,5 @@ namespace Wanderer.Library.Common
                 _disposed = true;
             }
         }
-
-        #region Variables
-        private readonly Action _disposeAction;
-        private bool _disposed;
-        #endregion
     }
 }
