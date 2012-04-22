@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.ConsoleTests", "Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.UnitTests", "Tests\Extensions.UnitTests\Extensions.UnitTests.csproj", "{2A785D78-D536-40E7-B0C2-6E74D7E72D01}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finance", "Finance\Finance.csproj", "{63C570B5-F714-4AFF-85FC-86D49920C821}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = WandererLib.vsmdi
@@ -107,6 +109,16 @@ Global
 		{2A785D78-D536-40E7-B0C2-6E74D7E72D01}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{2A785D78-D536-40E7-B0C2-6E74D7E72D01}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{2A785D78-D536-40E7-B0C2-6E74D7E72D01}.Release|x86.ActiveCfg = Release|Any CPU
+		{63C570B5-F714-4AFF-85FC-86D49920C821}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63C570B5-F714-4AFF-85FC-86D49920C821}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63C570B5-F714-4AFF-85FC-86D49920C821}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{63C570B5-F714-4AFF-85FC-86D49920C821}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{63C570B5-F714-4AFF-85FC-86D49920C821}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{63C570B5-F714-4AFF-85FC-86D49920C821}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63C570B5-F714-4AFF-85FC-86D49920C821}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63C570B5-F714-4AFF-85FC-86D49920C821}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{63C570B5-F714-4AFF-85FC-86D49920C821}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{63C570B5-F714-4AFF-85FC-86D49920C821}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
