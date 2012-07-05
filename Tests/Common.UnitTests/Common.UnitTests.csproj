@@ -72,6 +72,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BindableObjectTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DisposeActionTests.cs" />
   </ItemGroup>

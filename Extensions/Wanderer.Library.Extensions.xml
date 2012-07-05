@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wanderer.Library.Extensions</name>
+    </assembly>
+    <members>
+        <member name="T:System.Threading.ReaderWriterLockSlimExtensions">
+            <summary>
+            Extension methods for using <see cref="T:System.Threading.ReaderWriterLockSlim"/> class with <see cref="T:Wanderer.Library.Common.DisposeAction"/>.
+            </summary>
+        </member>
+        <member name="M:System.Threading.ReaderWriterLockSlimExtensions.GetReadLock(System.Threading.ReaderWriterLockSlim)">
+            <summary>
+            Get a <see cref="T:Wanderer.Library.Common.DisposeAction"/> object for read lock from <see cref="T:System.Threading.ReaderWriterLockSlim"/> object.
+            </summary>
+            <param name="locker"><see cref="T:System.Threading.ReaderWriterLockSlim"/> object</param>
+            <returns><see cref="T:Wanderer.Library.Common.DisposeAction"/> object</returns>
+        </member>
+        <member name="M:System.Threading.ReaderWriterLockSlimExtensions.GetUpgradeableReadLock(System.Threading.ReaderWriterLockSlim)">
+            <summary>
+            Get a <see cref="T:Wanderer.Library.Common.DisposeAction"/> object for upgradeable read lock from <see cref="T:System.Threading.ReaderWriterLockSlim"/> object.
+            </summary>
+            <param name="locker"><see cref="T:System.Threading.ReaderWriterLockSlim"/> object</param>
+            <returns><see cref="T:Wanderer.Library.Common.DisposeAction"/> object</returns>
+        </member>
+        <member name="M:System.Threading.ReaderWriterLockSlimExtensions.GetWriteLock(System.Threading.ReaderWriterLockSlim)">
+            <summary>
+            Get a <see cref="T:Wanderer.Library.Common.DisposeAction"/> object for write lock from <see cref="T:System.Threading.ReaderWriterLockSlim"/> object.
+            </summary>
+            <param name="locker"><see cref="T:System.Threading.ReaderWriterLockSlim"/> object</param>
+            <returns><see cref="T:Wanderer.Library.Common.DisposeAction"/> object</returns>
+        </member>
+    </members>
+</doc>

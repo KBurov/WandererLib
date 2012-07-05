@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wanderer.Library.Finance</name>
+    </assembly>
+    <members>
+        <member name="T:Wanderer.Library.Finance.IMoney`1">
+            <summary>
+            Money interface.
+            </summary>
+            <typeparam name="T">currency type</typeparam>
+        </member>
+        <member name="M:Wanderer.Library.Finance.IMoney`1.Add(Wanderer.Library.Finance.IMoney{`0})">
+            <summary>
+            Summarize the money.
+            </summary>
+            <param name="money">amount of money</param>
+            <returns>sum of <see cref="P:Wanderer.Library.Finance.IMoney`1.Amount"/> and money</returns>
+        </member>
+        <member name="M:Wanderer.Library.Finance.IMoney`1.Subtract(Wanderer.Library.Finance.IMoney{`0})">
+            <summary>
+            Subtract the money.
+            </summary>
+            <param name="money">amount of money</param>
+            <returns>subtract of <see cref="P:Wanderer.Library.Finance.IMoney`1.Amount"/> and money</returns>
+        </member>
+        <member name="P:Wanderer.Library.Finance.IMoney`1.Amount">
+            <summary>
+            Amount of money.
+            </summary>
+        </member>
+        <member name="P:Wanderer.Library.Finance.IMoney`1.Currency">
+            <summary>
+            Money currency.
+            </summary>
+        </member>
+        <member name="T:Wanderer.Library.Finance.ICurrency">
+            <summary>
+            Currency interface.
+            </summary>
+        </member>
+        <member name="P:Wanderer.Library.Finance.ICurrency.Name">
+            <summary>
+            Currency name.
+            </summary>
+        </member>
+        <member name="T:Wanderer.Library.Finance.IAccountType">
+            <summary>
+            Account type interface.
+            </summary>
+        </member>
+        <member name="P:Wanderer.Library.Finance.IAccountType.Name">
+            <summary>
+            Type name.
+            </summary>
+        </member>
+        <member name="T:Wanderer.Library.Finance.IAccount`1">
+            <summary>
+            Account interface.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.Finance.IAccount`1.Withdraw(Wanderer.Library.Finance.IMoney{`0})">
+            <summary>
+            Withdraw money.
+            </summary>
+            <param name="money">amount of money</param>
+        </member>
+        <member name="M:Wanderer.Library.Finance.IAccount`1.Deposit(Wanderer.Library.Finance.IMoney{`0})">
+            <summary>
+            Deposit money.
+            </summary>
+            <param name="money">amount of money</param>
+        </member>
+        <member name="P:Wanderer.Library.Finance.IAccount`1.Name">
+            <summary>
+            Account name.
+            </summary>
+        </member>
+        <member name="P:Wanderer.Library.Finance.IAccount`1.Type">
+            <summary>
+            Account type.
+            </summary>
+        </member>
+        <member name="P:Wanderer.Library.Finance.IAccount`1.Balance">
+            <summary>
+            Account balance.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -69,7 +69,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountContract.cs" />
+    <Compile Include="AccountTypeContract.cs" />
+    <Compile Include="CurrencyContract.cs" />
+    <Compile Include="IAccount.cs" />
+    <Compile Include="IAccountType.cs" />
     <Compile Include="ICurrency.cs" />
+    <Compile Include="IMoney.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

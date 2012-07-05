@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wanderer.Library.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Wanderer.Library.Common.BindableObject">
+            <summary>
+            Implements the <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> interface and
+            exposes a <see cref="M:Wanderer.Library.Common.BindableObject.RaisePropertyChanged(System.String)"/> method for derived
+            classes to raise the <see cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/> event.
+            The event arguments created by this class are cached
+            to prevent managed heap fragmentation.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.Common.BindableObject.#cctor">
+            <summary>
+            Static constructor.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.Common.BindableObject.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.Common.BindableObject.GetPropertyChangedEventArgs(System.String)">
+            <summary>
+            Returns an instance of <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> for
+            the specified property name.
+            </summary>
+            <param name="propertyName">The name of the property to create event args for.</param>
+            <returns>The instance of <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/></returns>
+        </member>
+        <member name="M:Wanderer.Library.Common.BindableObject.AfterPropertyChanged(System.String)">
+            <summary>
+            Derived classes can override this method to
+            execute logic after a property is set. The
+            base implementation does nothing.
+            </summary>
+            <param name="propertyName">The property which was changed.</param>
+        </member>
+        <member name="M:Wanderer.Library.Common.BindableObject.RaisePropertyChanged(System.String)">
+            <summary>
+            Attempts to raise the <see cref="E:Wanderer.Library.Common.BindableObject.PropertyChanged"/> event, and
+            invokes the virtual <see cref="M:Wanderer.Library.Common.BindableObject.AfterPropertyChanged(System.String)"/> method,
+            regardless of whether the event was raised or not.
+            </summary>
+            <param name="propertyName">The property which was changed.</param>
+        </member>
+        <member name="E:Wanderer.Library.Common.BindableObject.PropertyChanged">
+            <summary>
+            Occurs when a property value changes.
+            </summary>
+        </member>
+        <member name="T:Wanderer.Library.Common.DisposeAction">
+            <summary>
+            Helper class for using <see cref="T:System.IDisposable"/> interface.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.Common.DisposeAction.#ctor(System.Action)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="disposeAction">action that should be called in <see cref="M:System.IDisposable.Dispose"/> method</param>
+        </member>
+        <member name="M:Wanderer.Library.Common.DisposeAction.Finalize">
+            <summary>
+            Finalizer.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.Common.DisposeAction.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resource.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -3,13 +3,13 @@
 namespace Wanderer.Library.Finance
 {
     /// <summary>
-    /// Currency interface.
+    /// Account type interface.
     /// </summary>
-    [ContractClass(typeof(CurrencyContract))]
-    public interface ICurrency
+    [ContractClass(typeof(AccountTypeContract))]
+    public interface IAccountType
     {
         /// <summary>
-        /// Currency name.
+        /// Type name.
         /// </summary>
         string Name { get; }
     }
