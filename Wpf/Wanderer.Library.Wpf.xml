@@ -4,5 +4,46 @@
         <name>Wanderer.Library.Wpf</name>
     </assembly>
     <members>
+        <member name="T:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior">
+            <summary>
+            <see cref="T:System.Windows.Controls.TextBox"/> attached properties with some special behavior.
+            </summary>
+        </member>
+        <member name="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsInt32Property">
+            <summary>
+            Attached property that restricts <see cref="T:System.Windows.Controls.TextBox"/> input only <see cref="T:System.Int32"/> numbers.
+            </summary>
+            <remarks>
+            This attached property works only for <see cref="T:System.Windows.Controls.TextBox"/> or for its descendants.
+            </remarks>
+        </member>
+        <member name="M:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.GetIsInt32(System.Windows.DependencyObject)">
+            <summary>
+            Gets value for <see cref="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsInt32Property"/> property.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.SetIsInt32(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            Sets value for <see cref="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsInt32Property"/> property.
+            </summary>
+        </member>
+        <member name="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsUInt32Property">
+            <summary>
+            Attached property that restricts <see cref="T:System.Windows.Controls.TextBox"/> input only <see cref="T:System.UInt32"/> numbers.
+            </summary>
+            <remarks>
+            This attached property works only for <see cref="T:System.Windows.Controls.TextBox"/> or for its descendants.
+            </remarks>
+        </member>
+        <member name="M:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.GetIsUInt32(System.Windows.DependencyObject)">
+            <summary>
+            Gets value for <see cref="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsUInt32Property"/> property.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.SetIsUInt32(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            Sets value for <see cref="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsUInt32Property"/> property.
+            </summary>
+        </member>
     </members>
 </doc>
