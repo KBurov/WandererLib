@@ -45,6 +45,9 @@ namespace Wanderer.Library.Wpf.Behaviors
 
             textBox.PreviewTextInput += PreviewTextInputForInt32;
             DataObject.AddPastingHandler(textBox, OnPasteHandlerForInt32);
+            // Fix coerce a textbox in .net 4.0
+            // http://stackoverflow.com/questions/3905227/coerce-a-wpf-textbox-not-working-anymore-in-net-4-0
+            textBox.TextChanged += TextBoxTextChanged;
         }
 
         private static void OnPasteHandlerForInt32(object sender, DataObjectPastingEventArgs e)
@@ -53,17 +56,17 @@ namespace Wanderer.Library.Wpf.Behaviors
             if (!isText) return;
 
             var clipboardText = (string) e.SourceDataObject.GetData(DataFormats.Text);
+            var text = GetFullText((TextBox) sender, clipboardText);
 
-            if (!clipboardText.IsInt32())
+            if (!text.IsInt32())
                 e.CancelCommand();
         }
 
         private static void PreviewTextInputForInt32(object sender, TextCompositionEventArgs e)
         {
-            if (string.IsNullOrEmpty(e.Text))
-                return;
+            var text = GetFullText((TextBox) sender, e.Text);
 
-            e.Handled = !e.Text.IsInt32();
+            e.Handled = !text.IsInt32();
         }
         #endregion
 
@@ -101,6 +104,9 @@ namespace Wanderer.Library.Wpf.Behaviors
 
             textBox.PreviewTextInput += PreviewTextInputForUInt32;
             DataObject.AddPastingHandler(textBox, OnPasteHandlerForUInt32);
+            // Fix coerce a textbox in .net 4.0
+            // http://stackoverflow.com/questions/3905227/coerce-a-wpf-textbox-not-working-anymore-in-net-4-0
+            textBox.TextChanged += TextBoxTextChanged;
         }
 
         private static void OnPasteHandlerForUInt32(object sender, DataObjectPastingEventArgs e)
@@ -109,18 +115,38 @@ namespace Wanderer.Library.Wpf.Behaviors
             if (!isText) return;
 
             var clipboardText = (string) e.SourceDataObject.GetData(DataFormats.Text);
+            var text = GetFullText((TextBox) sender, clipboardText);
 
-            if (!clipboardText.IsUInt32())
+            if (!text.IsUInt32())
                 e.CancelCommand();
         }
 
         private static void PreviewTextInputForUInt32(object sender, TextCompositionEventArgs e)
         {
-            if (string.IsNullOrEmpty(e.Text))
-                return;
+            var text = GetFullText((TextBox) sender, e.Text);
 
-            e.Handled = !e.Text.IsUInt32();
+            e.Handled = !text.IsUInt32();
         }
         #endregion
+
+        private static void TextBoxTextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textBox = sender as TextBox;
+
+            if (textBox != null)
+            {
+                var expression = textBox.GetBindingExpression(TextBox.TextProperty);
+
+                if (expression != null)
+                    expression.UpdateSource();
+            }
+        }
+
+        private static string GetFullText(TextBox textBox, string inputText)
+        {
+            return textBox.SelectionLength > 0
+                       ? textBox.Text.Remove(textBox.SelectionStart, textBox.SelectionLength).Insert(textBox.SelectionStart, inputText)
+                       : textBox.Text.Insert(textBox.CaretIndex, inputText);
+        }
     }
 }
