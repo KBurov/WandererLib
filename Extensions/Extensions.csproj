@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringExtensions.cs" />
     <Compile Include="Threading\ReaderWriterLockSlimExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
