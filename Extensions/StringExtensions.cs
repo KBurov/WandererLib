@@ -24,5 +24,15 @@
 
             return !string.IsNullOrEmpty(s) && System.UInt32.TryParse(s, out dummy);
         }
+
+        /// <summary>
+        /// Returns true if <paramref name="s"/> contains <see cref="System.Decimal"/>
+        /// </summary>
+        public static bool IsDecimal(this string s)
+        {
+            System.Decimal dummy;
+
+            return !string.IsNullOrEmpty(s) && System.Decimal.TryParse(s, out dummy);
+        }
     }
 }
