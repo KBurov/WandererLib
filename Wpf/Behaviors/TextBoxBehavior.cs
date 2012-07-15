@@ -129,6 +129,65 @@ namespace Wanderer.Library.Wpf.Behaviors
         }
         #endregion
 
+        #region IsDecimal behavior
+        /// <summary>
+        /// Attached property that restricts <see cref="TextBox"/> input only <see cref="System.Decimal"/> numbers.
+        /// </summary>
+        /// <remarks>
+        /// This attached property works only for <see cref="TextBox"/> or for its descendants.
+        /// </remarks>
+        public static readonly DependencyProperty IsDecimalProperty =
+            DependencyProperty.RegisterAttached("IsDecimal", typeof (bool), typeof (TextBoxBehavior),
+                                                new FrameworkPropertyMetadata(false, OnIsDecimalChanged));
+
+        /// <summary>
+        /// Gets value for <see cref="IsDecimalProperty"/> property.
+        /// </summary>
+        [AttachedPropertyBrowsableForType(typeof (TextBox))]
+        public static bool GetIsDecimal(DependencyObject element)
+        {
+            return (bool) element.GetValue(IsDecimalProperty);
+        }
+
+        /// <summary>
+        /// Sets value for <see cref="IsDecimalProperty"/> property.
+        /// </summary>
+        public static void SetIsDecimal(DependencyObject element, bool value)
+        {
+            element.SetValue(IsDecimalProperty, value);
+        }
+
+        private static void OnIsDecimalChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var textBox = (TextBox) d;
+
+            textBox.PreviewTextInput += PreviewTextInputForDecimal;
+            DataObject.AddPastingHandler(textBox, OnPasteHandlerForDecimal);
+            // Fix coerce a textbox in .net 4.0
+            // http://stackoverflow.com/questions/3905227/coerce-a-wpf-textbox-not-working-anymore-in-net-4-0
+            textBox.TextChanged += TextBoxTextChanged;
+        }
+
+        private static void OnPasteHandlerForDecimal(object sender, DataObjectPastingEventArgs e)
+        {
+            var isText = e.SourceDataObject.GetDataPresent(DataFormats.Text, true);
+            if (!isText) return;
+
+            var clipboardText = (string) e.SourceDataObject.GetData(DataFormats.Text);
+            var text = GetFullText((TextBox) sender, clipboardText);
+
+            if (!text.IsDecimal())
+                e.CancelCommand();
+        }
+
+        private static void PreviewTextInputForDecimal(object sender, TextCompositionEventArgs e)
+        {
+            var text = GetFullText((TextBox) sender, e.Text);
+
+            e.Handled = !text.IsDecimal();
+        }
+        #endregion
+
         private static void TextBoxTextChanged(object sender, TextChangedEventArgs e)
         {
             var textBox = sender as TextBox;
