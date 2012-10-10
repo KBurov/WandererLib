@@ -63,5 +63,33 @@
             Sets value for <see cref="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsDecimalProperty"/> property.
             </summary>
         </member>
+        <member name="T:Wanderer.Library.Wpf.UIHelper">
+            <summary>
+            Class with helpful methods for various UI needs.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.Wpf.UIHelper.FindChild``1(System.Windows.DependencyObject,System.String)">
+            <summary>
+            Finds a child of a given item in the visual tree.
+            </summary>
+            <typeparam name="T">a type of the queried item</typeparam>
+            <param name="parent">a direct parent of the queried item</param>
+            <param name="childName">x:Name or Name of child</param>
+            <returns>
+            The first child item that matches the submited type parameter.
+            If not matching item can be found, a null parent is being returned.
+            </returns>
+        </member>
+        <member name="M:Wanderer.Library.Wpf.UIHelper.FindParent``1(System.Windows.DependencyObject)">
+            <summary>
+            Finds a parent a given item in the visual tree.
+            </summary>
+            <typeparam name="T">a type of the queried item</typeparam>
+            <param name="child">a direct or indirect child of the queried item</param>
+            <returns>
+            The first parent item that matches the submited type parameter.
+            If not matching item can be found, a null parent is being returned.
+            </returns>
+        </member>
     </members>
 </doc>
