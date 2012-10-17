@@ -6,11 +6,17 @@ using System.Windows.Markup;
 
 namespace Wanderer.Library.Wpf.Markup
 {
-    // TODO: Write xml comments & check contracts
+    /// <summary>
+    /// Helps to use enumeration type as items source.
+    /// </summary>
     public class EnumerationExtension : MarkupExtension
     {
         private Type _enumType;
 
+        /// <summary>
+        /// Initialization constructor.
+        /// </summary>
+        /// <param name="enumType">enumeration type</param>
         public EnumerationExtension(Type enumType)
         {
             Contract.Requires<ArgumentNullException>(enumType != null, "enumType");
@@ -18,10 +24,10 @@ namespace Wanderer.Library.Wpf.Markup
             EnumType = enumType;
         }
 
-        public Type EnumType
+        private Type EnumType
         {
             get { return _enumType; }
-            private set
+            set
             {
                 if (_enumType == value)
                     return;
@@ -35,6 +41,11 @@ namespace Wanderer.Library.Wpf.Markup
             }
         }
 
+        /// <summary>
+        /// Returns array of <see cref="EnumerationMember"/> that corresponds target enum values.
+        /// </summary>
+        /// <param name="serviceProvider">a service provider helper that can provide services for the markup extension</param>
+        /// <returns>array of <see cref="EnumerationMember"/> that corresponds target enum values</returns>
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             var enumValues = Enum.GetValues(EnumType);
@@ -61,10 +72,13 @@ namespace Wanderer.Library.Wpf.Markup
                        : enumValue.ToString();
         }
 
-        public class EnumerationMember
+        private class EnumerationMember
         {
+// ReSharper disable UnusedAutoPropertyAccessor.Local
             public string Description { get; set; }
+
             public object Value { get; set; }
+// ReSharper restore UnusedAutoPropertyAccessor.Local
         }
     }
 }
