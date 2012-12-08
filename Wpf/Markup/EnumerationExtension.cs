@@ -11,7 +11,9 @@ namespace Wanderer.Library.Wpf.Markup
     /// </summary>
     public class EnumerationExtension : MarkupExtension
     {
+        #region Variables
         private Type _enumType;
+        #endregion
 
         /// <summary>
         /// Initialization constructor.

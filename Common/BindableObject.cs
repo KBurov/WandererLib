@@ -22,8 +22,10 @@ namespace Wanderer.Library.Common
     {
         private const string ErrorMessage = "{0} is not a public property of {1}";
 
-        private static readonly IDictionary<string, PropertyChangedEventArgs> EventArgCache;
-        private static readonly object EventArgCacheSync = new object();
+        #region Variables
+        private static readonly IDictionary<string, PropertyChangedEventArgs> _eventArgCache;
+        private static readonly object _eventArgCacheSync = new object();
+        #endregion
 
         #region INotifyPropertyChanged implementation
         /// <summary>
@@ -39,13 +41,15 @@ namespace Wanderer.Library.Common
         /// </summary>
         static BindableObject()
         {
-            EventArgCache = new Dictionary<string, PropertyChangedEventArgs>();
+            _eventArgCache = new Dictionary<string, PropertyChangedEventArgs>();
         }
 
         /// <summary>
         /// Default constructor.
         /// </summary>
+// ReSharper disable EmptyConstructor
         protected BindableObject() {}
+// ReSharper restore EmptyConstructor
         #endregion
 
         /// <summary>
@@ -58,11 +62,11 @@ namespace Wanderer.Library.Common
         {
             PropertyChangedEventArgs result;
 
-            lock (EventArgCacheSync)
+            lock (_eventArgCacheSync)
             {
-                if (!EventArgCache.TryGetValue(propertyName, out result))
+                if (!_eventArgCache.TryGetValue(propertyName, out result))
                 {
-                    EventArgCache.Add(
+                    _eventArgCache.Add(
                         propertyName,
                         result = new PropertyChangedEventArgs(propertyName));
                 }
@@ -89,26 +93,26 @@ namespace Wanderer.Library.Common
         {
             Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(propertyName), "propertyName cannot be null or empty.");
 
-            this.VerifyPropertyName(propertyName);
+            VerifyPropertyName(propertyName);
 
-            var propertyChanged = this.PropertyChanged;
+            var propertyChanged = PropertyChanged;
 
             if (propertyChanged != null)
                 propertyChanged(this, GetPropertyChangedEventArgs(propertyName));
 
-            this.AfterPropertyChanged(propertyName);
+            AfterPropertyChanged(propertyName);
         }
 
         internal void RaisePropertyChangedNotVerified(string propertyName)
         {
             Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(propertyName), "propertyName cannot be null or empty.");
 
-            var propertyChanged = this.PropertyChanged;
+            var propertyChanged = PropertyChanged;
 
             if (propertyChanged != null)
                 propertyChanged(this, GetPropertyChangedEventArgs(propertyName));
 
-            this.AfterPropertyChanged(propertyName);
+            AfterPropertyChanged(propertyName);
         }
 
         internal void RaisePropertyChanged<T>(Expression<Func<T>> property)
@@ -124,7 +128,7 @@ namespace Wanderer.Library.Common
         [Conditional("DEBUG")]
         private void VerifyPropertyName(string propertyName)
         {
-            var type = this.GetType();
+            var type = GetType();
             var propertyInfo = type.GetProperty(propertyName);
 
             if (propertyInfo == null)
@@ -134,14 +138,11 @@ namespace Wanderer.Library.Common
         private static string GetPropertyNameFromExpression<T>(Expression<Func<T>> property)
         {
             var lambda = (LambdaExpression) property;
+            var unaryExpression = lambda.Body as UnaryExpression;
             MemberExpression memberExpression;
 
-            if (lambda.Body is UnaryExpression)
-            {
-                var unaryExpression = (UnaryExpression) lambda.Body;
-
+            if (unaryExpression != null)
                 memberExpression = (MemberExpression) unaryExpression.Operand;
-            }
             else
                 memberExpression = (MemberExpression) lambda.Body;
 

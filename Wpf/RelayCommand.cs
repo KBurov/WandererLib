@@ -11,21 +11,10 @@ namespace Wanderer.Library.Wpf
     /// </summary>
     public class RelayCommand : ICommand
     {
+        #region Variables
         private readonly Action<object> _execute;
         private readonly Predicate<object> _canExecute;
-
-        /// <summary>
-        /// Initialization constructor.
-        /// </summary>
-        /// <param name="execute">delegate for th <see cref="ICommand.Execute"/></param>
-        /// <param name="canExecute">delegate for the <see cref="ICommand.CanExecute"/></param>
-        public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
-        {
-            Contract.Requires<ArgumentNullException>(execute != null, "execute");
-
-            _execute = execute;
-            _canExecute = canExecute;
-        }
+        #endregion
 
         #region ICommand implementation
         /// <summary>
@@ -56,5 +45,18 @@ namespace Wanderer.Library.Wpf
             _execute(parameter);
         }
         #endregion
+
+        /// <summary>
+        /// Initialization constructor.
+        /// </summary>
+        /// <param name="execute">delegate for th <see cref="ICommand.Execute"/></param>
+        /// <param name="canExecute">delegate for the <see cref="ICommand.CanExecute"/></param>
+        public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
+        {
+            Contract.Requires<ArgumentNullException>(execute != null, "execute");
+
+            _execute = execute;
+            _canExecute = canExecute;
+        }
     }
 }

@@ -57,6 +57,11 @@
             Helper class for using <see cref="T:System.IDisposable"/> interface.
             </summary>
         </member>
+        <member name="M:Wanderer.Library.Common.DisposeAction.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resource.
+            </summary>
+        </member>
         <member name="M:Wanderer.Library.Common.DisposeAction.#ctor(System.Action)">
             <summary>
             Constructor.
@@ -66,11 +71,6 @@
         <member name="M:Wanderer.Library.Common.DisposeAction.Finalize">
             <summary>
             Finalizer.
-            </summary>
-        </member>
-        <member name="M:Wanderer.Library.Common.DisposeAction.Dispose">
-            <summary>
-            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resource.
             </summary>
         </member>
     </members>

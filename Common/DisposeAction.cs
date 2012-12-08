@@ -13,29 +13,6 @@ namespace Wanderer.Library.Common
         private bool _disposed;
         #endregion
 
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        /// <param name="disposeAction">action that should be called in <see cref="IDisposable.Dispose"/> method</param>
-        public DisposeAction(Action disposeAction)
-        {
-            Contract.Requires<ArgumentNullException>(disposeAction != null);
-// ReSharper disable InvocationIsSkipped
-            Contract.Ensures(_disposeAction != null);
-// ReSharper restore InvocationIsSkipped
-
-            _disposeAction = disposeAction;
-            _disposed = false;
-        }
-
-        /// <summary>
-        /// Finalizer.
-        /// </summary>
-        ~DisposeAction()
-        {
-            Dispose(false);
-        }
-
         #region IDisposable implementation
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resource.
@@ -49,10 +26,9 @@ namespace Wanderer.Library.Common
 
         private void Dispose(bool disposing)
         {
-// ReSharper disable InvocationIsSkipped
+            // ReSharper disable InvocationIsSkipped
             Contract.Ensures(_disposed);
-// ReSharper restore InvocationIsSkipped
-
+            // ReSharper restore InvocationIsSkipped
             if (!_disposed)
             {
                 if (disposing)
@@ -62,5 +38,27 @@ namespace Wanderer.Library.Common
             }
         }
         #endregion
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="disposeAction">action that should be called in <see cref="IDisposable.Dispose"/> method</param>
+        public DisposeAction(Action disposeAction)
+        {
+            Contract.Requires<ArgumentNullException>(disposeAction != null);
+// ReSharper disable InvocationIsSkipped
+            Contract.Ensures(_disposeAction != null);
+// ReSharper restore InvocationIsSkipped
+            _disposeAction = disposeAction;
+            _disposed = false;
+        }
+
+        /// <summary>
+        /// Finalizer.
+        /// </summary>
+        ~DisposeAction()
+        {
+            Dispose(false);
+        }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics.Contracts;
 
 using Wanderer.Library.Common;
-
 // ReSharper disable CheckNamespace
 namespace System.Threading
 // ReSharper restore CheckNamespace
