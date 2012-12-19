@@ -109,11 +109,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functions.cs" />
+    <Compile Include="Helpers\CpuLimiter.cs" />
+    <Compile Include="Helpers\IProcessExtended.cs" />
+    <Compile Include="Helpers\IProcessWatcher.cs" />
+    <Compile Include="Helpers\ProcessExtended.cs" />
+    <Compile Include="Helpers\ProcessWatcher.cs" />
+    <Compile Include="Nt\Functions.cs" />
+    <Compile Include="Nt\NtStatus.cs" />
+    <Compile Include="ProcessAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Helpers\" />
-    <Folder Include="Nt\" />
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{DB46EC4C-F305-4172-84F7-DF12B0E98B47}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Extensions\Extensions.csproj">
+      <Project>{CD8320E1-323F-4924-A28D-E83DA0113BF7}</Project>
+      <Name>Extensions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
