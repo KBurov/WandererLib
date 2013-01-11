@@ -14,14 +14,12 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// Extended process.
         /// </summary>
         Process Process { get; }
-
         /// <summary>
         /// CPU usage in percent.
         /// This is cumulative value which calculated from the first time when <see cref="IProcessExtended"/> was created.
         /// Can be cleared by <see cref="ResetCpuUsage"/> method.
         /// </summary>
         uint CpuUsage { get; }
-
         /// <summary>
         /// Indicates that the process was suspended.
         /// </summary>

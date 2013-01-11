@@ -109,13 +109,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Functions.cs" />
+    <Compile Include="NativeMethods.cs" />
     <Compile Include="Helpers\CpuLimiter.cs" />
     <Compile Include="Helpers\IProcessExtended.cs" />
     <Compile Include="Helpers\IProcessWatcher.cs" />
     <Compile Include="Helpers\ProcessExtended.cs" />
     <Compile Include="Helpers\ProcessWatcher.cs" />
-    <Compile Include="Nt\Functions.cs" />
+    <Compile Include="Nt\NativeMethods.cs" />
     <Compile Include="Nt\NtStatus.cs" />
     <Compile Include="ProcessAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

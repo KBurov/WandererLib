@@ -4,53 +4,31 @@
         <name>Wanderer.Library.WindowsApi</name>
     </assembly>
     <members>
-        <member name="T:Wanderer.Library.WindowsApi.Nt.NtStatus">
+        <member name="T:Wanderer.Library.WindowsApi.Helpers.CpuLimiter">
             <summary>
-            A NT status value.
+            Provides feature to control maximum CPU usage for list of processes.
             </summary>
         </member>
-        <member name="T:Wanderer.Library.WindowsApi.Nt.Functions">
+        <member name="M:Wanderer.Library.WindowsApi.Helpers.CpuLimiter.Dispose">
             <summary>
-            A NT API functions.
+            <see cref="T:System.IDisposable"/> interface implementation.
             </summary>
         </member>
-        <member name="T:Wanderer.Library.WindowsApi.Functions">
+        <member name="M:Wanderer.Library.WindowsApi.Helpers.CpuLimiter.#ctor">
             <summary>
-            Common Windows API functions.
+            Default constructor.
             </summary>
         </member>
-        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.AllAccess">
-            <summary>All possible access rights for a process object.</summary>
+        <member name="M:Wanderer.Library.WindowsApi.Helpers.CpuLimiter.AddProcessToWatchList(Wanderer.Library.WindowsApi.Helpers.IProcessWatcher)">
+            <summary>
+            Add process to list of controlled processes.
+            </summary>
+            <param name="processWatcher"><see cref="T:Wanderer.Library.WindowsApi.Helpers.IProcessWatcher"/></param>
         </member>
-        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.CreateThread">
-            <summary>Required to create a thread.</summary>
-        </member>
-        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.DuplicateHandle">
-            <summary>Required to duplicate a handle using <see cref="!:Functions.DuplicateHandle"/>.</summary>
-        </member>
-        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.QueryInformation">
-            <summary>Required to retrieve certain information about a process, such as its token, exit code, and priority class (<see cref="!:Functions.OpenProcessToken"/>).</summary>
-        </member>
-        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.SetInformation">
-            <summary>Required to set certain information about a process, such as its priority class (<see cref="!:Functions.SetPriorityClass"/>).</summary>
-        </member>
-        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.SuspendResume">
-            <summary>Required to suspend or resume a process.</summary>
-        </member>
-        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.Terminate">
-            <summary>Required to terminate a process using <see cref="!:Functions.TerminateProcess"/>.</summary>
-        </member>
-        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.VMOperation">
-            <summary>Required to perform an operation on the address space of a process (<see cref="!:Functions.VirtualProtectEx"/> and <see cref="!:Functions.WriteProcessMemory"/>).</summary>
-        </member>
-        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.VMRead">
-            <summary>Required to read memory in a process using <see cref="!:Functions.ReadProcessMemory"/>.</summary>
-        </member>
-        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.VMWrite">
-            <summary>Required to write to memory in a process using <see cref="!:Functions.WriteProcessMemory"/>.</summary>
-        </member>
-        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.Synchronize">
-            <summary>Required to wait for the process to terminate using the wait functions.</summary>
+        <member name="T:Wanderer.Library.WindowsApi.Helpers.ProcessExtended">
+            <summary>
+            Provides additonal functionality for process, for example resume/suspend.
+            </summary>
         </member>
         <member name="T:Wanderer.Library.WindowsApi.Helpers.IProcessExtended">
             <summary>
@@ -89,11 +67,6 @@
             Indicates that the process was suspended.
             </summary>
         </member>
-        <member name="T:Wanderer.Library.WindowsApi.Helpers.ProcessExtended">
-            <summary>
-            Provides additonal functionality for process, for example resume/suspend.
-            </summary>
-        </member>
         <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.ResetCpuUsage">
             <summary>
             Reset CPU usage value and time.
@@ -126,6 +99,17 @@
             </summary>
             <param name="process">extended process</param>
         </member>
+        <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.Finalize">
+            <summary>
+            Finalizer.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.Dispose(System.Boolean)">
+            <summary>
+            Internal implementation of <see cref="T:System.IDisposable"/> interface.
+            </summary>
+            <param name="disposing">indicates that method called from public Dispose method</param>
+        </member>
         <member name="P:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.Process">
             <summary>
             Extended process.
@@ -142,6 +126,39 @@
             <summary>
             Indicates that the process was suspended.
             </summary>
+        </member>
+        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.AllAccess">
+            <summary>All possible access rights for a process object.</summary>
+        </member>
+        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.CreateThread">
+            <summary>Required to create a thread.</summary>
+        </member>
+        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.DuplicateHandle">
+            <summary>Required to duplicate a handle using <see cref="!:NativeMethods.DuplicateHandle"/>.</summary>
+        </member>
+        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.QueryInformation">
+            <summary>Required to retrieve certain information about a process, such as its token, exit code, and priority class (<see cref="!:NativeMethods.OpenProcessToken"/>).</summary>
+        </member>
+        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.SetInformation">
+            <summary>Required to set certain information about a process, such as its priority class (<see cref="!:NativeMethods.SetPriorityClass"/>).</summary>
+        </member>
+        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.SuspendResume">
+            <summary>Required to suspend or resume a process.</summary>
+        </member>
+        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.Terminate">
+            <summary>Required to terminate a process using <see cref="!:NativeMethods.TerminateProcess"/>.</summary>
+        </member>
+        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.VmOperation">
+            <summary>Required to perform an operation on the address space of a process (<see cref="!:NativeMethods.VirtualProtectEx"/> and <see cref="!:NativeMethods.WriteProcessMemory"/>).</summary>
+        </member>
+        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.VmRead">
+            <summary>Required to read memory in a process using <see cref="!:NativeMethods.ReadProcessMemory"/>.</summary>
+        </member>
+        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.VmWrite">
+            <summary>Required to write to memory in a process using <see cref="!:NativeMethods.WriteProcessMemory"/>.</summary>
+        </member>
+        <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.Synchronize">
+            <summary>Required to wait for the process to terminate using the wait functions.</summary>
         </member>
         <member name="T:Wanderer.Library.WindowsApi.Helpers.IProcessWatcher">
             <summary>
@@ -182,6 +199,11 @@
             <param name="processExtended">controlled process</param>
             <param name="maxCpuUsage">maximum avaliable CPU usage for the process</param>
         </member>
+        <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessWatcher.Finalize">
+            <summary>
+            Finalizer.
+            </summary>
+        </member>
         <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessWatcher.Equals(System.Object)">
             <summary>
             Determines whether the specified object is equal to the current object.
@@ -195,6 +217,12 @@
             </summary>
             <returns>a hash code for the current <see cref="T:Wanderer.Library.WindowsApi.Helpers.ProcessWatcher"/></returns>
         </member>
+        <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessWatcher.Dispose(System.Boolean)">
+            <summary>
+            Internal implementation of <see cref="T:System.IDisposable"/> interface.
+            </summary>
+            <param name="disposing">indicates that method called from public Dispose method</param>
+        </member>
         <member name="P:Wanderer.Library.WindowsApi.Helpers.ProcessWatcher.WatchedProcess">
             <summary>
             Controlled process.
@@ -205,26 +233,20 @@
             Maximum avaliable CPU usage for the process.
             </summary>
         </member>
-        <member name="T:Wanderer.Library.WindowsApi.Helpers.CpuLimiter">
+        <member name="T:Wanderer.Library.WindowsApi.Nt.NtStatus">
             <summary>
-            Provides feature to control maximum CPU usage for list of processes.
+            A NT status value.
             </summary>
         </member>
-        <member name="M:Wanderer.Library.WindowsApi.Helpers.CpuLimiter.Dispose">
+        <member name="T:Wanderer.Library.WindowsApi.NativeMethods">
             <summary>
-            <see cref="T:System.IDisposable"/> interface implementation.
+            Common Windows API functions.
             </summary>
         </member>
-        <member name="M:Wanderer.Library.WindowsApi.Helpers.CpuLimiter.#ctor">
+        <member name="T:Wanderer.Library.WindowsApi.Nt.NativeMethods">
             <summary>
-            Default constructor.
+            A NT API functions.
             </summary>
-        </member>
-        <member name="M:Wanderer.Library.WindowsApi.Helpers.CpuLimiter.AddProcessToWatchList(Wanderer.Library.WindowsApi.Helpers.IProcessWatcher)">
-            <summary>
-            Add process to list of controlled processes.
-            </summary>
-            <param name="processWatcher"><see cref="T:Wanderer.Library.WindowsApi.Helpers.IProcessWatcher"/></param>
         </member>
     </members>
 </doc>

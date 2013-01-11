@@ -6,7 +6,7 @@ namespace Wanderer.Library.WindowsApi.Nt
     /// <summary>
     /// A NT API functions.
     /// </summary>
-    internal static class Functions
+    internal static class NativeMethods
     {
         private const string NtDll = "ntdll.dll";
 

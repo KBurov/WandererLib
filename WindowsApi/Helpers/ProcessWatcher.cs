@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
+using System.Security.Permissions;
 
 namespace Wanderer.Library.WindowsApi.Helpers
 {
@@ -10,13 +12,23 @@ namespace Wanderer.Library.WindowsApi.Helpers
         #region Variables
         private readonly IProcessExtended _processExtended;
         private readonly uint _maxCpuUsage;
+
+        private bool _disposed;
         #endregion
 
         #region IProcessWatcher implementation
         /// <summary>
         /// Controlled process.
         /// </summary>
-        public IProcessExtended WatchedProcess { get { return _processExtended; } }
+        public IProcessExtended WatchedProcess
+        {
+            get
+            {
+                Contract.Requires<ObjectDisposedException>(!_disposed);
+
+                return _processExtended;
+            }
+        }
 
         /// <summary>
         /// Maximum avaliable CPU usage for the process.
@@ -30,7 +42,10 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// </summary>
         public void Dispose()
         {
-            _processExtended.Dispose();
+            Contract.Ensures(_disposed);
+
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
         #endregion
 
@@ -40,8 +55,12 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// </summary>
         /// <param name="other">an <see cref="IProcessWatcher"/> to compare</param>
         /// <returns><b>true</b> if current object is equal to <i>other</i> parameter; otherwise, <b>false</b></returns>
+        [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"),
+         PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         public bool Equals(IProcessWatcher other)
         {
+            Contract.Requires<ObjectDisposedException>(!_disposed);
+
             if (other == null)
                 return false;
 
@@ -56,11 +75,19 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <param name="maxCpuUsage">maximum avaliable CPU usage for the process</param>
         public ProcessWatcher(IProcessExtended processExtended, uint maxCpuUsage)
         {
-            if (processExtended == null)
-                throw new ArgumentNullException("processExtended");
+            Contract.Requires<ArgumentNullException>(processExtended != null);
+            Contract.Ensures(_processExtended != null);
 
             _processExtended = processExtended;
             _maxCpuUsage = maxCpuUsage;
+        }
+
+        /// <summary>
+        /// Finalizer.
+        /// </summary>
+        ~ProcessWatcher()
+        {
+            Dispose(false);
         }
 
         /// <summary>
@@ -68,8 +95,12 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// </summary>
         /// <param name="obj">the object to compare with the current object</param>
         /// <returns>true if the specified object is equal to the current object; otherwise, false</returns>
+        [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"),
+         PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         public override bool Equals(object obj)
         {
+            Contract.Requires<ObjectDisposedException>(!_disposed);
+
             if (obj == null)
                 return false;
 
@@ -84,7 +115,26 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <returns>a hash code for the current <see cref="ProcessWatcher"/></returns>
         public override int GetHashCode()
         {
+// ReSharper disable NonReadonlyFieldInGetHashCode
+            Contract.Requires<ObjectDisposedException>(!_disposed);
+// ReSharper restore NonReadonlyFieldInGetHashCode
             return WatchedProcess.GetHashCode();
+        }
+
+        /// <summary>
+        /// Internal implementation of <see cref="IDisposable"/> interface.
+        /// </summary>
+        /// <param name="disposing">indicates that method called from public Dispose method</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            Contract.Ensures(_disposed);
+
+            if (_disposed) return;
+
+            if (disposing)
+                _processExtended.Dispose();
+
+            _disposed = true;
         }
     }
 }

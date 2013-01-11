@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.Contracts;
 using System.Security;
+using System.Security.Permissions;
 using System.Threading;
 
 namespace Wanderer.Library.WindowsApi.Helpers
@@ -11,11 +13,13 @@ namespace Wanderer.Library.WindowsApi.Helpers
     [SecurityCritical]
     public class ProcessExtended : IProcessExtended
     {
-        private const string ResumeSuspendErrorMessage = "An error occured during the execution of resume/suspend the process (process id: {0}).";
+        private const string ResumeSuspendErrorMessage =
+            "An error occured during the execution of resume/suspend the process (process id: {0}).";
 
         #region Variables
         private readonly Process _process;
 
+        private bool _disposed;
         private long _totalProcessorTime;
         private DateTime _totalProcessorTimeUpdate;
         #endregion
@@ -24,7 +28,15 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <summary>
         /// Extended process.
         /// </summary>
-        public Process Process { get { return _process; } }
+        public Process Process
+        {
+            get
+            {
+                Contract.Requires<ObjectDisposedException>(!_disposed);
+
+                return _process;
+            }
+        }
 
         /// <summary>
         /// CPU usage in percent.
@@ -33,8 +45,12 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// </summary>
         public uint CpuUsage
         {
+            [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"),
+             PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
             get
             {
+                Contract.Requires<ObjectDisposedException>(!_disposed);
+
                 if (DateTime.Now.Ticks == _totalProcessorTimeUpdate.Ticks)
                     Thread.Sleep(10);
 
@@ -55,8 +71,12 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <summary>
         /// Reset CPU usage value and time.
         /// </summary>
+        [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"),
+         PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         public void ResetCpuUsage()
         {
+            Contract.Requires<ObjectDisposedException>(!_disposed);
+
             _totalProcessorTime = _process.TotalProcessorTime.Ticks;
             _totalProcessorTimeUpdate = DateTime.Now;
         }
@@ -64,9 +84,14 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <summary>
         /// Resume the process.
         /// </summary>
+        [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"),
+         PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         public void Resume()
         {
-            ExecuteResumeSuspend(Nt.Functions.NtResumeProcess);
+            Contract.Requires<ObjectDisposedException>(!_disposed);
+            Contract.Ensures(!IsSuspended);
+
+            ExecuteResumeSuspend(Nt.NativeMethods.NtResumeProcess);
 
             IsSuspended = false;
         }
@@ -74,9 +99,14 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <summary>
         /// Suspend the process.
         /// </summary>
+        [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"),
+         PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         public void Suspend()
         {
-            ExecuteResumeSuspend(Nt.Functions.NtSuspendProcess);
+            Contract.Requires<ObjectDisposedException>(!_disposed);
+            Contract.Ensures(IsSuspended);
+
+            ExecuteResumeSuspend(Nt.NativeMethods.NtSuspendProcess);
 
             IsSuspended = true;
         }
@@ -88,7 +118,10 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// </summary>
         public void Dispose()
         {
-            _process.Dispose();
+            Contract.Ensures(_disposed);
+
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
         #endregion
 
@@ -97,8 +130,12 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// Initialize constructor.
         /// </summary>
         /// <param name="processId">id of extended process</param>
+        [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"),
+         PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         public ProcessExtended(int processId)
         {
+            Contract.Ensures(_process != null);
+
             _process = Process.GetProcessById(processId);
 
             ResetCpuUsage();
@@ -108,18 +145,45 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// Initialize constructor.
         /// </summary>
         /// <param name="process">extended process</param>
+        [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"),
+         PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         public ProcessExtended(Process process)
         {
-            if (process == null)
-                throw new ArgumentNullException("process");
+            Contract.Requires<ArgumentNullException>(process != null);
+            Contract.Ensures(_process != null);
 
             _process = process;
 
-            _totalProcessorTime = _process.TotalProcessorTime.Ticks;
-            _totalProcessorTimeUpdate = DateTime.Now;
+            ResetCpuUsage();
+        }
+
+        /// <summary>
+        /// Finalizer.
+        /// </summary>
+        ~ProcessExtended()
+        {
+            Dispose(false);
         }
         #endregion
 
+        /// <summary>
+        /// Internal implementation of <see cref="IDisposable"/> interface.
+        /// </summary>
+        /// <param name="disposing">indicates that method called from public Dispose method</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            Contract.Ensures(_disposed);
+
+            if (_disposed) return;
+
+            if (disposing)
+                _process.Dispose();
+
+            _disposed = true;
+        }
+
+        [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"),
+         PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         private void ExecuteResumeSuspend(Func<IntPtr, Nt.NtStatus> func)
         {
             var result = func(_process.Handle);

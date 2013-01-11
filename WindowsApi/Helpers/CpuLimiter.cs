@@ -20,7 +20,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         private readonly ReaderWriterLockSlim _watchListLocker;
         private readonly Timer _watchingTimer;
 
-        private int _cpuUsageResetIntervalInMs = 0;
+        private int _cpuUsageResetIntervalInMs;
         #endregion
 
         #region IDisposable implementation
@@ -40,8 +40,9 @@ namespace Wanderer.Library.WindowsApi.Helpers
                         {
                             processWatcher.WatchedProcess.Resume();
                         }
+// ReSharper disable EmptyGeneralCatchClause
                         catch { }
-
+// ReSharper restore EmptyGeneralCatchClause
                     processWatcher.Dispose();
                 }
 
@@ -62,11 +63,11 @@ namespace Wanderer.Library.WindowsApi.Helpers
             _watchListLocker = new ReaderWriterLockSlim();
             // Create the watching timer
             _watchingTimer = new Timer
-            {
-                AutoReset = false,
-                // Set the timer refresh rate
-                Interval = RefreshRateInMs
-            };
+                {
+                    AutoReset = false,
+                    // Set the timer refresh rate
+                    Interval = RefreshRateInMs
+                };
             // Hook up the Elapsed event for the timer.
             _watchingTimer.Elapsed += OnTimedEvent;
         }

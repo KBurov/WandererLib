@@ -6,7 +6,7 @@ namespace Wanderer.Library.WindowsApi
     /// <summary>
     /// Common Windows API functions.
     /// </summary>
-    internal static class Functions
+    internal static class NativeMethods
     {
         private const string Kernel32 = "kernel32.dll";
 
