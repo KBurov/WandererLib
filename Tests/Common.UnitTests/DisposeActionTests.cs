@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Wanderer.Library.Common.UnitTests
 {
     [TestClass]
-    // ReSharper disable InconsistentNaming
+// ReSharper disable InconsistentNaming
     public class DisposeActionTests
     {
         [TestMethod]
@@ -31,5 +31,5 @@ namespace Wanderer.Library.Common.UnitTests
             Assert.IsTrue(actionCalled);
         }
     }
-    // ReSharper restore InconsistentNaming
+// ReSharper restore InconsistentNaming
 }

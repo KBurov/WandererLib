@@ -4,6 +4,27 @@
         <name>Wanderer.Library.Common</name>
     </assembly>
     <members>
+        <member name="T:Wanderer.Library.Common.DisposeAction">
+            <summary>
+            Helper class for using <see cref="T:System.IDisposable"/> interface.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.Common.DisposeAction.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resource.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.Common.DisposeAction.#ctor(System.Action)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="disposeAction">action that should be called in <see cref="M:System.IDisposable.Dispose"/> method</param>
+        </member>
+        <member name="M:Wanderer.Library.Common.DisposeAction.Finalize">
+            <summary>
+            Finalizer.
+            </summary>
+        </member>
         <member name="T:Wanderer.Library.Common.BindableObject">
             <summary>
             Implements the <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> interface and
@@ -50,27 +71,6 @@
         <member name="E:Wanderer.Library.Common.BindableObject.PropertyChanged">
             <summary>
             Occurs when a property value changes.
-            </summary>
-        </member>
-        <member name="T:Wanderer.Library.Common.DisposeAction">
-            <summary>
-            Helper class for using <see cref="T:System.IDisposable"/> interface.
-            </summary>
-        </member>
-        <member name="M:Wanderer.Library.Common.DisposeAction.Dispose">
-            <summary>
-            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resource.
-            </summary>
-        </member>
-        <member name="M:Wanderer.Library.Common.DisposeAction.#ctor(System.Action)">
-            <summary>
-            Constructor.
-            </summary>
-            <param name="disposeAction">action that should be called in <see cref="M:System.IDisposable.Dispose"/> method</param>
-        </member>
-        <member name="M:Wanderer.Library.Common.DisposeAction.Finalize">
-            <summary>
-            Finalizer.
             </summary>
         </member>
     </members>

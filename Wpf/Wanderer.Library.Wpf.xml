@@ -4,6 +4,40 @@
         <name>Wanderer.Library.Wpf</name>
     </assembly>
     <members>
+        <member name="T:Wanderer.Library.Wpf.RelayCommand">
+            <summary>
+            Simple implementation the <see cref="T:System.Windows.Input.ICommand"/> interface and wraps up all the verbose stuff so that you can just pass two delegates:
+            one for the <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/> and second for the <see cref="M:System.Windows.Input.ICommand.Execute(System.Object)"/>.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.Wpf.RelayCommand.CanExecute(System.Object)">
+            <summary>
+            Checks if the command method can run.
+            </summary>
+            <param name="parameter">the command parameter to be passed</param>
+            <returns>
+            Returns true if the command can be executed.
+            By default true is returned so that if the user of <see cref="T:Wanderer.Library.Wpf.RelayCommand"/> does not specify a <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/> delegate the command still executes.
+            </returns>
+        </member>
+        <member name="M:Wanderer.Library.Wpf.RelayCommand.Execute(System.Object)">
+            <summary>
+            Executes the actual command.
+            </summary>
+            <param name="parameter">the command parameter to be passed</param>
+        </member>
+        <member name="M:Wanderer.Library.Wpf.RelayCommand.#ctor(System.Action{System.Object},System.Predicate{System.Object})">
+            <summary>
+            Initialization constructor.
+            </summary>
+            <param name="execute">delegate for th <see cref="M:System.Windows.Input.ICommand.Execute(System.Object)"/></param>
+            <param name="canExecute">delegate for the <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/></param>
+        </member>
+        <member name="E:Wanderer.Library.Wpf.RelayCommand.CanExecuteChanged">
+            <summary>
+            Occurs when changes occur that affect whether or not the command should execute.
+            </summary>
+        </member>
         <member name="T:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior">
             <summary>
             <see cref="T:System.Windows.Controls.TextBox"/> attached properties with some special behavior.
@@ -80,40 +114,6 @@
             </summary>
             <param name="serviceProvider">a service provider helper that can provide services for the markup extension</param>
             <returns>array of <see cref="T:Wanderer.Library.Wpf.Markup.EnumerationExtension.EnumerationMember"/> that corresponds target enum values</returns>
-        </member>
-        <member name="T:Wanderer.Library.Wpf.RelayCommand">
-            <summary>
-            Simple implementation the <see cref="T:System.Windows.Input.ICommand"/> interface and wraps up all the verbose stuff so that you can just pass two delegates:
-            one for the <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/> and second for the <see cref="M:System.Windows.Input.ICommand.Execute(System.Object)"/>.
-            </summary>
-        </member>
-        <member name="M:Wanderer.Library.Wpf.RelayCommand.CanExecute(System.Object)">
-            <summary>
-            Checks if the command method can run.
-            </summary>
-            <param name="parameter">the command parameter to be passed</param>
-            <returns>
-            Returns true if the command can be executed.
-            By default true is returned so that if the user of <see cref="T:Wanderer.Library.Wpf.RelayCommand"/> does not specify a <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/> delegate the command still executes.
-            </returns>
-        </member>
-        <member name="M:Wanderer.Library.Wpf.RelayCommand.Execute(System.Object)">
-            <summary>
-            Executes the actual command.
-            </summary>
-            <param name="parameter">the command parameter to be passed</param>
-        </member>
-        <member name="M:Wanderer.Library.Wpf.RelayCommand.#ctor(System.Action{System.Object},System.Predicate{System.Object})">
-            <summary>
-            Initialization constructor.
-            </summary>
-            <param name="execute">delegate for th <see cref="M:System.Windows.Input.ICommand.Execute(System.Object)"/></param>
-            <param name="canExecute">delegate for the <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/></param>
-        </member>
-        <member name="E:Wanderer.Library.Wpf.RelayCommand.CanExecuteChanged">
-            <summary>
-            Occurs when changes occur that affect whether or not the command should execute.
-            </summary>
         </member>
         <member name="T:Wanderer.Library.Wpf.UIHelper">
             <summary>

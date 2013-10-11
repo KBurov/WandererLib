@@ -4,6 +4,26 @@
         <name>Wanderer.Library.Finance</name>
     </assembly>
     <members>
+        <member name="T:Wanderer.Library.Finance.ICurrency">
+            <summary>
+            Currency interface.
+            </summary>
+        </member>
+        <member name="P:Wanderer.Library.Finance.ICurrency.Name">
+            <summary>
+            Currency name.
+            </summary>
+        </member>
+        <member name="T:Wanderer.Library.Finance.IAccountType">
+            <summary>
+            Account type interface.
+            </summary>
+        </member>
+        <member name="P:Wanderer.Library.Finance.IAccountType.Name">
+            <summary>
+            Type name.
+            </summary>
+        </member>
         <member name="T:Wanderer.Library.Finance.IAccount`1">
             <summary>
             Account interface.
@@ -36,16 +56,6 @@
             Account balance.
             </summary>
         </member>
-        <member name="T:Wanderer.Library.Finance.ICurrency">
-            <summary>
-            Currency interface.
-            </summary>
-        </member>
-        <member name="P:Wanderer.Library.Finance.ICurrency.Name">
-            <summary>
-            Currency name.
-            </summary>
-        </member>
         <member name="T:Wanderer.Library.Finance.IMoney`1">
             <summary>
             Money interface.
@@ -74,16 +84,6 @@
         <member name="P:Wanderer.Library.Finance.IMoney`1.Currency">
             <summary>
             Money currency.
-            </summary>
-        </member>
-        <member name="T:Wanderer.Library.Finance.IAccountType">
-            <summary>
-            Account type interface.
-            </summary>
-        </member>
-        <member name="P:Wanderer.Library.Finance.IAccountType.Name">
-            <summary>
-            Type name.
             </summary>
         </member>
     </members>
