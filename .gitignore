@@ -2,3 +2,4 @@ _ReSharper.WandererLib
 TestResults
 *.user
 *.suo
+*.xml.old
