@@ -4,8 +4,6 @@ using System.Diagnostics.Contracts;
 using System.Threading;
 using System.Timers;
 
-using Wanderer.Library.Common;
-
 using Timer = System.Timers.Timer;
 
 namespace Wanderer.Library.WindowsApi.Helpers
