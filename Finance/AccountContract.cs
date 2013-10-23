@@ -10,9 +10,8 @@ namespace Wanderer.Library.Finance
         {
             get
             {
-// ReSharper disable InvocationIsSkipped
                 Contract.Ensures(!string.IsNullOrEmpty(Contract.Result<string>()), "property Name can not be null or empty");
-// ReSharper restore InvocationIsSkipped
+
                 return default(string);
             }
         }
@@ -21,9 +20,8 @@ namespace Wanderer.Library.Finance
         {
             get
             {
-// ReSharper disable InvocationIsSkipped
                 Contract.Ensures(Contract.Result<IAccountType>() != null, "property Type can not be null");
-// ReSharper restore InvocationIsSkipped
+
                 return default(IAccountType);
             }
         }
@@ -32,9 +30,8 @@ namespace Wanderer.Library.Finance
         {
             get
             {
-// ReSharper disable InvocationIsSkipped
                 Contract.Ensures(Contract.Result<IMoney<T>>() != null, "property Balance can not be null");
-// ReSharper restore InvocationIsSkipped
+
                 return default(IMoney<T>);
             }
         }
