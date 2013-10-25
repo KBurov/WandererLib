@@ -12,7 +12,7 @@
         {
             System.Int32 dummy;
 
-            return !string.IsNullOrEmpty(s) && System.Int32.TryParse(s, out dummy);
+            return !string.IsNullOrWhiteSpace(s) && System.Int32.TryParse(s, out dummy);
         }
 
         /// <summary>
@@ -22,7 +22,7 @@
         {
             System.UInt32 dummy;
 
-            return !string.IsNullOrEmpty(s) && System.UInt32.TryParse(s, out dummy);
+            return !string.IsNullOrWhiteSpace(s) && System.UInt32.TryParse(s, out dummy);
         }
 
         /// <summary>
@@ -32,7 +32,7 @@
         {
             System.Decimal dummy;
 
-            return !string.IsNullOrEmpty(s) && System.Decimal.TryParse(s, out dummy);
+            return !string.IsNullOrWhiteSpace(s) && System.Decimal.TryParse(s, out dummy);
         }
     }
 }
