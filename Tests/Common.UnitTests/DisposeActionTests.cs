@@ -1,27 +1,27 @@
 ﻿using System;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Wanderer.Library.Common.UnitTests
 {
-    [TestClass]
-// ReSharper disable InconsistentNaming
+    [TestFixture]
     public class DisposeActionTests
     {
-        [TestMethod]
+// ReSharper disable InconsistentNaming
+        [Test]
         [ExpectedException(typeof (ArgumentNullException))]
         public void Constructor_NullAction_ThrowsException()
         {
             using (new DisposeAction(null)) {}
         }
 
-        [TestMethod]
+        [Test]
         public void Constructor_NotNullAction_Ok()
         {
             using (new DisposeAction(() => { })) {}
         }
 
-        [TestMethod]
+        [Test]
         public void Dispose_CallDisposeAction()
         {
             var actionCalled = false;
@@ -30,6 +30,6 @@ namespace Wanderer.Library.Common.UnitTests
 
             Assert.IsTrue(actionCalled);
         }
-    }
 // ReSharper restore InconsistentNaming
+    }
 }

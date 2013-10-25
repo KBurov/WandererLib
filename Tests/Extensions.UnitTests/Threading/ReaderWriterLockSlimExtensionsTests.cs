@@ -1,27 +1,26 @@
 ﻿using System;
 using System.Threading;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Wanderer.Library.Extensions.UnitTests.Threading
 {
-    [TestClass]
-    // ReSharper disable InconsistentNaming
+    [TestFixture]
     public class ReaderWriterLockSlimExtensionsTests
     {
         #region Variables
         private ReaderWriterLockSlim _locker;
         #endregion
-
+// ReSharper disable InconsistentNaming
         #region GetReadLock
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void GetReadLock_NullLocker_Fail()
         {
             using (((ReaderWriterLockSlim) null).GetReadLock()) {}
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof (LockRecursionException))]
         public void GetReadLock_TryRead_Fail()
         {
@@ -29,7 +28,7 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
                 _locker.TryEnterReadLock(0);
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof (LockRecursionException))]
         public void GetReadLock_TryEnterUpgradeableRead_Fail()
         {
@@ -37,7 +36,7 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
                 _locker.TryEnterUpgradeableReadLock(0);
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof (LockRecursionException))]
         public void GetReadLock_TryWrite_Fail()
         {
@@ -45,7 +44,7 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
                 _locker.TryEnterWriteLock(0);
         }
 
-        [TestMethod]
+        [Test]
         public void GetReadLock_TryReadFromOtherThread_Success()
         {
             Func<bool> a = () =>
@@ -62,7 +61,7 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
             Assert.IsTrue(tryReadResult);
         }
 
-        [TestMethod]
+        [Test]
         public void GetReadLock_TryEnterUpgradeableReadFromOtherThread_Success()
         {
             Func<bool> a = () =>
@@ -79,7 +78,7 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
             Assert.IsTrue(tryUpgradeableReadResult);
         }
 
-        [TestMethod]
+        [Test]
         public void GetReadLock_TryWriteFromOtherThread_Fail()
         {
             Func<bool> a = () =>
@@ -98,14 +97,14 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
         #endregion
 
         #region GetUpgradeableReadLock
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void GetUpgradeableReadLock_NullLocker_Fail()
         {
             using (((ReaderWriterLockSlim) null).GetUpgradeableReadLock()) {}
         }
 
-        [TestMethod]
+        [Test]
         public void GetUpgradeableReadLock_TryRead_Success()
         {
             bool tryReadResult;
@@ -121,7 +120,7 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
             Assert.IsTrue(tryReadResult);
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof (LockRecursionException))]
         public void GetUpgradeableReadLock_TryEnterUpgradeableRead_Fail()
         {
@@ -129,7 +128,7 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
                 _locker.TryEnterUpgradeableReadLock(0);
         }
 
-        [TestMethod]
+        [Test]
         public void GetUpgradeableReadLock_TryWrite_Success()
         {
             bool tryWriteResult;
@@ -145,7 +144,7 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
             Assert.IsTrue(tryWriteResult);
         }
 
-        [TestMethod]
+        [Test]
         public void GetUpgradeableReadLock_TryReadFromOtherThread_Success()
         {
             Func<bool> a = () =>
@@ -162,7 +161,7 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
             Assert.IsTrue(tryReadResult);
         }
 
-        [TestMethod]
+        [Test]
         public void GetUpgradeableReadLock_TryEnterUpgradeableReadFromOtherThread_Fail()
         {
             Func<bool> a = () =>
@@ -179,7 +178,7 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
             Assert.IsFalse(tryUpgradeableReadResult);
         }
 
-        [TestMethod]
+        [Test]
         public void GetUpgradeableReadLock_TryWriteFromOtherThread_Fail()
         {
             Func<bool> a = () =>
@@ -198,14 +197,14 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
         #endregion
 
         #region GetWriteLock
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void GetWriteLock_NullLocker_Fail()
         {
             using (((ReaderWriterLockSlim) null).GetWriteLock()) {}
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof(LockRecursionException))]
         public void GetWriteLock_TryRead_Fail()
         {
@@ -213,7 +212,7 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
                 _locker.TryEnterReadLock(0);
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof (LockRecursionException))]
         public void GetWriteLock_TryEnterUpgradeableRead_Fail()
         {
@@ -221,7 +220,7 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
                 _locker.TryEnterUpgradeableReadLock(0);
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof(LockRecursionException))]
         public void GetWriteLock_TryWrite_Fail()
         {
@@ -229,7 +228,7 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
                 _locker.TryEnterWriteLock(0);
         }
 
-        [TestMethod]
+        [Test]
         public void GetWriteLock_TryReadFromOtherThread_Fail()
         {
             Func<bool> a = () =>
@@ -246,7 +245,7 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
             Assert.IsFalse(tryReadResult);
         }
 
-        [TestMethod]
+        [Test]
         public void GetWriteLock_TryEnterUpgradeableReadFromOtherThread_Fail()
         {
             Func<bool> a = () =>
@@ -263,7 +262,7 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
             Assert.IsFalse(tryUpgradeableReadResult);
         }
 
-        [TestMethod]
+        [Test]
         public void GetWriteLock_TryWriteFromOtherThread_Fail()
         {
             Func<bool> a = () =>
@@ -282,12 +281,12 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
         #endregion
 
         #region Additional test attributes
-        [TestInitialize]
+        [TestFixtureSetUp]
         public void TestInitialize()
         {
             _locker = new ReaderWriterLockSlim();
         }
         #endregion
+// ReSharper restore InconsistentNaming
     }
-    // ReSharper restore InconsistentNaming
 }

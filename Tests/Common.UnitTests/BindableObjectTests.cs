@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 
 namespace Wanderer.Library.Common.UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class BindableObjectTests
     {
-        [TestMethod]
+        [Test]
         public void TestMethod1()
         {
         }
