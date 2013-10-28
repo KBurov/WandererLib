@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BindableObject.cs" />
+    <Compile Include="Collections\Generic\InvariantCultureIgnoreCaseStringComparer.cs" />
     <Compile Include="DisposeAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
