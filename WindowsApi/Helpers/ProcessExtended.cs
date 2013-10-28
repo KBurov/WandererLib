@@ -5,15 +5,16 @@ using System.Security;
 using System.Security.Permissions;
 using System.Threading;
 
+using Wanderer.Library.WindowsApi.Nt;
+
 namespace Wanderer.Library.WindowsApi.Helpers
 {
     /// <summary>
     /// Provides additonal functionality for process, for example resume/suspend.
     /// </summary>
     [SecurityCritical]
-    public class ProcessExtended : IProcessExtended
+    public sealed class ProcessExtended : IProcessExtended
     {
-        private const string ObjectDisposedExceptionMessage = "IProcessExtended already disposed";
         private const string ResumeSuspendErrorMessage = "An error occured during the execution of resume/suspend the process (process id: {0}).";
 
         #region Variables
@@ -27,36 +28,26 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <summary>
         /// Extended process.
         /// </summary>
-        public Process Process
-        {
-            get
-            {
-                Contract.Requires<ObjectDisposedException>(!IsDisposed, ObjectDisposedExceptionMessage);
-
-                return _process;
-            }
-        }
+        public Process Process { get { return _process; } }
 
         /// <summary>
         /// CPU usage in percent.
-        /// This is cumulative value which calculated from the first time when <see cref="IProcessExtended"/> was created.
-        /// Can be cleared by <see cref="ResetCpuUsage"/> method.
+        /// This is cumulative value which calculated from the first time when <see cref="IProcessExtended" /> was created.
+        /// Can be cleared by <see cref="ResetCpuUsage" /> method.
         /// </summary>
         public uint CpuUsage
         {
             [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"), PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
             get
             {
-                Contract.Requires<ObjectDisposedException>(!IsDisposed, ObjectDisposedExceptionMessage);
-
                 if (DateTime.Now.Ticks == _totalProcessorTimeUpdate.Ticks) {
                     Thread.Sleep(10);
                 }
 
-                var currentTotalProcessTime = _process.TotalProcessorTime.Ticks;
-                var updateTime = DateTime.Now;
-                var usedTotalProcessTime = currentTotalProcessTime - _totalProcessorTime;
-                var updateDelay = updateTime.Ticks - _totalProcessorTimeUpdate.Ticks;
+                long currentTotalProcessTime = _process.TotalProcessorTime.Ticks;
+                DateTime updateTime = DateTime.Now;
+                long usedTotalProcessTime = currentTotalProcessTime - _totalProcessorTime;
+                long updateDelay = updateTime.Ticks - _totalProcessorTimeUpdate.Ticks;
 
                 return (uint) (usedTotalProcessTime * 100 / updateDelay / Environment.ProcessorCount);
             }
@@ -68,13 +59,16 @@ namespace Wanderer.Library.WindowsApi.Helpers
         public bool IsSuspended { get; private set; }
 
         /// <summary>
+        /// Determines whether object already disposed or not.
+        /// </summary>
+        public bool IsDisposed { get; private set; }
+
+        /// <summary>
         /// Reset CPU usage value and time.
         /// </summary>
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"), PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         public void ResetCpuUsage()
         {
-            Contract.Requires<ObjectDisposedException>(!IsDisposed, ObjectDisposedExceptionMessage);
-
             _totalProcessorTime = _process.TotalProcessorTime.Ticks;
             _totalProcessorTimeUpdate = DateTime.Now;
         }
@@ -85,9 +79,6 @@ namespace Wanderer.Library.WindowsApi.Helpers
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"), PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         public void Resume()
         {
-            Contract.Requires<ObjectDisposedException>(!IsDisposed, ObjectDisposedExceptionMessage);
-            Contract.Ensures(!IsSuspended);
-
             ExecuteResumeSuspend(Nt.NativeMethods.NtResumeProcess);
 
             IsSuspended = false;
@@ -99,9 +90,6 @@ namespace Wanderer.Library.WindowsApi.Helpers
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"), PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         public void Suspend()
         {
-            Contract.Requires<ObjectDisposedException>(!IsDisposed, ObjectDisposedExceptionMessage);
-            Contract.Ensures(IsSuspended);
-
             ExecuteResumeSuspend(Nt.NativeMethods.NtSuspendProcess);
 
             IsSuspended = true;
@@ -110,7 +98,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
 
         #region IDisposable implementation
         /// <summary>
-        /// <see cref="IDisposable"/> interface implementation.
+        /// <see cref="IDisposable" /> interface implementation.
         /// </summary>
         public void Dispose()
         {
@@ -120,11 +108,6 @@ namespace Wanderer.Library.WindowsApi.Helpers
             GC.SuppressFinalize(this);
         }
         #endregion
-
-        /// <summary>
-        /// Determines whether object already disposed or not.
-        /// </summary>
-        public bool IsDisposed { get; private set; }
 
         #region Constructors
         /// <summary>
@@ -148,7 +131,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"), PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         public ProcessExtended(Process process)
         {
-            Contract.Requires<ArgumentNullException>(process != null);
+            Contract.Requires<ArgumentNullException>(process != null, "process cannot be null");
             Contract.Ensures(_process != null);
 
             _process = process;
@@ -166,13 +149,11 @@ namespace Wanderer.Library.WindowsApi.Helpers
         #endregion
 
         /// <summary>
-        /// Internal implementation of <see cref="IDisposable"/> interface.
+        /// Internal implementation of <see cref="IDisposable" /> interface.
         /// </summary>
         /// <param name="disposing">indicates that method called from public Dispose method</param>
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
-            Contract.Ensures(IsDisposed);
-
             if (IsDisposed) {
                 return;
             }
@@ -185,11 +166,11 @@ namespace Wanderer.Library.WindowsApi.Helpers
         }
 
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"), PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
-        private void ExecuteResumeSuspend(Func<IntPtr, Nt.NtStatus> func)
+        private void ExecuteResumeSuspend(Func<IntPtr, NtStatus> func)
         {
             var result = func(_process.Handle);
 
-            if (result != Nt.NtStatus.Success) {
+            if (result != NtStatus.Success) {
                 throw new ApplicationException(string.Format(ResumeSuspendErrorMessage, _process.Id));
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.Contracts;
 using System.Security;
 
 namespace Wanderer.Library.WindowsApi.Helpers
@@ -7,6 +8,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
     /// <summary>
     /// Provides additonal functionality for process, for example resume/suspend.
     /// </summary>
+    [ContractClass(typeof (IProcessExtendedContract))]
     [SecurityCritical]
     public interface IProcessExtended : IDisposable
     {
@@ -14,16 +16,23 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// Extended process.
         /// </summary>
         Process Process { get; }
+
         /// <summary>
         /// CPU usage in percent.
-        /// This is cumulative value which calculated from the first time when <see cref="IProcessExtended"/> was created.
-        /// Can be cleared by <see cref="ResetCpuUsage"/> method.
+        /// This is cumulative value which calculated from the first time when <see cref="IProcessExtended" /> was created.
+        /// Can be cleared by <see cref="ResetCpuUsage" /> method.
         /// </summary>
         uint CpuUsage { get; }
+
         /// <summary>
         /// Indicates that the process was suspended.
         /// </summary>
         bool IsSuspended { get; }
+
+        /// <summary>
+        /// Determines whether object already disposed or not.
+        /// </summary>
+        bool IsDisposed { get; }
 
         /// <summary>
         /// Reset CPU usage value and time.
