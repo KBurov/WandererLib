@@ -4,27 +4,6 @@
         <name>Wanderer.Library.Common</name>
     </assembly>
     <members>
-        <member name="T:Wanderer.Library.Common.DisposeAction">
-            <summary>
-            Helper class for using <see cref="T:System.IDisposable"/> interface.
-            </summary>
-        </member>
-        <member name="M:Wanderer.Library.Common.DisposeAction.Dispose">
-            <summary>
-            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resource.
-            </summary>
-        </member>
-        <member name="M:Wanderer.Library.Common.DisposeAction.#ctor(System.Action)">
-            <summary>
-            Constructor.
-            </summary>
-            <param name="disposeAction">action that should be called in <see cref="M:System.IDisposable.Dispose"/> method</param>
-        </member>
-        <member name="M:Wanderer.Library.Common.DisposeAction.Finalize">
-            <summary>
-            Finalizer.
-            </summary>
-        </member>
         <member name="T:Wanderer.Library.Common.BindableObject">
             <summary>
             Implements the <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> interface and
@@ -72,6 +51,61 @@
             <summary>
             Occurs when a property value changes.
             </summary>
+        </member>
+        <member name="T:Wanderer.Library.Common.Collections.Generic.InvariantCultureIgnoreCaseStringComparer">
+            <summary>
+            Implement <see cref="T:System.Collections.Generic.IComparer`1"/> for strings with <see cref="F:System.StringComparison.InvariantCultureIgnoreCase"/> option.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.Common.Collections.Generic.InvariantCultureIgnoreCaseStringComparer.Compare(System.String,System.String)">
+            <summary>
+            Compares two strings and returns a value indicating whether one is less than, equal to, or greater than the other.
+            </summary>
+            <param name="x">the first string to compare</param>
+            <param name="y">the second string to compare</param>
+            <returns>a signed integer that indicates the relative values of x and y</returns>
+        </member>
+        <member name="T:Wanderer.Library.Common.DisposeAction">
+            <summary>
+            Helper class for using <see cref="T:System.IDisposable"/> interface.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.Common.DisposeAction.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resource.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.Common.DisposeAction.#ctor(System.Action)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="disposeAction">action that should be called in <see cref="M:System.IDisposable.Dispose"/> method</param>
+        </member>
+        <member name="M:Wanderer.Library.Common.DisposeAction.Finalize">
+            <summary>
+            Finalizer.
+            </summary>
+        </member>
+        <member name="T:Wanderer.Library.Common.EnvironmentEx">
+            <summary>
+            Provides additional information and methods to <see cref="T:System.Environment"/> class.
+            </summary>
+        </member>
+        <member name="F:Wanderer.Library.Common.EnvironmentEx.ServicePackNumberVariableName">
+            <summary>
+            Variable name for operating system service pack version number.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.Common.EnvironmentEx.ExpandEnvironmentVariables(System.String)">
+            <summary>
+            Replaces the name of each environment variable embedded in the specified string with the string equivalent of the value of the variable,
+            then returns the resulting string.
+            </summary>
+            <param name="name">
+            a string containing the names of zero or more environment variables;
+            each environment variable is quoted with the percent sign character (%)
+            </param>
+            <returns>a string with each environment variable replaced by its value</returns>
         </member>
     </members>
 </doc>

@@ -4,6 +4,141 @@
     <name>Wanderer.Library.WindowsApi</name>
   </assembly>
   <members>
+    <member name="T:Wanderer.Library.WindowsApi.Helpers.IProcessExtendedContract">
+      <summary>
+            Contains code contracts definition for interface <see cref="T:Wanderer.Library.WindowsApi.Helpers.IProcessExtended" />.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Helpers.IProcessExtended">
+      <summary>
+            Provides additonal functionality for process, for example resume/suspend.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.ResetCpuUsage">
+      <summary>
+            Reset CPU usage value and time.
+            </summary>
+      <requires description="IProcessExtended already disposed" exception="T:System.ObjectDisposedException" csharp="!this.IsDisposed" vb="Not Me.IsDisposed">!this.IsDisposed</requires>
+      <exception cref="T:System.ObjectDisposedException">this.IsDisposed</exception>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.Resume">
+      <summary>
+            Resume the process.
+            </summary>
+      <requires description="IProcessExtended already disposed" exception="T:System.ObjectDisposedException" csharp="!this.IsDisposed" vb="Not Me.IsDisposed">!this.IsDisposed</requires>
+      <exception cref="T:System.ObjectDisposedException">this.IsDisposed</exception>
+      <ensures csharp="!this.IsSuspended" vb="Not Me.IsSuspended">!this.IsSuspended</ensures>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.Suspend">
+      <summary>
+            Suspend the process.
+            </summary>
+      <requires description="IProcessExtended already disposed" exception="T:System.ObjectDisposedException" csharp="!this.IsDisposed" vb="Not Me.IsDisposed">!this.IsDisposed</requires>
+      <exception cref="T:System.ObjectDisposedException">this.IsDisposed</exception>
+      <ensures csharp="this.IsSuspended" vb="Me.IsSuspended">this.IsSuspended</ensures>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.Process">
+      <summary>
+            Extended process.
+            </summary>
+      <getter>
+        <requires description="IProcessExtended already disposed" exception="T:System.ObjectDisposedException" csharp="!this.IsDisposed" vb="Not Me.IsDisposed">!this.IsDisposed</requires>
+      </getter>
+      <exception cref="T:System.ObjectDisposedException">this.IsDisposed</exception>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.CpuUsage">
+      <summary>
+            CPU usage in percent.
+            This is cumulative value which calculated from the first time when <see cref="T:Wanderer.Library.WindowsApi.Helpers.IProcessExtended" /> was created.
+            Can be cleared by <see cref="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.ResetCpuUsage" /> method.
+            </summary>
+      <getter>
+        <requires description="IProcessExtended already disposed" exception="T:System.ObjectDisposedException" csharp="!this.IsDisposed" vb="Not Me.IsDisposed">!this.IsDisposed</requires>
+      </getter>
+      <exception cref="T:System.ObjectDisposedException">this.IsDisposed</exception>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.IsSuspended">
+      <summary>
+            Indicates that the process was suspended.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.IsDisposed">
+      <summary>
+            Determines whether object already disposed or not.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtendedContract.Wanderer#Library#WindowsApi#Helpers#IProcessExtended#ResetCpuUsage">
+      <summary>
+            Reset CPU usage value and time.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtendedContract.Wanderer#Library#WindowsApi#Helpers#IProcessExtended#Resume">
+      <summary>
+            Resume the process.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtendedContract.Wanderer#Library#WindowsApi#Helpers#IProcessExtended#Suspend">
+      <summary>
+            Suspend the process.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtendedContract.System#IDisposable#Dispose">
+      <summary>
+        <see cref="T:System.IDisposable" /> interface implementation.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.IProcessExtendedContract.Wanderer#Library#WindowsApi#Helpers#IProcessExtended#Process">
+      <summary>
+            Extended process.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.IProcessExtendedContract.Wanderer#Library#WindowsApi#Helpers#IProcessExtended#CpuUsage">
+      <summary>
+            CPU usage in percent.
+            This is cumulative value which calculated from the first time when <see cref="T:Wanderer.Library.WindowsApi.Helpers.IProcessExtended" /> was created.
+            Can be cleared by <see cref="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.ResetCpuUsage" /> method.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.IProcessExtendedContract.IsSuspended">
+      <summary>
+            Indicates that the process was suspended.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.IProcessExtendedContract.IsDisposed">
+      <summary>
+            Determines whether object already disposed or not.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.NativeMethods">
+      <summary>
+            Common Windows API functions.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Helpers.CpuLimiter">
+      <summary>
+            Provides feature to control maximum CPU usage for list of processes.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.CpuLimiter.Dispose">
+      <summary>
+        <see cref="T:System.IDisposable" /> interface implementation.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.CpuLimiter.#ctor">
+      <summary>
+            Default constructor.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.CpuLimiter.AddProcessToWatchList(Wanderer.Library.WindowsApi.Helpers.IProcessWatcher)">
+      <summary>
+            Add process to list of controlled processes.
+            </summary>
+      <param name="processWatcher">
+        <see cref="T:Wanderer.Library.WindowsApi.Helpers.IProcessWatcher" />
+      </param>
+      <requires description="processWatcher cannot be null" exception="T:System.ArgumentNullException" csharp="processWatcher != null" vb="processWatcher &lt;&gt; Nothing">processWatcher != null</requires>
+      <exception cref="T:System.ArgumentNullException">processWatcher == null</exception>
+    </member>
     <member name="T:Wanderer.Library.WindowsApi.Helpers.IProcessWatcher">
       <summary>
             Helper interface for process CPU clamping.
@@ -19,9 +154,95 @@
             Maximum avaliable CPU usage for the process.
             </summary>
     </member>
-    <member name="T:Wanderer.Library.WindowsApi.Nt.NativeMethods">
+    <member name="T:Wanderer.Library.WindowsApi.Helpers.ProcessExtended">
       <summary>
-            A NT API functions.
+            Provides additonal functionality for process, for example resume/suspend.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.ResetCpuUsage">
+      <summary>
+            Reset CPU usage value and time.
+            </summary>
+      <requires description="IProcessExtended already disposed" inheritedFrom="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.ResetCpuUsage" inheritedFromTypeName="IProcessExtended" exception="T:System.ObjectDisposedException" csharp="!this.IsDisposed" vb="Not Me.IsDisposed">!this.IsDisposed</requires>
+      <exception cref="T:System.ObjectDisposedException">this.IsDisposed</exception>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.Resume">
+      <summary>
+            Resume the process.
+            </summary>
+      <requires description="IProcessExtended already disposed" inheritedFrom="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.Resume" inheritedFromTypeName="IProcessExtended" exception="T:System.ObjectDisposedException" csharp="!this.IsDisposed" vb="Not Me.IsDisposed">!this.IsDisposed</requires>
+      <exception cref="T:System.ObjectDisposedException">this.IsDisposed</exception>
+      <ensures inheritedFrom="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.Resume" inheritedFromTypeName="IProcessExtended" csharp="!this.IsSuspended" vb="Not Me.IsSuspended">!this.IsSuspended</ensures>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.Suspend">
+      <summary>
+            Suspend the process.
+            </summary>
+      <requires description="IProcessExtended already disposed" inheritedFrom="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.Suspend" inheritedFromTypeName="IProcessExtended" exception="T:System.ObjectDisposedException" csharp="!this.IsDisposed" vb="Not Me.IsDisposed">!this.IsDisposed</requires>
+      <exception cref="T:System.ObjectDisposedException">this.IsDisposed</exception>
+      <ensures inheritedFrom="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.Suspend" inheritedFromTypeName="IProcessExtended" csharp="this.IsSuspended" vb="Me.IsSuspended">this.IsSuspended</ensures>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.Dispose">
+      <summary>
+        <see cref="T:System.IDisposable" /> interface implementation.
+            </summary>
+      <ensures csharp="this.IsDisposed" vb="Me.IsDisposed">this.IsDisposed</ensures>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.#ctor(System.Int32)">
+      <summary>
+            Initialize constructor.
+            </summary>
+      <param name="processId">id of extended process</param>
+      <ensures csharp="this._process != null" vb="Me._process &lt;&gt; Nothing">this._process != null</ensures>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.#ctor(System.Diagnostics.Process)">
+      <summary>
+            Initialize constructor.
+            </summary>
+      <param name="process">extended process</param>
+      <requires description="process cannot be null" exception="T:System.ArgumentNullException" csharp="process != null" vb="process &lt;&gt; Nothing">process != null</requires>
+      <exception cref="T:System.ArgumentNullException">process == null</exception>
+      <ensures csharp="this._process != null" vb="Me._process &lt;&gt; Nothing">this._process != null</ensures>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.Finalize">
+      <summary>
+            Finalizer.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.Dispose(System.Boolean)">
+      <summary>
+            Internal implementation of <see cref="T:System.IDisposable" /> interface.
+            </summary>
+      <param name="disposing">indicates that method called from public Dispose method</param>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.Process">
+      <summary>
+            Extended process.
+            </summary>
+      <getter>
+        <requires description="IProcessExtended already disposed" inheritedFrom="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.get_Process" inheritedFromTypeName="IProcessExtended" exception="T:System.ObjectDisposedException" csharp="!this.IsDisposed" vb="Not Me.IsDisposed">!this.IsDisposed</requires>
+      </getter>
+      <exception cref="T:System.ObjectDisposedException">this.IsDisposed</exception>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.CpuUsage">
+      <summary>
+            CPU usage in percent.
+            This is cumulative value which calculated from the first time when <see cref="T:Wanderer.Library.WindowsApi.Helpers.IProcessExtended" /> was created.
+            Can be cleared by <see cref="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.ResetCpuUsage" /> method.
+            </summary>
+      <getter>
+        <requires description="IProcessExtended already disposed" inheritedFrom="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.get_CpuUsage" inheritedFromTypeName="IProcessExtended" exception="T:System.ObjectDisposedException" csharp="!this.IsDisposed" vb="Not Me.IsDisposed">!this.IsDisposed</requires>
+      </getter>
+      <exception cref="T:System.ObjectDisposedException">this.IsDisposed</exception>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.IsSuspended">
+      <summary>
+            Indicates that the process was suspended.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.IsDisposed">
+      <summary>
+            Determines whether object already disposed or not.
             </summary>
     </member>
     <member name="T:Wanderer.Library.WindowsApi.Helpers.ProcessWatcher">
@@ -85,7 +306,7 @@
       <getter>
         <requires description="IProcessWatcher already disposed" exception="T:System.ObjectDisposedException" csharp="!this.IsDisposed" vb="Not Me.IsDisposed">!this.IsDisposed</requires>
       </getter>
-      <exception cref="T:System.ObjectDisposedException">IsDisposed</exception>
+      <exception cref="T:System.ObjectDisposedException">this.IsDisposed</exception>
     </member>
     <member name="P:Wanderer.Library.WindowsApi.Helpers.ProcessWatcher.MaxCpuUsage">
       <summary>
@@ -95,6 +316,16 @@
     <member name="P:Wanderer.Library.WindowsApi.Helpers.ProcessWatcher.IsDisposed">
       <summary>
             Determines whether object already disposed or not.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Nt.NativeMethods">
+      <summary>
+            A NT API functions.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Nt.NtStatus">
+      <summary>
+            A NT status value.
             </summary>
     </member>
     <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.AllAccess">
@@ -129,170 +360,6 @@
     </member>
     <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.Synchronize">
       <summary>Required to wait for the process to terminate using the wait functions.</summary>
-    </member>
-    <member name="T:Wanderer.Library.WindowsApi.Nt.NtStatus">
-      <summary>
-            A NT status value.
-            </summary>
-    </member>
-    <member name="T:Wanderer.Library.WindowsApi.NativeMethods">
-      <summary>
-            Common Windows API functions.
-            </summary>
-    </member>
-    <member name="T:Wanderer.Library.WindowsApi.Helpers.CpuLimiter">
-      <summary>
-            Provides feature to control maximum CPU usage for list of processes.
-            </summary>
-    </member>
-    <member name="M:Wanderer.Library.WindowsApi.Helpers.CpuLimiter.Dispose">
-      <summary>
-        <see cref="T:System.IDisposable" /> interface implementation.
-            </summary>
-    </member>
-    <member name="M:Wanderer.Library.WindowsApi.Helpers.CpuLimiter.#ctor">
-      <summary>
-            Default constructor.
-            </summary>
-    </member>
-    <member name="M:Wanderer.Library.WindowsApi.Helpers.CpuLimiter.AddProcessToWatchList(Wanderer.Library.WindowsApi.Helpers.IProcessWatcher)">
-      <summary>
-            Add process to list of controlled processes.
-            </summary>
-      <param name="processWatcher">
-        <see cref="T:Wanderer.Library.WindowsApi.Helpers.IProcessWatcher" />
-      </param>
-      <requires description="processWatcher cannot be null" exception="T:System.ArgumentNullException" csharp="processWatcher != null" vb="processWatcher &lt;&gt; Nothing">processWatcher != null</requires>
-      <exception cref="T:System.ArgumentNullException">processWatcher == null</exception>
-    </member>
-    <member name="T:Wanderer.Library.WindowsApi.Helpers.IProcessExtended">
-      <summary>
-            Provides additonal functionality for process, for example resume/suspend.
-            </summary>
-    </member>
-    <member name="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.ResetCpuUsage">
-      <summary>
-            Reset CPU usage value and time.
-            </summary>
-    </member>
-    <member name="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.Resume">
-      <summary>
-            Resume the process.
-            </summary>
-    </member>
-    <member name="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.Suspend">
-      <summary>
-            Suspend the process.
-            </summary>
-    </member>
-    <member name="P:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.Process">
-      <summary>
-            Extended process.
-            </summary>
-    </member>
-    <member name="P:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.CpuUsage">
-      <summary>
-            CPU usage in percent.
-            This is cumulative value which calculated from the first time when <see cref="T:Wanderer.Library.WindowsApi.Helpers.IProcessExtended" /> was created.
-            Can be cleared by <see cref="M:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.ResetCpuUsage" /> method.
-            </summary>
-    </member>
-    <member name="P:Wanderer.Library.WindowsApi.Helpers.IProcessExtended.IsSuspended">
-      <summary>
-            Indicates that the process was suspended.
-            </summary>
-    </member>
-    <member name="T:Wanderer.Library.WindowsApi.Helpers.ProcessExtended">
-      <summary>
-            Provides additonal functionality for process, for example resume/suspend.
-            </summary>
-    </member>
-    <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.ResetCpuUsage">
-      <summary>
-            Reset CPU usage value and time.
-            </summary>
-      <requires description="IProcessExtended already disposed" exception="T:System.ObjectDisposedException" csharp="!this.IsDisposed" vb="Not Me.IsDisposed">!this.IsDisposed</requires>
-      <exception cref="T:System.ObjectDisposedException">IsDisposed</exception>
-    </member>
-    <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.Resume">
-      <summary>
-            Resume the process.
-            </summary>
-      <requires description="IProcessExtended already disposed" exception="T:System.ObjectDisposedException" csharp="!this.IsDisposed" vb="Not Me.IsDisposed">!this.IsDisposed</requires>
-      <exception cref="T:System.ObjectDisposedException">IsDisposed</exception>
-      <ensures csharp="!this.IsSuspended" vb="Not Me.IsSuspended">!this.IsSuspended</ensures>
-    </member>
-    <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.Suspend">
-      <summary>
-            Suspend the process.
-            </summary>
-      <requires description="IProcessExtended already disposed" exception="T:System.ObjectDisposedException" csharp="!this.IsDisposed" vb="Not Me.IsDisposed">!this.IsDisposed</requires>
-      <exception cref="T:System.ObjectDisposedException">IsDisposed</exception>
-      <ensures csharp="this.IsSuspended" vb="Me.IsSuspended">this.IsSuspended</ensures>
-    </member>
-    <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.Dispose">
-      <summary>
-        <see cref="T:System.IDisposable" /> interface implementation.
-            </summary>
-      <ensures csharp="this.IsDisposed" vb="Me.IsDisposed">this.IsDisposed</ensures>
-    </member>
-    <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.#ctor(System.Int32)">
-      <summary>
-            Initialize constructor.
-            </summary>
-      <param name="processId">id of extended process</param>
-      <ensures csharp="this._process != null" vb="Me._process &lt;&gt; Nothing">this._process != null</ensures>
-    </member>
-    <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.#ctor(System.Diagnostics.Process)">
-      <summary>
-            Initialize constructor.
-            </summary>
-      <param name="process">extended process</param>
-      <requires exception="T:System.ArgumentNullException" csharp="process != null" vb="process &lt;&gt; Nothing">process != null</requires>
-      <exception cref="T:System.ArgumentNullException">process == null</exception>
-      <ensures csharp="this._process != null" vb="Me._process &lt;&gt; Nothing">this._process != null</ensures>
-    </member>
-    <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.Finalize">
-      <summary>
-            Finalizer.
-            </summary>
-    </member>
-    <member name="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.Dispose(System.Boolean)">
-      <summary>
-            Internal implementation of <see cref="T:System.IDisposable" /> interface.
-            </summary>
-      <param name="disposing">indicates that method called from public Dispose method</param>
-      <ensures csharp="this.IsDisposed" vb="Me.IsDisposed">this.IsDisposed</ensures>
-    </member>
-    <member name="P:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.Process">
-      <summary>
-            Extended process.
-            </summary>
-      <getter>
-        <requires description="IProcessExtended already disposed" exception="T:System.ObjectDisposedException" csharp="!this.IsDisposed" vb="Not Me.IsDisposed">!this.IsDisposed</requires>
-      </getter>
-      <exception cref="T:System.ObjectDisposedException">IsDisposed</exception>
-    </member>
-    <member name="P:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.CpuUsage">
-      <summary>
-            CPU usage in percent.
-            This is cumulative value which calculated from the first time when <see cref="T:Wanderer.Library.WindowsApi.Helpers.IProcessExtended" /> was created.
-            Can be cleared by <see cref="M:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.ResetCpuUsage" /> method.
-            </summary>
-      <getter>
-        <requires description="IProcessExtended already disposed" exception="T:System.ObjectDisposedException" csharp="!this.IsDisposed" vb="Not Me.IsDisposed">!this.IsDisposed</requires>
-      </getter>
-      <exception cref="T:System.ObjectDisposedException">IsDisposed</exception>
-    </member>
-    <member name="P:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.IsSuspended">
-      <summary>
-            Indicates that the process was suspended.
-            </summary>
-    </member>
-    <member name="P:Wanderer.Library.WindowsApi.Helpers.ProcessExtended.IsDisposed">
-      <summary>
-            Determines whether object already disposed or not.
-            </summary>
     </member>
   </members>
 </doc>

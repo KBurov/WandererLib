@@ -4,5 +4,35 @@
         <name>Wanderer.Library.TestFramework</name>
     </assembly>
     <members>
+        <member name="T:Wanderer.Library.TestFramework.ContextBase">
+            <summary>
+            Base class for unit tests context classes.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.TestFramework.ContextBase.SetUp">
+            <summary>
+            Setting up the test fixture (arrange) and run test action (<see cref="M:Wanderer.Library.TestFramework.ContextBase.Arrange"/> and <see cref="M:Wanderer.Library.TestFramework.ContextBase.Act"/>).
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.TestFramework.ContextBase.TearDown">
+            <summary>
+            Tear down the test fixture to return to the original state.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.TestFramework.ContextBase.Arrange">
+            <summary>
+            Setting up the test fixture.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.TestFramework.ContextBase.Act">
+            <summary>
+            Execute test action.
+            </summary>
+        </member>
+        <member name="M:Wanderer.Library.TestFramework.ContextBase.Cleanup">
+            <summary>
+            Tear down the test fixture to return to the original state.
+            </summary>
+        </member>
     </members>
 </doc>
