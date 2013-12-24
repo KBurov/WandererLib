@@ -8,10 +8,8 @@ namespace Wanderer.Library.Common
     /// </summary>
     public sealed class DisposeAction : IDisposable
     {
-        #region Variables
         private readonly Action _disposeAction;
         private bool _disposed;
-        #endregion
 
         #region IDisposable implementation
         /// <summary>
@@ -26,9 +24,8 @@ namespace Wanderer.Library.Common
 
         private void Dispose(bool disposing)
         {
-            // ReSharper disable InvocationIsSkipped
             Contract.Ensures(_disposed);
-            // ReSharper restore InvocationIsSkipped
+
             if (!_disposed)
             {
                 if (disposing)
@@ -46,9 +43,8 @@ namespace Wanderer.Library.Common
         public DisposeAction(Action disposeAction)
         {
             Contract.Requires<ArgumentNullException>(disposeAction != null);
-// ReSharper disable InvocationIsSkipped
             Contract.Ensures(_disposeAction != null);
-// ReSharper restore InvocationIsSkipped
+
             _disposeAction = disposeAction;
             _disposed = false;
         }
