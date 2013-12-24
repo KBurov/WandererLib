@@ -78,18 +78,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BindableObjectTests.cs" />
+    <Compile Include="given_DisposeAction\with_not_null_action\when_call_dispose.cs" />
+    <Compile Include="given_DisposeAction\with_null_action\when_call_constructor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DisposeActionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.csproj">
       <Project>{DB46EC4C-F305-4172-84F7-DF12B0E98B47}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\TestFramework\TestFramework.csproj">
+      <Project>{e88f19bd-dbd5-4ded-8478-046e564149ac}</Project>
+      <Name>TestFramework</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
