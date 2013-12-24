@@ -77,7 +77,6 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BindableObjectTests.cs" />
     <Compile Include="given_DisposeAction\with_not_null_action\when_call_dispose.cs" />
     <Compile Include="given_DisposeAction\with_null_action\when_call_constructor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
