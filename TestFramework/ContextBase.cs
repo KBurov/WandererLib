@@ -31,7 +31,7 @@ namespace Wanderer.Library.TestFramework
         /// <summary>
         /// Setting up the test fixture.
         /// </summary>
-        public virtual void Arrange() {}
+        protected virtual void Arrange() {}
 
         /// <summary>
         /// Execute test action.
