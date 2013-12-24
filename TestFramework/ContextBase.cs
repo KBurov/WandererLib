@@ -36,11 +36,11 @@ namespace Wanderer.Library.TestFramework
         /// <summary>
         /// Execute test action.
         /// </summary>
-        public virtual void Act() {}
+        protected virtual void Act() {}
 
         /// <summary>
         /// Tear down the test fixture to return to the original state.
         /// </summary>
-        public virtual void Cleanup() {}
+        protected virtual void Cleanup() {}
     }
 }
