@@ -34,5 +34,20 @@
             Tear down the test fixture to return to the original state.
             </summary>
         </member>
+        <member name="T:Wanderer.Library.TestFramework.TestCategory">
+            <summary>
+            Contains all available tests categories. 
+            </summary>
+        </member>
+        <member name="F:Wanderer.Library.TestFramework.TestCategory.Unit">
+            <summary>
+            Unit test category.
+            </summary>
+        </member>
+        <member name="F:Wanderer.Library.TestFramework.TestCategory.Integration">
+            <summary>
+            Integration test category.
+            </summary>
+        </member>
     </members>
 </doc>
