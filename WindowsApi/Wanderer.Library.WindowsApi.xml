@@ -91,6 +91,696 @@
             Authentication Windows functions.
             </summary>
     </member>
+    <member name="T:Wanderer.Library.WindowsApi.Authorization.AccessRights">
+      <summary>
+            Contains different access rights.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.AccessSystemSecurity">
+      <summary>
+            Controls the ability to get or set the SACL in an object's security descriptor.
+            The system grants this access right only if the <see cref="F:Wanderer.Library.WindowsApi.Authorization.Privilege.Security" /> privilege is enabled
+            in the access token of the requesting thread.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.MaximumAllowed">
+      <summary>
+            Determines all access rights.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.StandardRightsRequired">
+      <summary>
+            Combines <see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.Delete" />, <see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.ReadControl" />,
+            <see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.WriteDac" /> and <see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.WriteOwner" /> access.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.StandardRightsRead">
+      <summary>
+            Currently defined to equal <see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.ReadControl" />.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.StandardRightsWrite">
+      <summary>
+            Currently defined to equal <see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.ReadControl" />.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.StandardRightsExecute">
+      <summary>
+            Currently defined to equal <see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.ReadControl" />.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.StandardRightsAll">
+      <summary>
+            Combines <see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.Delete" />, <see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.ReadControl" />, <see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.WriteDac" />,
+            <see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.WriteOwner" /> and <see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.Synchronize" /> access.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Authorization.AccessRights.File">
+      <summary>
+            File access rights.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.ReadData">
+      <summary>
+            For a file object, the right to read the corresponding file data.
+            For a directory object, the right to read the corresponding directory data.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.ListDirectory">
+      <summary>
+            For a directory, the right to list the contents of the directory.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.WriteData">
+      <summary>
+            For a file object, the right to write data to the file.
+            For a directory object, the right to create a file in the directory (<see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.AddFile" />).
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.AddFile">
+      <summary>
+            For a directory, the right to create a file in the directory.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.AppendData">
+      <summary>
+            For a file object, the right to append data to the file.
+            (For local files, write operations will not overwrite
+            existing data if this flag is specified without <see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.WriteData" />.)
+            For a directory object, the right to create a subdirectory (<see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.AddSubdirectory" />).
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.AddSubdirectory">
+      <summary>
+            For a directory, the right to create a subdirectory.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.CreatePipeInstance">
+      <summary>
+            For a named pipe, the right to create a pipe.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.ReadEA">
+      <summary>
+            The right to read extended file attributes.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.WriteEA">
+      <summary>
+            The right to write extended file attributes.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.Execute">
+      <summary>
+            For a native code file, the right to execute the file.
+            This access right given to scripts may cause the script to be executable,
+            depending on the script interpreter.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.Traverse">
+      <summary>
+            For a directory, the right to traverse the directory.
+            By default, users are assigned the BYPASS_TRAVERSE_CHECKING privilege (<see cref="F:Wanderer.Library.WindowsApi.Authorization.Privilege.ChangeNotify" />),
+            which ignores the Traverse access right.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.DeleteChild">
+      <summary>
+            For a directory, the right to delete a directory and all the files it contains,
+            including read-only files.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.ReadAttributes">
+      <summary>
+            The right to read file attributes.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.WriteAttributes">
+      <summary>
+            The right to write file attributes.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.AllAccess">
+      <summary>
+            All possible access rights for a file.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Authorization.AccessRights.FileGeneric">
+      <summary>
+            Generic file access rights.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Authorization.AccessRights.Generic">
+      <summary>
+            Generic access rights.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Generic.Read">
+      <summary>
+            Read access.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Generic.Write">
+      <summary>
+            Write access.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Generic.Execute">
+      <summary>
+            Execute access.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Generic.All">
+      <summary>
+            All possible access rights.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard">
+      <summary>
+            Standard access rights.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.Delete">
+      <summary>
+            The right to delete the object.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.ReadControl">
+      <summary>
+            The right to read the information in the object's security descriptor,
+            not including the information in the system access control list (SACL).
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.WriteDac">
+      <summary>
+            The right to modify the discretionary access control list (DACL)
+            in the object's security descriptor.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.WriteOwner">
+      <summary>
+            The right to change the owner in the object's security descriptor.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.Synchronize">
+      <summary>
+            The right to use the object for synchronization.
+            This enables a thread to wait until the object is in the signaled state.
+            Some object types do not support this access right.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Authorization.AccessRights.ServiceControlManager">
+      <summary>
+            Service Control Manager access rights.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.ServiceControlManager.Connect">
+      <summary>
+            Required to connect to the service control manager.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.ServiceControlManager.CreateService">
+      <summary>
+            Required to call the CreateService function to create a service object and add it to the database.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.ServiceControlManager.EnumerateService">
+      <summary>
+            Required to call the EnumServicesStatus or EnumServicesStatusEx function to list the services that are in the database.
+            Required to call the NotifyServiceStatusChange function to receive notification when any service is created or deleted.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.ServiceControlManager.Lock">
+      <summary>
+            Required to call the LockServiceDatabase function to acquire a lock on the database.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.ServiceControlManager.QueryLockStatus">
+      <summary>
+            Required to call the QueryServiceLockStatus function to retrieve the lock status information for the database.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.ServiceControlManager.ModifyBootConfig">
+      <summary>
+            Required to call the NotifyBootConfigStatus function.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.ServiceControlManager.AllAccess">
+      <summary>
+            Includes <see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.StandardRightsRequired" />, in addition to all access rights in this table.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Authorization.AccessRights.Service">
+      <summary>
+            Service access rights.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Service.QueryConfig">
+      <summary>
+            Required to call the QueryServiceConfig and QueryServiceConfig2 functions to query the service configuration.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Service.ChangeConfig">
+      <summary>
+            Required to call the <see cref="!:Services.NativeMethods.ChangeServiceConfig(SafeServiceHandle,ServiceTypeFull,ServiceStartModeFull,ServiceErrorControlType,string,string,string,string,string,string)" />
+            or ChangeServiceConfig2 function to change the service configuration.
+            Because this grants the caller the right to change the executable file that the system runs,
+            it should be granted only to administrators.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Service.QueryStatus">
+      <summary>
+            Required to call the QueryServiceStatus or QueryServiceStatusEx function to ask the service control manager about the status of the service.
+            Required to call the NotifyServiceStatusChange function to receive notification when a service changes status.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Service.EnumerateDependents">
+      <summary>
+            Required to call the EnumDependentServices function to enumerate all the services dependent on the service.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Service.Start">
+      <summary>
+            Required to call the StartService function to start the service.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Service.Stop">
+      <summary>
+            Required to call the ControlService function to stop the service.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Service.PauseContinue">
+      <summary>
+            Required to call the ControlService function to pause or continue the service.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Service.Interrogate">
+      <summary>
+            Required to call the ControlService function to ask the service to report its status immediately.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Service.UserDefinedControl">
+      <summary>
+            Required to call the ControlService function to specify a user-defined control code.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Service.AllAccess">
+      <summary>
+            Includes <see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.StandardRightsRequired" /> in addition to all access rights in this table.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Authorization.Luid">
+      <summary>
+            An LUID is a 64-bit value guaranteed to be unique only on the system on which it was generated.
+            The uniqueness of a locally unique identifier (LUID) is guaranteed only until the system is restarted.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Luid.LowPart">
+      <summary>
+            Low-order bits.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Luid.HighPart">
+      <summary>
+            High-order bits.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Authorization.LuidAndAttributes">
+      <summary>
+            The LuidAndAttributes structure represents a locally unique identifier (<see cref="T:Wanderer.Library.WindowsApi.Authorization.Luid" />) and its attributes.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.LuidAndAttributes.Luid">
+      <summary>
+            Specifies an <see cref="T:Wanderer.Library.WindowsApi.Authorization.Luid" /> value.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.LuidAndAttributes.Attributes">
+      <summary>
+            Specifies attributes of the <see cref="F:Wanderer.Library.WindowsApi.Authorization.LuidAndAttributes.Luid" />.
+            This value contains up to 32 one-bit flags.
+            Its meaning is dependent on the definition and use of the <see cref="F:Wanderer.Library.WindowsApi.Authorization.LuidAndAttributes.Luid" />.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Authorization.NativeMethods">
+      <summary>
+            Authorization Windows API functions.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Authorization.Privilege">
+      <summary>
+            List of available privileges.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.AssignPrimaryToken">
+      <summary>
+            Required to assign the primary token of a process.
+            User Right: Replace a process-level token.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.Audit">
+      <summary>
+            Required to generate audit-log entries. Give this privilege to secure servers.
+            User Right: Generate security audits.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.Backup">
+      <summary>
+            Required to perform backup operations.
+            This privilege causes the system to grant all read access control to any file,
+            regardless of the access control list (ACL) specified for the file.
+            Any access request other than read is still evaluated with the ACL.
+            This privilege is required by the RegSaveKey and RegSaveKeyEx functions.
+            The following access rights are granted if this privilege is held:
+            <see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.ReadControl" /><see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.AccessSystemSecurity" /><see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.FileGeneric.Read" /><see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.Traverse" />
+            User Right: Back up files and directories.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.ChangeNotify">
+      <summary>
+            Required to receive notifications of changes to files or directories.
+            This privilege also causes the system to skip all traversal access checks.
+            It is enabled by default for all users.
+            User Right: Bypass traverse checking.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.CreateGlobal">
+      <summary>
+            Required to create named file mapping objects in the global namespace during Terminal Services sessions.
+            This privilege is enabled by default for administrators, services, and the local system account.
+            User Right: Create global objects.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.CreatePagefile">
+      <summary>
+            Required to create a paging file.
+            User Right: Create a pagefile.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.CreatePermanent">
+      <summary>
+            Required to create a permanent object.
+            User Right: Create permanent shared objects.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.CreateSymbolicLink">
+      <summary>
+            Required to create a symbolic link.
+            User Right: Create symbolic links.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.CreateToken">
+      <summary>
+            Required to create a primary token.
+            User Right: Create a token object.
+            You cannot add this privilege to a user account with the "Create a token object" policy.
+            Additionally, you cannot add this privilege to an owned process using Windows APIs.
+            Windows Server 2003 and Windows XP with SP1 and earlier: 
+            Windows APIs can add this privilege to an owned process.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.Debug">
+      <summary>
+            Required to debug and adjust the memory of a process owned by another account.
+            User Right: Debug programs.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.EnableDelegation">
+      <summary>
+            Required to mark user and computer accounts as trusted for delegation.
+            User Right: Enable computer and user accounts to be trusted for delegation.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.Impersonate">
+      <summary>
+            Required to impersonate.
+            User Right: Impersonate a client after authentication.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.IncreaseBasePriority">
+      <summary>
+            Required to increase the base priority of a process.
+            User Right: Increase scheduling priority.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.IncreaseQuota">
+      <summary>
+            Required to increase the quota assigned to a process.
+            User Right: Adjust memory quotas for a process.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.IncreaseWorkingSet">
+      <summary>
+            Required to allocate more memory for applications that run in the context of users.
+            User Right: Increase a process working set.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.LoadDriver">
+      <summary>
+            Required to load or unload a device driver.
+            User Right: Load and unload device drivers.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.LockMemory">
+      <summary>
+            Required to lock physical pages in memory.
+            User Right: Lock pages in memory.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.MachineAccount">
+      <summary>
+            Required to create a computer account.
+            User Right: Add workstations to domain.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.ManageVolume">
+      <summary>
+            Required to enable volume management privileges.
+            User Right: Manage the files on a volume.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.ProfileSingleProcess">
+      <summary>
+            Required to gather profiling information for a single process.
+            User Right: Profile single process.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.Relabel">
+      <summary>
+            Required to modify the mandatory integrity level of an object.
+            User Right: Modify an object label.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.RemoteShutdown">
+      <summary>
+            Required to shut down a system using a network request.
+            User Right: Force shutdown from a remote system.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.Restore">
+      <summary>
+            Required to perform restore operations.
+            This privilege causes the system to grant all write access control to any file,
+            regardless of the ACL specified for the file.
+            Any access request other than write is still evaluated with the ACL.
+            Additionally, this privilege enables you to set any valid user or group SID as the owner of a file.
+            This privilege is required by the RegLoadKey function.
+            The following access rights are granted if this privilege is held:
+            <see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.WriteDac" /><see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.WriteOwner" /><see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.AccessSystemSecurity" /><see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.FileGeneric.Write" /><see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.AddFile" /><see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.File.AddSubdirectory" /><see cref="F:Wanderer.Library.WindowsApi.Authorization.AccessRights.Standard.Delete" />
+            User Right: Restore files and directories.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.Security">
+      <summary>
+            Required to perform a number of security-related functions,
+            such as controlling and viewing audit messages.
+            This privilege identifies its holder as a security operator.
+            User Right: Manage auditing and security log.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.Shutdown">
+      <summary>
+            Required to shut down a local system.
+            User Right: Shut down the system.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.SyncAgent">
+      <summary>
+            Required for a domain controller to use the Lightweight Directory Access Protocol directory synchronization services.
+            This privilege enables the holder to read all objects and properties in the directory,
+            regardless of the protection on the objects and properties.
+            By default, it is assigned to the Administrator and LocalSystem accounts on domain controllers.
+            User Right: Synchronize directory service data.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.SystemEnvironment">
+      <summary>
+            Required to modify the nonvolatile RAM of systems that use this type of memory to store configuration information.
+            User Right: Modify firmware environment values.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.SystemProfile">
+      <summary>
+            Required to gather profiling information for the entire system.
+            User Right: Profile system performance.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.Systemtime">
+      <summary>
+            Required to modify the system time.
+            User Right: Change the system time.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.TakeOwnership">
+      <summary>
+            Required to take ownership of an object without being granted discretionary access.
+            This privilege allows the owner value to be set only to those values that the holder may legitimately assign as the owner of an object.
+            User Right: Take ownership of files or other objects.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.Tcb">
+      <summary>
+            This privilege identifies its holder as part of the trusted computer base.
+            Some trusted protected subsystems are granted this privilege.
+            User Right: Act as part of the operating system.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.TimeZone">
+      <summary>
+            Required to adjust the time zone associated with the computer's internal clock.
+            User Right: Change the time zone.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.TrustedCredManAccess">
+      <summary>
+            Required to access Credential Manager as a trusted caller.
+            User Right: Access Credential Manager as a trusted caller.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.Undock">
+      <summary>
+            Required to undock a laptop.
+            User Right: Remove computer from docking station.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.Privilege.UnsolicitedInput">
+      <summary>
+            Required to read unsolicited input from a terminal device.
+            User Right: Not applicable.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Authorization.PrivilegeAttribute">
+      <summary>
+            Privilege attributes.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.PrivilegeAttribute.EnabledByDefault">
+      <summary>
+            The privilege is enabled by default.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.PrivilegeAttribute.Enabled">
+      <summary>
+            The privilege is enabled.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.PrivilegeAttribute.Removed">
+      <summary>
+            Used to remove a privilege.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.PrivilegeAttribute.UsedForAccess">
+      <summary>
+            The privilege was used to gain access to an object or service.
+            This flag is used to identify the relevant privileges in a set
+            passed by a client application that may contain unnecessary privileges.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Authorization.TokenPrivileges">
+      <summary>
+            Contains information about a set of privileges for an access token.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.TokenPrivileges.PrivilegeCount">
+      <summary>
+            This must be set to the number of entries in the <see cref="F:Wanderer.Library.WindowsApi.Authorization.TokenPrivileges.Privileges" /> array.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.TokenPrivileges.Privileges">
+      <summary>
+            Specifies an array of <see cref="T:Wanderer.Library.WindowsApi.Authorization.LuidAndAttributes" /> structures.
+            Each structure contains the <see cref="T:Wanderer.Library.WindowsApi.Authorization.Luid" /> and attributes of a privilege.
+            To get the name of the privilege associated with a <see cref="T:Wanderer.Library.WindowsApi.Authorization.Luid" />,
+            call the <see cref="M:Wanderer.Library.WindowsApi.Authorization.NativeMethods.LookupPrivilegeName(System.String,Wanderer.Library.WindowsApi.Authorization.Luid@,System.Text.StringBuilder,System.Int32@)" /> function,
+            passing the address of the <see cref="T:Wanderer.Library.WindowsApi.Authorization.Luid" /> as the value of the luid parameter.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Authorization.TokenType">
+      <summary>
+            The TokenType enumeration contains values that differentiate between a primary token and an impersonation token.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.TokenType.Primary">
+      <summary>
+            Indicates a primary token.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authorization.TokenType.Impersonation">
+      <summary>
+            Indicates an impersonation token.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.ErrorCodes">
+      <summary>
+            Contains Windows API error codes.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.ErrorCodes.Success">
+      <summary>
+            The operation completed successfully.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.ErrorCodes.NoError">
+      <summary>
+            The operation completed successfully.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.ErrorCodes.AccessDenied">
+      <summary>
+            Access is denied.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.ErrorCodes.NotEnoughMemory">
+      <summary>
+            Not enough storage is available to process this command.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.ErrorCodes.NoToken">
+      <summary>
+            An attempt was made to reference a token that does not exist.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.ErrorCodes.ServiceDisabled">
+      <summary>
+            The service cannot be started,
+            either because it is disabled or because it has no enabled devices associated with it.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.ErrorCodes.NotAllAssigned">
+      <summary>
+            Not all privileges or groups referenced are assigned to the caller.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.ErrorCodes.NoSuchPrivilege">
+      <summary>
+            A specified privilege does not exist.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.ErrorCodes.CantOpenAnonymous">
+      <summary>
+            Cannot open an anonymous level security token.
+            </summary>
+    </member>
     <member name="T:Wanderer.Library.WindowsApi.Helpers.IProcessExtendedContract">
       <summary>
             Contains code contracts definition for interface <see cref="T:Wanderer.Library.WindowsApi.Helpers.IProcessExtended" />.
@@ -194,6 +884,11 @@
     <member name="P:Wanderer.Library.WindowsApi.Helpers.IProcessExtendedContract.IsDisposed">
       <summary>
             Determines whether object already disposed or not.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.NativeConstants">
+      <summary>
+            Contains Windows API constants.
             </summary>
     </member>
     <member name="T:Wanderer.Library.WindowsApi.NativeMethods">
@@ -458,6 +1153,22 @@
              Executes the code required to free the handle.
             </summary>
       <returns>true if the handle is released successfully; otherwise, in the event of a catastrophic failure, false</returns>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Authorization.NativeMethods.AdjustTokenPrivileges(Wanderer.Library.WindowsApi.SafeHandles.SafeTokenHandle,System.Boolean,Wanderer.Library.WindowsApi.Authorization.TokenPrivileges@)">
+      <requires description="tokenHandle cannot be null" exception="T:System.ArgumentNullException" csharp="tokenHandle != null" vb="tokenHandle &lt;&gt; Nothing">tokenHandle != null</requires>
+      <exception cref="T:System.ArgumentNullException">tokenHandle == null</exception>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Authorization.NativeMethods.AdjustTokenPrivileges(Wanderer.Library.WindowsApi.SafeHandles.SafeTokenHandle,System.Boolean,Wanderer.Library.WindowsApi.Authorization.TokenPrivileges@,Wanderer.Library.WindowsApi.Authorization.TokenPrivileges@)">
+      <requires description="tokenHandle cannot be null" exception="T:System.ArgumentNullException" csharp="tokenHandle != null" vb="tokenHandle &lt;&gt; Nothing">tokenHandle != null</requires>
+      <exception cref="T:System.ArgumentNullException">tokenHandle == null</exception>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Authorization.NativeMethods.DuplicateTokenEx(Wanderer.Library.WindowsApi.SafeHandles.SafeTokenHandle,System.Security.Principal.TokenAccessLevels,System.Security.Principal.TokenImpersonationLevel,Wanderer.Library.WindowsApi.Authorization.TokenType)">
+      <requires description="existingToken cannot be null" exception="T:System.ArgumentNullException" csharp="existingToken != null" vb="existingToken &lt;&gt; Nothing">existingToken != null</requires>
+      <exception cref="T:System.ArgumentNullException">existingToken == null</exception>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Authorization.NativeMethods.ImpersonateLoggedOnUser(Wanderer.Library.WindowsApi.SafeHandles.SafeTokenHandle)">
+      <requires description="tokenHandle cannot be null" exception="T:System.ArgumentNullException" csharp="tokenHandle != null" vb="tokenHandle &lt;&gt; Nothing">tokenHandle != null</requires>
+      <exception cref="T:System.ArgumentNullException">tokenHandle == null</exception>
     </member>
   </members>
 </doc>
