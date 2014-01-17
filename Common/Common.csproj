@@ -100,6 +100,7 @@
     <Compile Include="Collections\Generic\InvariantCultureIgnoreCaseStringComparer.cs" />
     <Compile Include="DisposeAction.cs" />
     <Compile Include="EnvironmentEx.cs" />
+    <Compile Include="OperatingSystemEx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
