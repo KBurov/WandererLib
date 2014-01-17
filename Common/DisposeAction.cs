@@ -40,6 +40,7 @@ namespace Wanderer.Library.Common
         /// Constructor.
         /// </summary>
         /// <param name="disposeAction">action that should be called in <see cref="IDisposable.Dispose"/> method</param>
+        /// <exception cref="ArgumentNullException"><paramref name="disposeAction"/> is null</exception>
         public DisposeAction(Action disposeAction)
         {
             Contract.Requires<ArgumentNullException>(disposeAction != null);
