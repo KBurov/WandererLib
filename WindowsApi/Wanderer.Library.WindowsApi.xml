@@ -4,6 +4,93 @@
     <name>Wanderer.Library.WindowsApi</name>
   </assembly>
   <members>
+    <member name="T:Wanderer.Library.WindowsApi.Authentication.LogonProvider">
+      <summary>
+            The logon provider.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authentication.LogonProvider.Default">
+      <summary>
+            Use the standard logon provider for the system.
+            The default security provider is negotiate,
+            unless you pass NULL for the domain name and the user name is not in UPN format.
+            In this case, the default provider is NTLM.
+            NOTE: Windows 2000/NT:   The default security provider is NTLM.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authentication.LogonProvider.WinNt40">
+      <summary>
+            Use the NTLM logon provider.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authentication.LogonProvider.WinNt50">
+      <summary>
+            Use the negotiate logon provider.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Authentication.LogonType">
+      <summary>
+            The type of logon operation.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authentication.LogonType.Interactive">
+      <summary>
+            This logon type is intended for users who will be interactively using the computer,
+            such as a user being logged on by a terminal server, remote shell, or similar process.
+            This logon type has the additional expense of caching logon information for disconnected operations;
+            therefore, it is inappropriate for some client/server applications, such as a mail server.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authentication.LogonType.Network">
+      <summary>
+            This logon type is intended for high performance servers to authenticate plaintext passwords.
+            The <see cref="M:Wanderer.Library.WindowsApi.Authentication.NativeMethods.LogonUser(System.String,System.String,System.String,Wanderer.Library.WindowsApi.Authentication.LogonType,Wanderer.Library.WindowsApi.Authentication.LogonProvider)" />
+            function does not cache credentials for this logon type.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authentication.LogonType.Batch">
+      <summary>
+            This logon type is intended for batch servers,
+            where processes may be executing on behalf of a user without their direct intervention.
+            This type is also for higher performance servers that process many plaintext authentication attempts at a time,
+            such as mail or web servers.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authentication.LogonType.Service">
+      <summary>
+            Indicates a service-type logon. The account provided must have the service privilege enabled.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authentication.LogonType.Unlock">
+      <summary>
+            This logon type is for GINA DLLs that log on users who will be interactively using the computer.
+            This logon type can generate a unique audit record that shows when the workstation was unlocked.
+            GINAs are no longer supported.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authentication.LogonType.NetworkCleartext">
+      <summary>
+            This logon type preserves the name and password in the authentication package,
+            which allows the server to make connections to other network servers while impersonating the client.
+            A server can accept plaintext credentials from a client,
+            call <see cref="M:Wanderer.Library.WindowsApi.Authentication.NativeMethods.LogonUser(System.String,System.String,System.String,Wanderer.Library.WindowsApi.Authentication.LogonType,Wanderer.Library.WindowsApi.Authentication.LogonProvider)" />,
+            verify that the user can access the system across the network, and still communicate with other servers.
+            NOTE: Windows NT:  This value is not supported. 
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Authentication.LogonType.NewCredentials">
+      <summary>
+            This logon type allows the caller to clone its current token and specify new credentials for outbound connections.
+            The new logon session has the same local identifier but uses different credentials for other network connections.
+            This logon type is supported only by the <see cref="F:Wanderer.Library.WindowsApi.Authentication.LogonProvider.WinNt50" /> logon provider.
+            NOTE: Windows NT:  This value is not supported. 
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Authentication.NativeMethods">
+      <summary>
+            Authentication Windows functions.
+            </summary>
+    </member>
     <member name="T:Wanderer.Library.WindowsApi.Helpers.IProcessExtendedContract">
       <summary>
             Contains code contracts definition for interface <see cref="T:Wanderer.Library.WindowsApi.Helpers.IProcessExtended" />.
@@ -360,6 +447,17 @@
     </member>
     <member name="F:Wanderer.Library.WindowsApi.ProcessAccess.Synchronize">
       <summary>Required to wait for the process to terminate using the wait functions.</summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.SafeHandles.SafeTokenHandle">
+      <summary>
+            Provides a class for Win32 safe token handle implementations in which the value of either 0 or -1 indicates an invalid handle.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.SafeHandles.SafeTokenHandle.ReleaseHandle">
+      <summary>
+             Executes the code required to free the handle.
+            </summary>
+      <returns>true if the handle is released successfully; otherwise, in the event of a catastrophic failure, false</returns>
     </member>
   </members>
 </doc>

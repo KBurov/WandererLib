@@ -118,6 +118,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication\LogonProvider.cs" />
+    <Compile Include="Authentication\LogonType.cs" />
+    <Compile Include="Authentication\NativeMethods.cs" />
     <Compile Include="Helpers\IProcessExtendedContract.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Helpers\CpuLimiter.cs" />
@@ -129,6 +132,7 @@
     <Compile Include="Nt\NtStatus.cs" />
     <Compile Include="ProcessAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SafeHandles\SafeTokenHandle.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 
 namespace Wanderer.Library.WindowsApi
@@ -8,9 +10,18 @@ namespace Wanderer.Library.WindowsApi
     /// </summary>
     internal static class NativeMethods
     {
+        private const string Advapi32 = "advapi32.dll";
         private const string Kernel32 = "kernel32.dll";
+        private const string User32 = "user32.dll";
 
-        [DllImport(Kernel32)]
-        public static extern IntPtr OpenProcess(ProcessAccess dwDesiredAccess, [MarshalAs(UnmanagedType.Bool)] bool bInheritHandle, int dwProcessId);
+        public static void ReportWin32Exception()
+        {
+            throw new Win32Exception(Marshal.GetLastWin32Error());
+        }
+
+        [DllImport(Kernel32, SetLastError = true)]
+        [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool CloseHandle([In] IntPtr handle);
     }
 }
