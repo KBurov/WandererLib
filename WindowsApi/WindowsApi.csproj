@@ -145,6 +145,7 @@
     <Compile Include="COM\DirectoryServices\ADS\IADsLargeInteger.cs" />
     <Compile Include="COM\DirectoryServices\ADS\IADsNameTranslate.cs" />
     <Compile Include="COM\NativeMethods.cs" />
+    <Compile Include="Desktop\NativeMethods.cs" />
     <Compile Include="ErrorCodes.cs" />
     <Compile Include="Helpers\IProcessExtendedContract.cs" />
     <Compile Include="HResults.cs" />
@@ -160,6 +161,7 @@
     <Compile Include="ProcessAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SafeHandles\SafeTokenHandle.cs" />
+    <Compile Include="SafeHandles\SafeWindowStationHandle.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
