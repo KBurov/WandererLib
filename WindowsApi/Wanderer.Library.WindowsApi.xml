@@ -730,6 +730,800 @@
             Indicates an impersonation token.
             </summary>
     </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter">
+      <summary>
+            Contains the filter flags to use for down-level scopes.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.Users">
+      <summary>
+            Includes user objects.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.LocalGroups">
+      <summary>
+            Includes all local groups.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.GlobalGroups">
+      <summary>
+            Includes all global groups.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.Computers">
+      <summary>
+            Includes computer objects.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.World">
+      <summary>
+            Includes the well-known security principal "World (Everyone)", a group that includes all users.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.AuthenticatedUser">
+      <summary>
+            Includes the well-known security principal "Authenticated User",
+            a group that includes all authenticated accounts in the target domain and its trusted domains.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.Anonymous">
+      <summary>
+            Includes the well-known security principal "Anonymous", which refers to null session logons.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.Batch">
+      <summary>
+            Includes the well-known security principal "Batch", which refers to batch server logons.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.CreatorOwner">
+      <summary>
+            Includes the well-known security principal "Creator Owner".
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.CreatorGroup">
+      <summary>
+            Includes the well-known security principal "Creator Group".
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.Dialup">
+      <summary>
+            Includes the well-known security principal "Dialup".
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.Interactive">
+      <summary>
+            Includes the well-known security principal "Interactive", which refers to users who log on to interactively use the computer.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.Network">
+      <summary>
+            Includes the well-known security principal "Network", which refers to network logons for high performance servers.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.Service">
+      <summary>
+            Includes the well-known security principal "Service", which refers to Win32 service logons.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.System">
+      <summary>
+            Includes the well-known security principal "System", which refers to the LocalSystem account.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.ExcludeBuiltInGroups">
+      <summary>
+            Excludes local built-in groups returned by groups' enumeration.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.TerminalServer">
+      <summary>
+            Includes the "Terminal Server" well-known security principal.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.AllWellKnownSIDs">
+      <summary>
+            Includes all well-known security principals.
+            This flag is the same as specifying all of the well-known security principal flags listed in this table.
+            This flag should be used for forward compatibility because it causes any other down-level,
+            well-known SIDs that might be added in the future your code to automatically be included.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.LocalService">
+      <summary>
+            Includes the "Local Service" well-known security principal.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.NetworkService">
+      <summary>
+            Includes the "Network Service" well-known security principal.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.RemoteLogon">
+      <summary>
+            Includes the "Remote Logon" well-known security principal.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.InternetUser">
+      <summary>
+            Includes the "Internet User" well-known security principal.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.OwnerRights">
+      <summary>
+            Includes the "Owner Rights" well-known security principal.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.Services">
+      <summary>
+            Includes "Service SIDs" of all installed services.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilter">
+      <summary>
+            Filter flags to use in <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilterFlags" /> structure.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilter.IncludeAdvancedView">
+      <summary>
+            Includes objects that have the showInAdvancedViewOnly attribute set to TRUE.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilter.Users">
+      <summary>
+            Includes user objects.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilter.BuiltInGroups">
+      <summary>
+            Includes built-in group objects.
+            Built-in groups are group objects with a groupType value that contain the GROUP_TYPE_BUILTIN_LOCAL_GROUP (0x00000001),
+            GROUP_TYPE_RESOURCE_GROUP (0x00000004), and GROUP_TYPE_SECURITY_ENABLED (0x80000000) flags.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilter.WellKnownPrincipals">
+      <summary>
+            Includes the contents of the Well Known Security Principals container.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilter.UniversalGroupsDL">
+      <summary>
+            Includes distribution group objects with universal scope.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilter.UniversalGroupsSE">
+      <summary>
+            Includes security groups with universal scope.
+            This flag has no affect in a mixed mode domain because universal security groups do not exist in mixed mode domains.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilter.GlobalGroupsDL">
+      <summary>
+            Includes distribution group objects with global scope.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilter.GlobalGroupsSE">
+      <summary>
+            Includes security group objects with global scope.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilter.DomainLocalGroupsDL">
+      <summary>
+            Includes distribution group objects with domain local scope.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilter.DomainLocalGroupsSE">
+      <summary>
+            Includes security group objects with domain local scope.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilter.Contacts">
+      <summary>
+            Includes contact objects.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilter.Computers">
+      <summary>
+            Includes computer objects.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilter.ServiceAccounts">
+      <summary>
+            Includes managed service account and group managed service account objects.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilter.PasswordSettingsObjects">
+      <summary>
+            Includes password settings objects.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilterFlags">
+      <summary>
+            The DSOPFilterFlags structure contains flags that indicate the types of objects presented to the user for a specified scope or scopes.
+            This structure is contained in the <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeInitInfo" /> structure when calling <see cref="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.IDsObjectPicker.Initialize(Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo@)" />.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilterFlags.Uplevel">
+      <summary>
+            Contains a <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPUpLevelFilterFlags" /> structure that contains the filter flags to use for up-level scopes.
+            An up-level scope is a scope that supports the ADSI LDAP provider.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilterFlags.flDownlevel">
+      <summary>
+            Contains the filter flags to use for down-level scopes.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFlag">
+      <summary>
+            Avaliable option flags for <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo.flOptions" />.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFlag.MultiSelect">
+      <summary>
+            If this flag is set, the user can select multiple objects.
+            If this flag is not set, the user can select only one object.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFlag.SkipTargetComputerDCCheck">
+      <summary>
+            If this flag is set and the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType.TargetComputer" /> flag is set in the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo.aDsScopeInfos" /> array,
+            the target computer is always included in the Look in drop-down list.
+            If this flag is not set and the target computer is an up-level or down-level domain controller,
+            the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType.TargetComputer" /> flag is ignored and the target computer is not included in the Look in drop-down list.
+            To save time during initialization, this flag should be set if it is known that the target computer is not a domain controller.
+            However, if the target computer is a domain controller,
+            this flag should not be set because it is better for the user to select domain objects from the domain scope rather than from the domain controller itself.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo">
+      <summary>
+            The DSOPInitInfo structure contains data required to initialize an object picker dialog box.
+            This structure is used with the <see cref="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.IDsObjectPicker.Initialize(Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo@)" /> method.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo.cbSize">
+      <summary>
+            Contains the size, in bytes, of the structure.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo.pwzTargetComputer">
+      <summary>
+            Pointer to a null-terminated Unicode string that contains the name of the target computer.
+            The dialog box operates as if it is running on the target computer,
+            using the target computer to determine the joined domain and enterprise.
+            If this value is null, the target computer is the local computer.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo.cDsScopeInfos">
+      <summary>
+            Specifies the number of elements in the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo.aDsScopeInfos" /> array.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo.aDsScopeInfos">
+      <summary>
+            Pointer to an array of <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeInitInfo" /> structures that describe the scopes from which the user can select objects.
+            This member cannot be NULL (<see cref="F:System.IntPtr.Zero" />) and the array must contain at least one element because the object picker cannot operate without at least one scope.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo.flOptions">
+      <summary>
+            Flags that determine the object picker options.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo.cAttributesToFetch">
+      <summary>
+            Contains the number of elements in the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo.apwzAttributeNames" /> array.
+            This member can be zero.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo.apwzAttributeNames">
+      <summary>
+            Pointer to an array of null-terminated Unicode strings that contain the names of the attributes to retrieve for each selected object.
+            If <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo.cAttributesToFetch" /> is zero, this member is ignored.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeFlag">
+      <summary>
+            Flags that indicate the format used to return ADsPath for objects selected from this scope.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeFlag.StartingScope">
+      <summary>
+            The scope described by this structure is initially selected in the Look in drop-down list.
+            Only one scope can specify this flag. If no scope specifies this flag,
+            the initial scope is the first successfully created scope in the array of scopes passed to the <see cref="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.IDsObjectPicker.Initialize(Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo@)" /> method.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeFlag.WantProviderWinNT">
+      <summary>
+            The ADsPaths are converted to use the WinNT provider.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeFlag.WantProviderLDAP">
+      <summary>
+            The ADsPaths are converted to use the LDAP provider.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeFlag.WantProviderGC">
+      <summary>
+            The ADsPaths for objects selected from this scope are converted to use the GC provider.
+            </summary>
+    </member>
+    <!-- Badly formed XML comment ignored for member "F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeFlag.WantSIDPath" -->
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeFlag.WantDownLevelBuiltInPath">
+      <summary>
+            The ADsPaths for down-level, well-known SID objects are an empty string unless this flag is specified (For example; <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPDownLevelFilter.Interactive" />).
+            If this flag is specified, the paths have the form WinNT://NT AUTHORITY/Interactive or WinNT://Creator owner.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeFlag.DefaultFilterUsers">
+      <summary>
+            If the scope filter contains users, select the Users check box in the dialog.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeFlag.DefaultFilterGroups">
+      <summary>
+            If the scope filter contains groups, select the Groups check box in the dialog.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeFlag.DefaultFilterComputers">
+      <summary>
+            If the scope filter contains computers, select the Computers check box in the dialog.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeFlag.DefaultFilterContacts">
+      <summary>
+            If the scope filter contains contacts, select the Contacts check box in the dialog.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeFlag.DefaultFilterServiceAccounts">
+      <summary>
+            If the scope filter contains service accounts, select the Service Accounts and Group Managed Service Accounts check boxes in the dialog.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeFlag.DefaultFilterPasswordSettingsObjects">
+      <summary>
+            If the scope filter contains password setting objects, select the Password Setting Objects check box in the dialog.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeInitInfo">
+      <summary>
+            The DSOPScopeInitInfo structure describes one or more scope types that have the same attributes.
+            A scope type is a type of location, for example a domain, computer, or Global Catalog, from which the user can select objects.
+            This structure is used with <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo" /> when calling <see cref="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.IDsObjectPicker.Initialize(Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo@)" />.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeInitInfo.cbSize">
+      <summary>
+            Contains the size, in bytes, of the structure.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeInitInfo.flType">
+      <summary>
+            Flags that indicate the scope types described by this structure.
+            You can combine multiple scope types if all specified scopes use the same settings.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeInitInfo.flScope">
+      <summary>
+            Flags that indicate the format used to return ADsPath for objects selected from this scope.
+            The flScope member can also indicate the initial scope displayed in the Look in drop-down list.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeInitInfo.FilterFlags">
+      <summary>
+            Contains a <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilterFlags" /> structure that indicates the types of objects presented to the user for this scope or scopes.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeInitInfo.pwzDcName">
+      <summary>
+            Pointer to a null-terminated Unicode string that contains the name of a domain controller of the domain to which the target computer is joined.
+            This member is used only if the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeInitInfo.flType" /> member contains the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType.UpLevelJoinedDomain" /> flag.
+            If that flag is not set, pwzDcName must be null.
+            This member can be null even if the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType.UpLevelJoinedDomain" /> flag is specified, in which case, the dialog box looks up the domain controller.
+            This member enables you to name a specific domain controller in a multimaster domain.
+            For example, an administrative application might make changes on a domain controller in a multimaster domain,
+            and then open the object picker dialog box before the changes have been replicated on the other domain controllers.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeInitInfo.pwzADsPath">
+      <summary>
+            Reserved; must be null.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeInitInfo.hr">
+      <summary>
+            Contains an <see cref="T:Wanderer.Library.WindowsApi.HResults" /> value that indicates the status of the specific scope.
+            If the <see cref="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.IDsObjectPicker.Initialize(Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo@)" /> method successfully creates the scope, or scopes, specified by this structure, hr contains <see cref="F:Wanderer.Library.WindowsApi.HResults.OK" />.
+            Otherwise, hr contains an error code.
+            If <see cref="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.IDsObjectPicker.Initialize(Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo@)" /> returns <see cref="F:Wanderer.Library.WindowsApi.HResults.OK" />,
+            the hr members of all the specified <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeInitInfo" /> structures also contain <see cref="F:Wanderer.Library.WindowsApi.HResults.OK" />.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType">
+      <summary>
+            Flags that indicate the scope types described by <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeInitInfo" /> structure.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType.TargetComputer">
+      <summary>
+            Computer specified by the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo.pwzTargetComputer" />.
+            If the target computer is an up-level or down-level domain controller,
+            this flag is ignored unless the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFlag.SkipTargetComputerDCCheck" /> flag is set in the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo.flOptions" />.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType.UpLevelJoinedDomain">
+      <summary>
+            An up-level domain to which the target computer is joined.
+            If this flag is set, use the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeInitInfo.pwzDcName" /> member to specify the name of a domain controller in the joined domain.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType.DownLevelJoinedDomain">
+      <summary>
+            A down-level domain to which the target computer is joined.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType.EnterpriseDomain">
+      <summary>
+            All Windows 2000 domains in the enterprise to which the target computer belongs.
+            If the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType.UpLevelJoinedDomain" /> scope is specified,
+            then the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType.EnterpriseDomain" /> scope represents all Windows 2000 domains in the enterprise except the joined domain.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType.GlobalCatalog">
+      <summary>
+            A scope that contains objects from all domains in the enterprise.
+            An enterprise can contain only up-level domains.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType.ExternalUpLevelDomain">
+      <summary>
+            All up-level domains external to the enterprise but trusted by the domain to which the target computer is joined.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType.ExternalDownLevelDomain">
+      <summary>
+            All down-level domains external to the enterprise, but trusted by the domain to which the target computer is joined.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType.Workgroup">
+      <summary>
+            The workgroup to which the target computer is joined.
+            Applies only if the target computer is not joined to a domain.
+            The only type of object that can be selected from a workgroup is a computer.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType.UserEnteredUpLevelScope">
+      <summary>
+            Enables the user to enter an up-level scope.
+            If neither of the UserEntered* types is specified,
+            the dialog box restricts the user to the scopes in the Look in drop-down list.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType.UserEnteredDownLevelScope">
+      <summary>
+            Enables the user to enter a down-level scope.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPUpLevelFilterFlags">
+      <summary>
+            The DSOPUpLevelFilterFlags structure contains flags that indicate the filters to use for an up-level scope.
+            An up-level scope is a scope that supports the ADSI LDAP provider.
+            This structure is contained in the <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilterFlags" /> structure when calling <see cref="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.IDsObjectPicker.Initialize(Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo@)" />.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPUpLevelFilterFlags.flBothModes">
+      <summary>
+            Filter flags to use for an up-level scope, regardless of whether it is a mixed or native mode domain.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPUpLevelFilterFlags.flMixedModeOnly">
+      <summary>
+            Filter flags to use for an up-level domain in mixed mode.
+            Mixed mode refers to an up-level domain that may have Windows NT 4.0 Backup Domain Controllers present.
+            This member can be a combination of the flags listed in the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPUpLevelFilterFlags.flBothModes" /> flags.
+            The <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPFilter.UniversalGroupsSE" /> flag has no affect in a mixed-mode domain because universal security groups do not exist in mixed mode domains.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPUpLevelFilterFlags.flNativeModeOnly">
+      <summary>
+            Filter flags to use for an up-level domain in native mode.
+            Native mode refers to an up-level domain in which all domain controllers are running Windows 2000 and an administrator has enabled native mode operation.
+            This member can be a combination of the flags listed in the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPUpLevelFilterFlags.flBothModes" /> flags.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSSelection">
+      <summary>
+            Contains data about an object the user selected from an object picker dialog box.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSSelection.pwzName">
+      <summary>
+            Pointer to a null-terminated Unicode string that contains the object's relative distinguished name (RDN).
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSSelection.pwzADsPath">
+      <summary>
+            Pointer to a null-terminated Unicode string that contains the object's ADsPath.
+            The format of this string depends on the flags specified in the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeInitInfo.flScope" /> for the scope from which this object was selected.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSSelection.pwzClass">
+      <summary>
+            Pointer to a null-terminated Unicode string that contains the value of the object's objectClass attribute.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSSelection.pwzUPN">
+      <summary>
+            Pointer to a null-terminated Unicode string that contains the object's userPrincipalName attribute value.
+            If the object does not have a userPrincipalName value, pwzUPN points to an empty string (L"").
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSSelection.pvarFetchedAttributes">
+      <summary>
+            Pointer to an array of <see cref="T:System.Runtime.InteropServices.Variant" /> structures.
+            Each Variant contains the value of an attribute of the selected object.
+            The attributes retrieved are determined by the attribute names specified in the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo.apwzAttributeNames" />
+            passed to the <see cref="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.IDsObjectPicker.Initialize(Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo@)" /> method.
+            The order of attributes in the pvarFetchedAttributes array corresponds to the order of attribute names specified in the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo.apwzAttributeNames" /> array.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSSelection.flScopeType">
+      <summary>
+            Contains one, or more, of the <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPScopeType" /> that indicate the type of scope from which this object was selected.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.IDsObjectPicker">
+      <summary>
+            The IDsObjectPicker interface is used by an application to initialize and display an object picker dialog box.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.IDsObjectPicker.Initialize(Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo@)">
+      <summary>
+            Initializes the interface with data about the scopes, filters, and options used by the dialog box.
+            </summary>
+      <param name="pInitInfo">pointer to a <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DSOPInitInfo" /> structure that contains the initialization data</param>
+      <returns>
+            a standard error code or one of the following values:
+            <see cref="F:Wanderer.Library.WindowsApi.HResults.OK" /> - the method succeeded,
+            <see cref="F:Wanderer.Library.WindowsApi.HResults.InvalidArguments" /> - the contents of one or more of the members of <paramref name="pInitInfo" /> are invalid,
+            <see cref="F:Wanderer.Library.WindowsApi.HResults.OutOfMemory" /> - a memory allocation error occurred.
+            </returns>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.IDsObjectPicker.InvokeDialog(System.IntPtr,System.Runtime.InteropServices.ComTypes.IDataObject@)">
+      <summary>
+            Displays the dialog box and returns the user's selections.
+            </summary>
+      <param name="hwndParent">
+            handle to the owner window of the dialog box;
+            this parameter cannot be NULL (<see cref="F:System.IntPtr.Zero" />) or the result of the GetDesktopWindow function.
+            </param>
+      <param name="ppdoSelections">
+            pointer to an <see cref="T:System.Runtime.InteropServices.ComTypes.IDataObject" /> interface pointer that receives a data object that contains data about the user selections;
+            this data is supplied in the CFSTR_DSOP_DS_SELECTION_LIST data format;
+            this parameter receives null if the user cancels the dialog box
+            </param>
+      <returns>
+            a standard error code or one of the following values:
+            <see cref="F:Wanderer.Library.WindowsApi.HResults.OK" /> - the method succeeded,
+            <see cref="F:Wanderer.Library.WindowsApi.HResults.False" /> - the user canceled the dialog box, <paramref name="ppdoSelections" /> receives null,
+            <see cref="F:Wanderer.Library.WindowsApi.HResults.Unexpected" /> - the <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.IDsObjectPicker" /> object has not been initialized.
+            </returns>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.DsObjectPicker">
+      <summary>
+        <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS.IDsObjectPicker" /> implementor.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameInitType">
+      <summary>
+            Specifies the types of initialization to perform on a NameTranslate object.
+            It is used in the <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsNameTranslate" /> interface.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameInitType.Domain">
+      <summary>
+            Initializes a NameTranslate object by setting the domain that the object binds to.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameInitType.Server">
+      <summary>
+            Initializes a NameTranslate object by setting the server that the object binds to.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameInitType.GC">
+      <summary>
+            Initializes a NameTranslate object by locating the global catalog that the object binds to.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType">
+      <summary>
+            The NameType enumeration specifies the formats used for representing distinguished names.
+            It is used by the <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsNameTranslate" /> interface to convert the format of a distinguished name.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType._1779">
+      <summary>
+            Name format as specified in RFC 1779.
+            For example, "CN=Jeff Smith,CN=users,DC=Fabrikam,DC=com".
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType.Canonical">
+      <summary>
+            Canonical name format.
+            For example, "Fabrikam.com/Users/Jeff Smith".
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType.NT4">
+      <summary>
+            Account name format used in Windows NT 4.0.
+            For example, "Fabrikam\JeffSmith".
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType.Display">
+      <summary>
+            Display name format.
+            For example, "Jeff Smith".
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType.DomainSimple">
+      <summary>
+            Simple domain name format.
+            For example, "JeffSmith@Fabrikam.com".
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType.EnterpriseSimple">
+      <summary>
+            Simple enterprise name format.
+            For example, "JeffSmith@Fabrikam.com".
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType.Guid">
+      <summary>
+            Global Unique Identifier format.
+            For example, "{95ee9fff-3436-11d1-b2b0-d15ae3ac8436}".
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType.Unknown">
+      <summary>
+            Unknown name type. The system will estimate the format.
+            This element is a meaningful option only with the <see cref="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsNameTranslate.Set(Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType,System.String)" /> or the <see cref="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsNameTranslate.SetEx(Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType,System.Object)" /> method,
+            but not with the <see cref="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsNameTranslate.Get(System.Int32)" /> or <see cref="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsNameTranslate.GetEx(System.Int32)" /> method.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType.UserPrincipalName">
+      <summary>
+            User principal name format.
+            For example, "JeffSmith@Fabrikam.com".
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType.CanonicalEx">
+      <summary>
+            Extended canonical name format.
+            For example, "Fabrikam.com/Users Jeff Smith".
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType.ServicePrincipalName">
+      <summary>
+            Service principal name format.
+            For example, "www/www.fabrikam.com@fabrikam.com".
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType.SIDorSIDHistoryName">
+      <summary>
+            A SID string, as defined in the Security Descriptor Definition Language (SDDL), for either the SID of the current object or one from the object SID history.
+            For example, "O:AOG:DAD:(A;;RPWPCCDCLCSWRCWDWOGA;;;S-1-0-0)".
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsLargeInteger">
+      <summary>
+            The IADsLargeInteger interface is used to manipulate 64-bit integers of the LargeInteger type.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsLargeInteger.HighPart">
+      <summary>
+            Gets and sets the upper 32 bits of the integer.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsLargeInteger.LowPart">
+      <summary>
+            Gets and sets the lower 32 bits of the integer.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsNameTranslate">
+      <summary>
+            The IADsNameTranslate interface translates distinguished names (DNs) among various formats as defined in the <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType" /> enumeration.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsNameTranslate.Get(System.Int32)">
+      <summary>
+            Gets the object name, set by <see cref="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsNameTranslate.Set(Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType,System.String)" />, in a specified format.
+            </summary>
+      <param name="lnFormatType">
+            the format type of the output name
+            (for more information, see <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType" />; this method does not support the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType.SIDorSIDHistoryName" /> element)
+            </param>
+      <returns>the name of the returned object</returns>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsNameTranslate.GetEx(System.Int32)">
+      <summary>
+            Gets the names of the objects, set by <see cref="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsNameTranslate.SetEx(Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType,System.Object)" />, in a specified format.
+            </summary>
+      <param name="lnFormatType">
+            the format type used for the output names
+            (for more information about the various types of formats you can use, see <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType" />;
+            this method does not support the <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType.SIDorSIDHistoryName" /> element)
+            </param>
+      <returns>a variant array of strings that hold names of the objects returned</returns>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsNameTranslate.Init(Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameInitType,System.String)">
+      <summary>
+            Initializes the IADsNameTranslate object with default credentialsю
+            </summary>
+      <param name="lnInitType">a type of initialization to be performed, possible values are defined in <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameInitType" /></param>
+      <param name="bstrADsPath">
+            the name of the server or domain, depending on the value of <paramref name="lnInitType" />: when <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameInitType.GC" /> is issued, this parameter is ignored;
+            the global catalog server of the domain of the current computer will perform the name translate operations;
+            this method will fail if the computer is not part of a domain as no global catalog will be found in this scenario
+            (for more information, see <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameInitType" />)
+            </param>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsNameTranslate.InitEx(Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameInitType,System.String,System.String,System.String,System.String)">
+      <summary>
+            Initializes the IADsNameTranslate object with specified credentials.
+            </summary>
+      <param name="lnInitType">a type of initialization to be performed, possible values are defined in <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameInitType" /></param>
+      <param name="bstrADsPath">
+            the name of the server or domain, depending on the value of <paramref name="lnInitType" />: when <see cref="F:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameInitType.GC" /> is issued, this parameter is ignored;
+            the global catalog server of the domain of the current computer will perform the name translate operations;
+            this method will fail if the computer is not part of a domain as no global catalog will be found in this scenario
+            (for more information, see <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameInitType" />)
+            </param>
+      <param name="bstrUserId">user name</param>
+      <param name="bstrDomain">user domain name</param>
+      <param name="bstrPassword">user password</param>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsNameTranslate.Set(Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType,System.String)">
+      <summary>
+            Specifies the object name to translate.
+            </summary>
+      <param name="lnSetType">the format of the name of a directory object (for more information, see <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType" />)</param>
+      <param name="bstrADsPath">the object name (for example, "CN=Administrator, CN=users, DC=Fabrikam, DC=com")</param>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsNameTranslate.SetEx(Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType,System.Object)">
+      <summary>
+            Sets the names of multiple objects at the same time.
+            </summary>
+      <param name="lnFormatType">the format type of the input names (for more information, see <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameType" />)</param>
+      <param name="pVar">a variant array of strings that hold object names</param>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsNameTranslate.ChaseReferral">
+      <summary>
+            Toggles referral chasing ON or OFF.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.ADsNameTranslate">
+      <summary>
+        <see cref="T:Wanderer.Library.WindowsApi.COM.DirectoryServices.ADS.IADsNameTranslate" /> implementor.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.COM.NativeMethods">
+      <summary>
+            COM Windows API functions.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.COM.NativeMethods.ReleaseStgMedium(System.Runtime.InteropServices.ComTypes.STGMEDIUM@)">
+      <summary>
+            Frees the specified storage medium.
+            </summary>
+      <param name="pMedium">pointer to the storage medium that is to be freed</param>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Desktop.NativeMethods">
+      <summary>
+            Windows Station and Desktop Windows API functions.
+            </summary>
+    </member>
     <member name="T:Wanderer.Library.WindowsApi.ErrorCodes">
       <summary>
             Contains Windows API error codes.
@@ -885,6 +1679,407 @@
       <summary>
             Determines whether object already disposed or not.
             </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.DirectoryObject">
+      <summary>
+            Details of a directory object selected in the <see cref="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog" />.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.DirectoryObject.#ctor(System.String,System.String,System.String,System.String,System.Object[])">
+      <summary>
+            Initialize constructor.
+            </summary>
+      <param name="name">directory object's relative distinguished name (RDN)</param>
+      <param name="path">Active Directory path for this directory object</param>
+      <param name="schemaClass">name of the schema class for this directory object (objectClass attribute)</param>
+      <param name="upn">objects user principal name (userPrincipalName attribute)</param>
+      <param name="fetchedAttributes">attributes retrieved by the object picker as it makes the selection</param>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.DirectoryObject.Path">
+      <summary>
+            Gets the Active Directory path for this directory object.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.DirectoryObject.SchemaClassName">
+      <summary>
+            Gets the name of the schema class for this directory object (objectClass attribute).
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.DirectoryObject.Name">
+      <summary>
+            Gets the directory object's relative distinguished name (RDN).
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.DirectoryObject.Upn">
+      <summary>
+            Gets the objects user principal name (userPrincipalName attribute).
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.DirectoryObject.FetchedAttributes">
+      <summary>
+            Gets attributes retrieved by the object picker as it makes the selection.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.EntityPickerDialog">
+      <summary>
+            Represents a dialog that allows a user to select users.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog">
+      <summary>
+            Represents a common dialog that allows a user to select directory objects.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog.#ctor">
+      <summary>
+            Default constructor.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog.Reset">
+      <summary>
+            Resets the properties of a dialog box to their default values.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog.RunDialog(System.IntPtr)">
+      <summary>
+            Displays the Object Picker (Active Directory) common dialog, when called by ShowDialog.
+            </summary>
+      <param name="hwndOwner">handle to the window that owns the dialog</param>
+      <returns>if the user clicks the OK button of the Object Picker dialog that is displayed, true is returned; otherwise, false.</returns>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog.AllowedLocations">
+      <summary>
+            Gets or sets the scopes the <see cref="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog" /> is allowed to search.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog.DefaultLocations">
+      <summary>
+            Gets or sets the initially selected scope in the <see cref="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog" />.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog.AllowedTypes">
+      <summary>
+            Gets or sets the types of objects the <see cref="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog" /> is allowed to search for.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog.DefaultTypes">
+      <summary>
+            Gets or sets the initially seleted types of objects in the <see cref="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog" />.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog.Providers">
+      <summary>
+            Gets or sets the providers affecting the ADPath returned in objects.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog.MultiSelect">
+      <summary>
+            Gets or sets whether the user can select multiple objects.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog.SkipDomainControllerCheck">
+      <summary>
+            Gets or sets the whether to check whether the target is a Domain Controller and hide the "Local Computer" scope.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog.AttributesToFetch">
+      <summary>
+            List of LDAP attribute names that will be retrieved for picked objects.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog.SelectedObjects">
+      <summary>
+            Gets an array of the directory objects selected in the dialog.
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog.ShowAdvancedView">
+      <summary>
+            Gets or sets whether objects flagged as show in advanced view only are displayed (up-level).
+            </summary>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog.TargetComputer">
+      <summary>
+            Gets or sets the name of the target computer.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.EntityPickerDialog.#ctor(Wanderer.Library.WindowsApi.Helpers.ObjectPicker.EntityPickerDialogType)">
+      <summary>
+            Default/Initialize constructor.
+            </summary>
+      <param name="dialogType">determines the behaviour of dialog (select user or user groups)</param>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.EntityPickerDialog.RunDialog(System.IntPtr)">
+      <summary>
+            Displays the Object Picker (Active Directory) common dialog, when called by ShowDialog.
+            </summary>
+      <param name="hwndOwner">handle to the window that owns the dialog</param>
+      <returns>if the user clicks the OK button of the Object Picker dialog that is displayed, true is returned; otherwise, false.</returns>
+    </member>
+    <member name="P:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.EntityPickerDialog.SelectedEntities">
+      <summary>
+            List of selected users.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.EntityPickerDialogType">
+      <summary>
+            Determines the behaviour type for <see cref="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.EntityPickerDialog" />.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.EntityPickerDialogType.Users">
+      <summary>
+            Determines that through <see cref="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.EntityPickerDialog" /> will select only an users.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.EntityPickerDialogType.Groups">
+      <summary>
+            Determines that through <see cref="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.EntityPickerDialog" /> will select only an user groups.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.Location">
+      <summary>
+            Indicates the scope the <see cref="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog" /> searches for objects.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.Location.None">
+      <summary>
+            No locations.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.Location.LocalComputer">
+      <summary>
+            The target computer (down-level).
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.Location.JoinedDomain">
+      <summary>
+            A domain to which the target computer is joined (down-level and up-level).
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.Location.EnterpriseDomain">
+      <summary>
+            All Windows 2000 domains in the enterprise to which the target computer belongs (up-level).
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.Location.GlobalCatalog">
+      <summary>
+            A scope containing objects from all domains in the enterprise (up-level). 
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.Location.ExternalDomain">
+      <summary>
+            All domains external to the enterprise, but trusted by the domain to which the target computer is joined (down-level and up-level).
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.Location.Workgroup">
+      <summary>
+            The workgroup to which the target computer is joined (down-level). 
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.Location.UserEntered">
+      <summary>
+            Enables the user to enter a scope (down-level and up-level). 
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.Location.All">
+      <summary>
+            All locations.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectType">
+      <summary>
+            Indicates the type of objects the <see cref="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog" /> searches for.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectType.None">
+      <summary>
+            No object types.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectType.Users">
+      <summary>
+            Includes user objects.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectType.Groups">
+      <summary>
+            Includes security groups with universal scope. 
+            </summary>
+      <remarks>
+        <para>
+            In an up-level scope, this includes distribution and security groups, with universal, global and domain local scope.
+            </para>
+        <para>
+            In a down-level scope, this includes local and global groups.
+            </para>
+      </remarks>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectType.Computers">
+      <summary>
+            Includes computer objects.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectType.Contacts">
+      <summary>
+            Includes contact objects.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectType.BuiltInGroups">
+      <summary>
+            Includes built-in group objects.
+            </summary>
+      <summary>
+        <para>
+            In an up-level scope, this includes group objects with the built-in groupType flags.
+            </para>
+        <para>
+            In a down-level scope, not setting this object type excludes local built-in groups.
+            </para>
+      </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectType.WellKnownPrincipals">
+      <summary>
+            Includes all well-known security principals. 
+            </summary>
+      <remarks>
+        <para>
+            In an up-level scope, this includes the contents of the Well Known Security Principals container.
+            </para>
+        <para>
+            In a down-level scope, this includes all well-known SIDs.
+            </para>
+      </remarks>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectType.All">
+      <summary>
+            All object types.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.PathProvider">
+      <summary>
+            Indicates the ADsPath provider type of the <see cref="T:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.ObjectPickerDialog" />.
+            This provider affects the contents of the ADPath returned.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.PathProvider.Default">
+      <summary>
+            Default path provider.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.PathProvider.WinNT">
+      <summary>
+            The ADsPath are converted to use the WinNT provider.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.PathProvider.LDAP">
+      <summary>
+            The ADsPaths are converted to use the LDAP provider.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.PathProvider.GC">
+      <summary>
+            The ADsPaths for objects selected from this scope are converted to use the GC provider.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.PathProvider.SIDPath">
+      <summary>
+            The ADsPaths having an objectSid attribute are converted to the form 
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.Helpers.ObjectPicker.PathProvider.DownlevelBuildinPath">
+      <summary>
+            The ADsPaths for down-level, well-known SID objects are an empty string unless this flag is specified (For example; DSOP_DOWNLEVEL_FILTER_INTERACTIVE).
+            If this flag is specified, the paths have the form: 
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.HResults">
+      <summary>
+            Contains Windows COM API error codes.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.HResults.OK">
+      <summary>
+            Operation successful.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.HResults.False">
+      <summary>
+            Operation successful.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.HResults.NotImplemented">
+      <summary>
+            Not implemented.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.HResults.NoInterface">
+      <summary>
+            No such interface supported.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.HResults.Pointer">
+      <summary>
+            Pointer that is not valid.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.HResults.Abort">
+      <summary>
+            Operation aborted.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.HResults.Fail">
+      <summary>
+            Unspecified failure.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.HResults.Unexpected">
+      <summary>
+            Unexpected failure.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.HResults.AccessDenied">
+      <summary>
+            General access denied error.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.HResults.Handle">
+      <summary>
+            Handle that is not valid.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.HResults.OutOfMemory">
+      <summary>
+            Failed to allocate necessary memory.
+            </summary>
+    </member>
+    <member name="F:Wanderer.Library.WindowsApi.HResults.InvalidArguments">
+      <summary>
+            One or more arguments are not valid.
+            </summary>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.Memory.NativeMethods">
+      <summary>
+            Memory menagement Windows API functions.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Memory.NativeMethods.GlobalLock(System.IntPtr)">
+      <summary>
+            Locks a global memory object and returns a pointer to the first byte of the object's memory block.
+            </summary>
+      <param name="hMem">a handle to the global memory object</param>
+      <returns>
+            if the function succeeds, the return value is a pointer to the first byte of the memory block;
+            if the function fails, the return value is NULL (<see cref="F:System.IntPtr.Zero" />)
+            </returns>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Memory.NativeMethods.GlobalUnlock(System.IntPtr)">
+      <summary>
+            Decrements the lock count associated with a memory object.
+            </summary>
+      <param name="hMem">a handle to the global memory object</param>
+      <returns>
+            if the memory object is still locked after decrementing the lock count, the return value is a nonzero value;
+            if the memory object is unlocked after decrementing the lock count, the function returns zero and <see cref="M:System.Runtime.InteropServices.Marshal.GetLastWin32Error" /> returns <see cref="F:Wanderer.Library.WindowsApi.ErrorCodes.NoError" />.
+            </returns>
     </member>
     <member name="T:Wanderer.Library.WindowsApi.NativeConstants">
       <summary>
@@ -1153,6 +2348,15 @@
              Executes the code required to free the handle.
             </summary>
       <returns>true if the handle is released successfully; otherwise, in the event of a catastrophic failure, false</returns>
+    </member>
+    <member name="T:Wanderer.Library.WindowsApi.SafeHandles.SafeWindowStationHandle">
+      <summary>
+            Provides a class for Window Station.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.WindowsApi.Desktop.NativeMethods.SetProcessWindowStation(Wanderer.Library.WindowsApi.SafeHandles.SafeWindowStationHandle)">
+      <requires description="windowStationHandle cannot be null" exception="T:System.ArgumentNullException" csharp="windowStationHandle != null" vb="windowStationHandle &lt;&gt; Nothing">windowStationHandle != null</requires>
+      <exception cref="T:System.ArgumentNullException">windowStationHandle == null</exception>
     </member>
     <member name="M:Wanderer.Library.WindowsApi.Authorization.NativeMethods.AdjustTokenPrivileges(Wanderer.Library.WindowsApi.SafeHandles.SafeTokenHandle,System.Boolean,Wanderer.Library.WindowsApi.Authorization.TokenPrivileges@)">
       <requires description="tokenHandle cannot be null" exception="T:System.ArgumentNullException" csharp="tokenHandle != null" vb="tokenHandle &lt;&gt; Nothing">tokenHandle != null</requires>
