@@ -1,54 +1,63 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <doc>
-    <assembly>
-        <name>Wanderer.Library.Extensions</name>
-    </assembly>
-    <members>
-        <member name="T:Wanderer.Library.Extensions.StringExtensions">
-            <summary>
-            <see cref="T:System.String"/> extension methods.
+  <assembly>
+    <name>Wanderer.Library.Extensions</name>
+  </assembly>
+  <members>
+    <member name="T:Wanderer.Library.Extensions.StringExtensions">
+      <summary>
+        <see cref="T:System.String" /> extension methods.
             </summary>
-        </member>
-        <member name="M:Wanderer.Library.Extensions.StringExtensions.IsInt32(System.String)">
-            <summary>
-            Returns true if <paramref name="s"/> contains <see cref="T:System.Int32"/>
+    </member>
+    <member name="M:Wanderer.Library.Extensions.StringExtensions.IsInt32(System.String)">
+      <summary>
+            Returns true if <paramref name="s" /> contains <see cref="T:System.Int32" /></summary>
+    </member>
+    <member name="M:Wanderer.Library.Extensions.StringExtensions.IsUInt32(System.String)">
+      <summary>
+            Returns true if <paramref name="s" /> contains <see cref="T:System.UInt32" /></summary>
+    </member>
+    <member name="M:Wanderer.Library.Extensions.StringExtensions.IsDecimal(System.String)">
+      <summary>
+            Returns true if <paramref name="s" /> contains <see cref="T:System.Decimal" /></summary>
+    </member>
+    <member name="T:System.Threading.ReaderWriterLockSlimExtensions">
+      <summary>
+            Extension methods for using <see cref="T:System.Threading.ReaderWriterLockSlim" /> class with <see cref="T:Wanderer.Library.Common.DisposeAction" />.
             </summary>
-        </member>
-        <member name="M:Wanderer.Library.Extensions.StringExtensions.IsUInt32(System.String)">
-            <summary>
-            Returns true if <paramref name="s"/> contains <see cref="T:System.UInt32"/>
+    </member>
+    <member name="M:System.Threading.ReaderWriterLockSlimExtensions.GetReadLock(System.Threading.ReaderWriterLockSlim)">
+      <summary>
+            Get a <see cref="T:Wanderer.Library.Common.DisposeAction" /> object for read lock from <see cref="T:System.Threading.ReaderWriterLockSlim" /> object.
             </summary>
-        </member>
-        <member name="M:Wanderer.Library.Extensions.StringExtensions.IsDecimal(System.String)">
-            <summary>
-            Returns true if <paramref name="s"/> contains <see cref="T:System.Decimal"/>
+      <param name="locker">
+        <see cref="T:System.Threading.ReaderWriterLockSlim" /> object</param>
+      <returns>
+        <see cref="T:Wanderer.Library.Common.DisposeAction" /> object</returns>
+      <requires exception="T:System.ArgumentNullException" csharp="locker != null" vb="locker &lt;&gt; Nothing">locker != null</requires>
+      <exception cref="T:System.ArgumentNullException">locker == null</exception>
+    </member>
+    <member name="M:System.Threading.ReaderWriterLockSlimExtensions.GetUpgradeableReadLock(System.Threading.ReaderWriterLockSlim)">
+      <summary>
+            Get a <see cref="T:Wanderer.Library.Common.DisposeAction" /> object for upgradeable read lock from <see cref="T:System.Threading.ReaderWriterLockSlim" /> object.
             </summary>
-        </member>
-        <member name="T:System.Threading.ReaderWriterLockSlimExtensions">
-            <summary>
-            Extension methods for using <see cref="T:System.Threading.ReaderWriterLockSlim"/> class with <see cref="T:Wanderer.Library.Common.DisposeAction"/>.
+      <param name="locker">
+        <see cref="T:System.Threading.ReaderWriterLockSlim" /> object</param>
+      <returns>
+        <see cref="T:Wanderer.Library.Common.DisposeAction" /> object</returns>
+      <requires exception="T:System.ArgumentNullException" csharp="locker != null" vb="locker &lt;&gt; Nothing">locker != null</requires>
+      <exception cref="T:System.ArgumentNullException">locker == null</exception>
+    </member>
+    <member name="M:System.Threading.ReaderWriterLockSlimExtensions.GetWriteLock(System.Threading.ReaderWriterLockSlim)">
+      <summary>
+            Get a <see cref="T:Wanderer.Library.Common.DisposeAction" /> object for write lock from <see cref="T:System.Threading.ReaderWriterLockSlim" /> object.
             </summary>
-        </member>
-        <member name="M:System.Threading.ReaderWriterLockSlimExtensions.GetReadLock(System.Threading.ReaderWriterLockSlim)">
-            <summary>
-            Get a <see cref="T:Wanderer.Library.Common.DisposeAction"/> object for read lock from <see cref="T:System.Threading.ReaderWriterLockSlim"/> object.
-            </summary>
-            <param name="locker"><see cref="T:System.Threading.ReaderWriterLockSlim"/> object</param>
-            <returns><see cref="T:Wanderer.Library.Common.DisposeAction"/> object</returns>
-        </member>
-        <member name="M:System.Threading.ReaderWriterLockSlimExtensions.GetUpgradeableReadLock(System.Threading.ReaderWriterLockSlim)">
-            <summary>
-            Get a <see cref="T:Wanderer.Library.Common.DisposeAction"/> object for upgradeable read lock from <see cref="T:System.Threading.ReaderWriterLockSlim"/> object.
-            </summary>
-            <param name="locker"><see cref="T:System.Threading.ReaderWriterLockSlim"/> object</param>
-            <returns><see cref="T:Wanderer.Library.Common.DisposeAction"/> object</returns>
-        </member>
-        <member name="M:System.Threading.ReaderWriterLockSlimExtensions.GetWriteLock(System.Threading.ReaderWriterLockSlim)">
-            <summary>
-            Get a <see cref="T:Wanderer.Library.Common.DisposeAction"/> object for write lock from <see cref="T:System.Threading.ReaderWriterLockSlim"/> object.
-            </summary>
-            <param name="locker"><see cref="T:System.Threading.ReaderWriterLockSlim"/> object</param>
-            <returns><see cref="T:Wanderer.Library.Common.DisposeAction"/> object</returns>
-        </member>
-    </members>
+      <param name="locker">
+        <see cref="T:System.Threading.ReaderWriterLockSlim" /> object</param>
+      <returns>
+        <see cref="T:Wanderer.Library.Common.DisposeAction" /> object</returns>
+      <requires exception="T:System.ArgumentNullException" csharp="locker != null" vb="locker &lt;&gt; Nothing">locker != null</requires>
+      <exception cref="T:System.ArgumentNullException">locker == null</exception>
+    </member>
+  </members>
 </doc>

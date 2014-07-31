@@ -1,8 +1,7 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <doc>
-    <assembly>
-        <name>Wanderer.Library.Math</name>
-    </assembly>
-    <members>
-    </members>
+  <assembly>
+    <name>Wanderer.Library.Math</name>
+  </assembly>
+  <members />
 </doc>
