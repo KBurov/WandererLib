@@ -15,8 +15,7 @@ namespace Wanderer.Library.Common
         private readonly string _servicePack;
         private readonly bool _is64BitPlatform;
 
-        private volatile string _versionString;
-        private readonly object _versionStringLock = new object();
+        private readonly Lazy<string> _lazyVersionString;
         #endregion
 
         /// <summary>
@@ -47,46 +46,7 @@ namespace Wanderer.Library.Common
         /// </summary>
         /// <returns>the string representation of the values returned by the <see cref="OperatingSystemEx.Platform"/>, <see cref="OperatingSystemEx.Version"/>
         /// and <see cref="OperatingSystemEx.ServicePack"/> properties</returns>
-        public string VersionString
-        {
-            get
-            {
-                if (_versionString == null) {
-                    lock (_versionStringLock) {
-                        if (_versionString == null) {
-                            string str;
-
-                            switch (_platform) {
-                                case PlatformID.Win32S:
-                                    str = "Microsoft Win32S ";
-                                    break;
-                                case PlatformID.Win32Windows:
-                                    str = _version.Major > 4 || _version.Major == 4 && _version.Minor > 0
-                                        ? "Microsoft Windows 98 "
-                                        : "Microsoft Windows 95 ";
-                                    break;
-                                case PlatformID.Win32NT:
-                                    str = "Microsoft Windows NT ";
-                                    break;
-                                case PlatformID.WinCE:
-                                    str = "Microsoft Windows CE ";
-                                    break;
-                                case PlatformID.MacOSX:
-                                    str = "Mac OS X ";
-                                    break;
-                                default:
-                                    str = "<unknown> ";
-                                    break;
-                            }
-
-                            _versionString = !string.IsNullOrEmpty(_servicePack) ? str + _version.ToString(3) + " " + _servicePack : str + _version;
-                        }
-                    }
-                }
-
-                return _versionString;
-            }
-        }
+        public string VersionString { get { return _lazyVersionString.Value; } }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OperatingSystemEx"/> class, using the specified platform identifier value, version object and service pack string.
@@ -99,13 +59,15 @@ namespace Wanderer.Library.Common
         /// <exception cref="ArgumentNullException"><paramref name="version"/> is null</exception>
         public OperatingSystemEx(PlatformID platform, Version version, string servicePack, bool is64BitPlatform)
         {
-            Contract.Requires<ArgumentException>(platform >= PlatformID.Win32S && platform <= PlatformID.MacOSX);
-            Contract.Requires<ArgumentNullException>(version != null);
+            Contract.Requires<ArgumentException>(Enum.IsDefined(typeof (PlatformID), platform), "platform contains incorrect value");
+            Contract.Requires<ArgumentNullException>(version != null, "version cannot be null");
+            Contract.Ensures(Version != null);
 
             _platform = platform;
             _version = version;
             _servicePack = servicePack;
             _is64BitPlatform = is64BitPlatform;
+            _lazyVersionString = new Lazy<string>(() => GetVersionString(_platform, _version, _servicePack));
         }
 
         /// <summary>
@@ -116,6 +78,36 @@ namespace Wanderer.Library.Common
         public override string ToString()
         {
             return VersionString;
+        }
+
+        private static string GetVersionString(PlatformID platform, Version version, string servicePack)
+        {
+            string str;
+
+            switch (platform) {
+                case PlatformID.Win32S:
+                    str = "Microsoft Win32S ";
+                    break;
+                case PlatformID.Win32Windows:
+                    str = version.Major > 4 || version.Major == 4 && version.Minor > 0
+                              ? "Microsoft Windows 98 "
+                              : "Microsoft Windows 95 ";
+                    break;
+                case PlatformID.Win32NT:
+                    str = "Microsoft Windows NT ";
+                    break;
+                case PlatformID.WinCE:
+                    str = "Microsoft Windows CE ";
+                    break;
+                case PlatformID.MacOSX:
+                    str = "Mac OS X ";
+                    break;
+                default:
+                    str = "<unknown> ";
+                    break;
+            }
+
+            return !string.IsNullOrEmpty(servicePack) ? str + version.ToString(3) + " " + servicePack : str + version;
         }
     }
 }
