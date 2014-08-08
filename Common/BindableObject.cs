@@ -91,7 +91,7 @@ namespace Wanderer.Library.Common
         /// <param name="propertyName">The property which was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
         {
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(propertyName), "propertyName cannot be null or empty");
+            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(propertyName), "propertyName cannot be null or empty");
 
             VerifyPropertyName(propertyName);
 
@@ -105,7 +105,7 @@ namespace Wanderer.Library.Common
 
         internal void RaisePropertyChangedNotVerified(string propertyName)
         {
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(propertyName), "propertyName cannot be null or empty");
+            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(propertyName), "propertyName cannot be null or empty");
 
             var propertyChanged = PropertyChanged;
 
