@@ -23,8 +23,8 @@ namespace Wanderer.Library.Common
         private const string ErrorMessage = "{0} is not a public property of {1}";
 
         #region Variables
-        private static readonly IDictionary<string, PropertyChangedEventArgs> _eventArgCache;
-        private static readonly object _eventArgCacheSync = new object();
+        private static readonly IDictionary<string, PropertyChangedEventArgs> EventArgCache;
+        private static readonly object EventArgCacheSync = new object();
         #endregion
 
         #region INotifyPropertyChanged implementation
@@ -41,7 +41,7 @@ namespace Wanderer.Library.Common
         /// </summary>
         static BindableObject()
         {
-            _eventArgCache = new Dictionary<string, PropertyChangedEventArgs>();
+            EventArgCache = new Dictionary<string, PropertyChangedEventArgs>();
         }
 
         /// <summary>
@@ -62,11 +62,11 @@ namespace Wanderer.Library.Common
         {
             PropertyChangedEventArgs result;
 
-            lock (_eventArgCacheSync)
+            lock (EventArgCacheSync)
             {
-                if (!_eventArgCache.TryGetValue(propertyName, out result))
+                if (!EventArgCache.TryGetValue(propertyName, out result))
                 {
-                    _eventArgCache.Add(
+                    EventArgCache.Add(
                         propertyName,
                         result = new PropertyChangedEventArgs(propertyName));
                 }
