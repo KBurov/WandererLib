@@ -46,8 +46,8 @@
             regardless of whether the event was raised or not.
             </summary>
       <param name="propertyName">The property which was changed.</param>
-      <requires description="propertyName cannot be null or empty" exception="T:System.ArgumentException" csharp="!IsNullOrEmpty(propertyName)" vb="Not IsNullOrEmpty(propertyName)">!string.IsNullOrEmpty(propertyName)</requires>
-      <exception cref="T:System.ArgumentException">string.IsNullOrEmpty(propertyName)</exception>
+      <requires description="propertyName cannot be null or empty" exception="T:System.ArgumentException" csharp="!IsNullOrWhiteSpace(propertyName)" vb="Not IsNullOrWhiteSpace(propertyName)">!string.IsNullOrWhiteSpace(propertyName)</requires>
+      <exception cref="T:System.ArgumentException">string.IsNullOrWhiteSpace(propertyName)</exception>
     </member>
     <member name="E:Wanderer.Library.Common.BindableObject.PropertyChanged">
       <summary>
@@ -84,7 +84,7 @@
       <param name="disposeAction">action that should be called in <see cref="M:System.IDisposable.Dispose" /> method</param>
       <exception cref="T:System.ArgumentNullException">
         <paramref name="disposeAction" /> is null</exception>
-      <requires exception="T:System.ArgumentNullException" csharp="disposeAction != null" vb="disposeAction &lt;&gt; Nothing">disposeAction != null</requires>
+      <requires description="disposeAction cannot be null" exception="T:System.ArgumentNullException" csharp="disposeAction != null" vb="disposeAction &lt;&gt; Nothing">disposeAction != null</requires>
       <exception cref="T:System.ArgumentNullException">disposeAction == null</exception>
       <ensures csharp="this._disposeAction != null" vb="Me._disposeAction &lt;&gt; Nothing">this._disposeAction != null</ensures>
     </member>
@@ -179,8 +179,8 @@
       <ensures csharp="this._disposed" vb="Me._disposed">this._disposed</ensures>
     </member>
     <member name="M:Wanderer.Library.Common.BindableObject.RaisePropertyChangedNotVerified(System.String)">
-      <requires description="propertyName cannot be null or empty" exception="T:System.ArgumentException" csharp="!IsNullOrEmpty(propertyName)" vb="Not IsNullOrEmpty(propertyName)">!string.IsNullOrEmpty(propertyName)</requires>
-      <exception cref="T:System.ArgumentException">string.IsNullOrEmpty(propertyName)</exception>
+      <requires description="propertyName cannot be null or empty" exception="T:System.ArgumentException" csharp="!IsNullOrWhiteSpace(propertyName)" vb="Not IsNullOrWhiteSpace(propertyName)">!string.IsNullOrWhiteSpace(propertyName)</requires>
+      <exception cref="T:System.ArgumentException">string.IsNullOrWhiteSpace(propertyName)</exception>
     </member>
   </members>
 </doc>
