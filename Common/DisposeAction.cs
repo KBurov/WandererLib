@@ -43,7 +43,7 @@ namespace Wanderer.Library.Common
         /// <exception cref="ArgumentNullException"><paramref name="disposeAction"/> is null</exception>
         public DisposeAction(Action disposeAction)
         {
-            Contract.Requires<ArgumentNullException>(disposeAction != null);
+            Contract.Requires<ArgumentNullException>(disposeAction != null, "disposeAction cannot be null");
             Contract.Ensures(_disposeAction != null);
 
             _disposeAction = disposeAction;
