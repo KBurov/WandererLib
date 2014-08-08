@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Wanderer")]
 [assembly: AssemblyProduct("Wanderer.Library.Extensions.UnitTests")]
-[assembly: AssemblyCopyright("Copyright © Wanderer 2012")]
+[assembly: AssemblyCopyright("Copyright © Wanderer 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
