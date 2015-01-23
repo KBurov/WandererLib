@@ -17,7 +17,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         private const int CpuUsageResetIntervalInMs = 2000;
 
         #region Variables
-        private readonly List<IProcessWatcher> _watchList;
+        private readonly IList<IProcessWatcher> _watchList;
         private readonly ReaderWriterLockSlim _watchListLocker;
         private readonly Timer _watchingTimer;
 
@@ -104,8 +104,8 @@ namespace Wanderer.Library.WindowsApi.Helpers
                 for (var i = _watchList.Count - 1;i >= 0;i--) {
                     var processWatcher = _watchList[i];
                     // Check if the process has exited
-                    if (processWatcher.WatchedProcess.Process.HasExited) // Remove this process watcher from the watch list
-                    {
+                    if (processWatcher.WatchedProcess.Process.HasExited) {
+                        // Remove this process watcher from the watch list
                         using (_watchListLocker.GetWriteLock()) {
                             _watchList.RemoveAt(i);
                             processWatcher.Dispose();
