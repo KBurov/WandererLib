@@ -20,7 +20,7 @@ namespace Wanderer.Library.Functional.Monads
         /// <typeparam name="TValue"></typeparam>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static Maybe<TValue> From<TValue>(TValue value)
+        public static Maybe<TValue> From<TValue>(TValue value) where TValue : class
         {
             return new Maybe<TValue>(value);
         }
@@ -109,7 +109,7 @@ namespace Wanderer.Library.Functional.Monads
     /// </summary>
     /// <typeparam name="TValue"></typeparam>
     [DebuggerStepThrough]
-    public struct Maybe<TValue>
+    public struct Maybe<TValue> where TValue : class
     {
         private readonly TValue _value;
         private readonly bool _isSome;
@@ -146,7 +146,7 @@ namespace Wanderer.Library.Functional.Monads
         /// <typeparam name="TResult"></typeparam>
         /// <param name="func"></param>
         /// <returns></returns>
-        public Maybe<TResult> With<TResult>(Func<TValue, TResult> func)
+        public Maybe<TResult> With<TResult>(Func<TValue, TResult> func) where TResult : class
         {
             Contract.Requires<ArgumentNullException>(func != null, Maybe.FuncArgumentErrorMessage);
 
@@ -159,7 +159,7 @@ namespace Wanderer.Library.Functional.Monads
         /// <typeparam name="TResult"></typeparam>
         /// <param name="func"></param>
         /// <returns></returns>
-        public Maybe<TResult> With<TResult>(Func<TValue, Maybe<TResult>> func)
+        public Maybe<TResult> With<TResult>(Func<TValue, Maybe<TResult>> func) where TResult : class
         {
             Contract.Requires<ArgumentNullException>(func != null, Maybe.FuncArgumentErrorMessage);
 
@@ -177,8 +177,8 @@ namespace Wanderer.Library.Functional.Monads
         /// <returns></returns>
         public TResult Match<TResult>(Func<TResult> none, Func<TValue, TResult> some)
         {
-            Contract.Requires<ArgumentNullException>(none != null, "none cannot be null");
-            Contract.Requires<ArgumentNullException>(some != null, "some cannot be null");
+            Contract.Requires<ArgumentNullException>(none != null, Maybe.NoneFuncArgumentErrorMessage);
+            Contract.Requires<ArgumentNullException>(some != null, Maybe.SomeFuncArgumentErrorMessage);
 
             return IsSome ? some(_value) : none();
         }
@@ -192,7 +192,7 @@ namespace Wanderer.Library.Functional.Monads
         /// <returns></returns>
         public TResult Match<TResult>(TResult noneValue, Func<TValue, TResult> some)
         {
-            Contract.Requires<ArgumentNullException>(some != null, "some cannot be null");
+            Contract.Requires<ArgumentNullException>(some != null, Maybe.SomeFuncArgumentErrorMessage);
 
             return IsSome ? some(_value) : noneValue;
         }
@@ -204,8 +204,8 @@ namespace Wanderer.Library.Functional.Monads
         /// <param name="some"></param>
         public void Match(Action none, Action<TValue> some)
         {
-            Contract.Requires<ArgumentNullException>(none != null, "none cannot be null");
-            Contract.Requires<ArgumentNullException>(some != null, "some cannot be null");
+            Contract.Requires<ArgumentNullException>(none != null, Maybe.NoneFuncArgumentErrorMessage);
+            Contract.Requires<ArgumentNullException>(some != null, Maybe.SomeFuncArgumentErrorMessage);
 
             if (IsSome) {
                 some(_value);
