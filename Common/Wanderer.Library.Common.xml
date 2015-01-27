@@ -175,6 +175,35 @@
       <returns>the string representation of the values returned by the <see cref="P:Wanderer.Library.Common.OperatingSystemEx.Platform" />, <see cref="P:Wanderer.Library.Common.OperatingSystemEx.Version" />
             and <see cref="P:Wanderer.Library.Common.OperatingSystemEx.ServicePack" /> properties</returns>
     </member>
+    <member name="T:Wanderer.Library.Common.Retry">
+      <summary>
+            Implements simple retry logic for common actions.
+            </summary>
+    </member>
+    <member name="M:Wanderer.Library.Common.Retry.Times(System.Action,System.UInt32,System.Nullable{System.UInt32})">
+      <summary>
+            Repeat action <paramref name="numberOfRetries" /> times with <paramref name="millisecondsTimeout" /> delay.
+            </summary>
+      <param name="action">repeatable action</param>
+      <param name="numberOfRetries">number of times to repeat</param>
+      <param name="millisecondsTimeout">delay between repeating action</param>
+      <requires description="action cannot be null" exception="T:System.ArgumentNullException" csharp="action != null" vb="action &lt;&gt; Nothing">action != null</requires>
+      <exception cref="T:System.ArgumentNullException">action == null</exception>
+    </member>
+    <member name="M:Wanderer.Library.Common.Retry.Times``1(System.Func{``0},System.UInt32,System.Nullable{System.UInt32})">
+      <summary>
+            Repeat func <paramref name="numberOfRetries" /> times with <paramref name="millisecondsTimeout" /> delay.
+            </summary>
+      <typeparam name="T">type of func result</typeparam>
+      <param name="func">repeatable func</param>
+      <param name="numberOfRetries">number of times to repeat</param>
+      <param name="millisecondsTimeout">delay between repeating action</param>
+      <returns>func result</returns>
+      <requires description="func cannot be null" exception="T:System.ArgumentNullException" csharp="func != null" vb="func &lt;&gt; Nothing">func != null</requires>
+      <exception cref="T:System.ArgumentNullException">func == null</exception>
+      <requires description="numberOfRetries should be greater than 0" exception="T:System.ArgumentException" csharp="numberOfRetries &gt; uint0" vb="numberOfRetries &gt; UInteger 0">numberOfRetries &gt; uint0</requires>
+      <exception cref="T:System.ArgumentException">numberOfRetries &lt;= 0</exception>
+    </member>
     <member name="M:Wanderer.Library.Common.DisposeAction.Dispose(System.Boolean)">
       <ensures csharp="this._disposed" vb="Me._disposed">this._disposed</ensures>
     </member>

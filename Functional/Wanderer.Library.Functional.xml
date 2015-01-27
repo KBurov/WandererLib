@@ -9,24 +9,83 @@
     </member>
     <member name="M:Wanderer.Library.Functional.Monads.Maybe.From``1(``0)">
       <summary />
-      <typeparam name="T" />
+      <typeparam name="TValue" />
       <param name="value" />
+      <returns />
+    </member>
+    <member name="M:Wanderer.Library.Functional.Monads.Maybe.With``2(``0,System.Func{``0,``1})">
+      <summary />
+      <typeparam name="TInput" />
+      <typeparam name="TResult" />
+      <param name="o" />
+      <param name="func" />
+      <returns />
+      <requires description="func cannot be null" exception="T:System.ArgumentNullException" csharp="func != null" vb="func &lt;&gt; Nothing">func != null</requires>
+      <exception cref="T:System.ArgumentNullException">func == null</exception>
+    </member>
+    <member name="M:Wanderer.Library.Functional.Monads.Maybe.Math``2(``0,System.Func{``1},System.Func{``0,``1})">
+      <summary />
+      <typeparam name="TInput" />
+      <typeparam name="TResult" />
+      <param name="o" />
+      <param name="none" />
+      <param name="some" />
+      <returns />
+      <requires description="none cannot be null" exception="T:System.ArgumentNullException" csharp="none != null" vb="none &lt;&gt; Nothing">none != null</requires>
+      <exception cref="T:System.ArgumentNullException">none == null</exception>
+      <requires description="some cannot be null" exception="T:System.ArgumentNullException" csharp="some != null" vb="some &lt;&gt; Nothing">some != null</requires>
+      <exception cref="T:System.ArgumentNullException">some == null</exception>
+    </member>
+    <member name="M:Wanderer.Library.Functional.Monads.Maybe.Math``2(``0,``1,System.Func{``0,``1})">
+      <summary />
+      <typeparam name="TInput" />
+      <typeparam name="TResult" />
+      <param name="o" />
+      <param name="noneValue" />
+      <param name="some" />
+      <returns />
+      <requires description="some cannot be null" exception="T:System.ArgumentNullException" csharp="some != null" vb="some &lt;&gt; Nothing">some != null</requires>
+      <exception cref="T:System.ArgumentNullException">some == null</exception>
+    </member>
+    <member name="M:Wanderer.Library.Functional.Monads.Maybe.Match``1(``0,System.Action,System.Action{``0})">
+      <summary />
+      <typeparam name="TInput" />
+      <param name="o" />
+      <param name="none" />
+      <param name="some" />
+    </member>
+    <member name="M:Wanderer.Library.Functional.Monads.Maybe.ReturnSuccess``1(``0)">
+      <summary />
+      <typeparam name="TInput" />
+      <param name="o" />
       <returns />
     </member>
     <member name="T:Wanderer.Library.Functional.Monads.Maybe`1">
       <summary />
-      <typeparam name="T" />
+      <typeparam name="TValue" />
     </member>
     <member name="F:Wanderer.Library.Functional.Monads.Maybe`1.None">
-      <summary />
+      <summary>
+            Empty value.
+            </summary>
     </member>
     <member name="M:Wanderer.Library.Functional.Monads.Maybe`1.#ctor(`0)">
-      <summary />
+      <summary>
+            Initialize constructor.
+            </summary>
       <param name="value" />
     </member>
-    <member name="M:Wanderer.Library.Functional.Monads.Maybe`1.Bind``1(System.Func{`0,Wanderer.Library.Functional.Monads.Maybe{``0}})">
+    <member name="M:Wanderer.Library.Functional.Monads.Maybe`1.With``1(System.Func{`0,``0})">
       <summary />
-      <typeparam name="A" />
+      <typeparam name="TResult" />
+      <param name="func" />
+      <returns />
+      <requires description="func cannot be null" exception="T:System.ArgumentNullException" csharp="func != null" vb="func &lt;&gt; Nothing">func != null</requires>
+      <exception cref="T:System.ArgumentNullException">func == null</exception>
+    </member>
+    <member name="M:Wanderer.Library.Functional.Monads.Maybe`1.With``1(System.Func{`0,Wanderer.Library.Functional.Monads.Maybe{``0}})">
+      <summary />
+      <typeparam name="TResult" />
       <param name="func" />
       <returns />
       <requires description="func cannot be null" exception="T:System.ArgumentNullException" csharp="func != null" vb="func &lt;&gt; Nothing">func != null</requires>
@@ -34,12 +93,21 @@
     </member>
     <member name="M:Wanderer.Library.Functional.Monads.Maybe`1.Match``1(System.Func{``0},System.Func{`0,``0})">
       <summary />
-      <typeparam name="A" />
+      <typeparam name="TResult" />
       <param name="none" />
       <param name="some" />
       <returns />
       <requires description="none cannot be null" exception="T:System.ArgumentNullException" csharp="none != null" vb="none &lt;&gt; Nothing">none != null</requires>
       <exception cref="T:System.ArgumentNullException">none == null</exception>
+      <requires description="some cannot be null" exception="T:System.ArgumentNullException" csharp="some != null" vb="some &lt;&gt; Nothing">some != null</requires>
+      <exception cref="T:System.ArgumentNullException">some == null</exception>
+    </member>
+    <member name="M:Wanderer.Library.Functional.Monads.Maybe`1.Match``1(``0,System.Func{`0,``0})">
+      <summary />
+      <typeparam name="TResult" />
+      <param name="noneValue" />
+      <param name="some" />
+      <returns />
       <requires description="some cannot be null" exception="T:System.ArgumentNullException" csharp="some != null" vb="some &lt;&gt; Nothing">some != null</requires>
       <exception cref="T:System.ArgumentNullException">some == null</exception>
     </member>
