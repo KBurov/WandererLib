@@ -90,6 +90,9 @@
   <ItemGroup>
     <Compile Include="given_DisposeAction\with_not_null_action\when_call_dispose.cs" />
     <Compile Include="given_DisposeAction\with_null_action\when_call_constructor.cs" />
+    <Compile Include="given_Retry\with_not_null_action\with_numberOfRetries_equal_zero\when_call_times.cs" />
+    <Compile Include="given_Retry\with_not_null_action\with_numberOfRetries_greater_than_zero\when_call_times.cs" />
+    <Compile Include="given_Retry\with_null_action\when_call_times.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
