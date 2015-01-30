@@ -10,6 +10,7 @@ namespace System.Threading
     /// </summary>
     public static class ReaderWriterLockSlimExtensions
     {
+        private const string LockerNullErrorMessage = "locker cannot be null";
         /// <summary>
         /// Get a <see cref="DisposeAction"/> object for read lock from <see cref="ReaderWriterLockSlim"/> object.
         /// </summary>
@@ -17,7 +18,7 @@ namespace System.Threading
         /// <returns><see cref="DisposeAction"/> object</returns>
         public static IDisposable GetReadLock(this ReaderWriterLockSlim locker)
         {
-            Contract.Requires<ArgumentNullException>(locker != null);
+            Contract.Requires<ArgumentNullException>(locker != null, LockerNullErrorMessage);
 
             locker.EnterReadLock();
 
@@ -31,7 +32,7 @@ namespace System.Threading
         /// <returns><see cref="DisposeAction"/> object</returns>
         public static IDisposable GetUpgradeableReadLock(this ReaderWriterLockSlim locker)
         {
-            Contract.Requires<ArgumentNullException>(locker != null);
+            Contract.Requires<ArgumentNullException>(locker != null, LockerNullErrorMessage);
 
             locker.EnterUpgradeableReadLock();
 
@@ -45,7 +46,7 @@ namespace System.Threading
         /// <returns><see cref="DisposeAction"/> object</returns>
         public static IDisposable GetWriteLock(this ReaderWriterLockSlim locker)
         {
-            Contract.Requires<ArgumentNullException>(locker != null);
+            Contract.Requires<ArgumentNullException>(locker != null, LockerNullErrorMessage);
 
             locker.EnterWriteLock();
 
