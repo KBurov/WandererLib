@@ -1,182 +1,186 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <doc>
-    <assembly>
-        <name>Wanderer.Library.Wpf</name>
-    </assembly>
-    <members>
-        <member name="T:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior">
-            <summary>
-            <see cref="T:System.Windows.Controls.TextBox"/> attached properties with some special behavior.
+  <assembly>
+    <name>Wanderer.Library.Wpf</name>
+  </assembly>
+  <members>
+    <member name="T:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior">
+      <summary>
+        <see cref="T:System.Windows.Controls.TextBox" /> attached properties with some special behavior.
             </summary>
-        </member>
-        <member name="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsInt32Property">
-            <summary>
-            Attached property that restricts <see cref="T:System.Windows.Controls.TextBox"/> input only <see cref="T:System.Int32"/> numbers.
+    </member>
+    <member name="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsInt32Property">
+      <summary>
+            Attached property that restricts <see cref="T:System.Windows.Controls.TextBox" /> input only <see cref="T:System.Int32" /> numbers.
             </summary>
-            <remarks>
-            This attached property works only for <see cref="T:System.Windows.Controls.TextBox"/> or for its descendants.
+      <remarks>
+            This attached property works only for <see cref="T:System.Windows.Controls.TextBox" /> or for its descendants.
             </remarks>
-        </member>
-        <member name="M:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.GetIsInt32(System.Windows.DependencyObject)">
-            <summary>
-            Gets value for <see cref="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsInt32Property"/> property.
+    </member>
+    <member name="M:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.GetIsInt32(System.Windows.DependencyObject)">
+      <summary>
+            Gets value for <see cref="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsInt32Property" /> property.
             </summary>
-        </member>
-        <member name="M:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.SetIsInt32(System.Windows.DependencyObject,System.Boolean)">
-            <summary>
-            Sets value for <see cref="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsInt32Property"/> property.
+    </member>
+    <member name="M:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.SetIsInt32(System.Windows.DependencyObject,System.Boolean)">
+      <summary>
+            Sets value for <see cref="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsInt32Property" /> property.
             </summary>
-        </member>
-        <member name="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsUInt32Property">
-            <summary>
-            Attached property that restricts <see cref="T:System.Windows.Controls.TextBox"/> input only <see cref="T:System.UInt32"/> numbers.
+    </member>
+    <member name="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsUInt32Property">
+      <summary>
+            Attached property that restricts <see cref="T:System.Windows.Controls.TextBox" /> input only <see cref="T:System.UInt32" /> numbers.
             </summary>
-            <remarks>
-            This attached property works only for <see cref="T:System.Windows.Controls.TextBox"/> or for its descendants.
+      <remarks>
+            This attached property works only for <see cref="T:System.Windows.Controls.TextBox" /> or for its descendants.
             </remarks>
-        </member>
-        <member name="M:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.GetIsUInt32(System.Windows.DependencyObject)">
-            <summary>
-            Gets value for <see cref="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsUInt32Property"/> property.
+    </member>
+    <member name="M:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.GetIsUInt32(System.Windows.DependencyObject)">
+      <summary>
+            Gets value for <see cref="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsUInt32Property" /> property.
             </summary>
-        </member>
-        <member name="M:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.SetIsUInt32(System.Windows.DependencyObject,System.Boolean)">
-            <summary>
-            Sets value for <see cref="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsUInt32Property"/> property.
+    </member>
+    <member name="M:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.SetIsUInt32(System.Windows.DependencyObject,System.Boolean)">
+      <summary>
+            Sets value for <see cref="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsUInt32Property" /> property.
             </summary>
-        </member>
-        <member name="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsDecimalProperty">
-            <summary>
-            Attached property that restricts <see cref="T:System.Windows.Controls.TextBox"/> input only <see cref="T:System.Decimal"/> numbers.
+    </member>
+    <member name="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsDecimalProperty">
+      <summary>
+            Attached property that restricts <see cref="T:System.Windows.Controls.TextBox" /> input only <see cref="T:System.Decimal" /> numbers.
             </summary>
-            <remarks>
-            This attached property works only for <see cref="T:System.Windows.Controls.TextBox"/> or for its descendants.
+      <remarks>
+            This attached property works only for <see cref="T:System.Windows.Controls.TextBox" /> or for its descendants.
             </remarks>
-        </member>
-        <member name="M:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.GetIsDecimal(System.Windows.DependencyObject)">
-            <summary>
-            Gets value for <see cref="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsDecimalProperty"/> property.
+    </member>
+    <member name="M:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.GetIsDecimal(System.Windows.DependencyObject)">
+      <summary>
+            Gets value for <see cref="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsDecimalProperty" /> property.
             </summary>
-        </member>
-        <member name="M:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.SetIsDecimal(System.Windows.DependencyObject,System.Boolean)">
-            <summary>
-            Sets value for <see cref="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsDecimalProperty"/> property.
+    </member>
+    <member name="M:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.SetIsDecimal(System.Windows.DependencyObject,System.Boolean)">
+      <summary>
+            Sets value for <see cref="F:Wanderer.Library.Wpf.Behaviors.TextBoxBehavior.IsDecimalProperty" /> property.
             </summary>
-        </member>
-        <member name="T:Wanderer.Library.Wpf.Controls.DropDownButton">
-            <summary>
-            Extended <see cref="T:System.Windows.Controls.Primitives.ToggleButton"/> with drop-down menu.
+    </member>
+    <member name="T:Wanderer.Library.Wpf.Controls.DropDownButton">
+      <summary>
+            Extended <see cref="T:System.Windows.Controls.Primitives.ToggleButton" /> with drop-down menu.
             </summary>
-        </member>
-        <member name="F:Wanderer.Library.Wpf.Controls.DropDownButton.DropDownProperty">
-            <summary>
-            Attached property for <see cref="P:Wanderer.Library.Wpf.Controls.DropDownButton.DropDown"/>.
+    </member>
+    <member name="F:Wanderer.Library.Wpf.Controls.DropDownButton.DropDownProperty">
+      <summary>
+            Attached property for <see cref="P:Wanderer.Library.Wpf.Controls.DropDownButton.DropDown" />.
             </summary>
-        </member>
-        <member name="P:Wanderer.Library.Wpf.Controls.DropDownButton.DropDownPlacement">
-            <summary>
+    </member>
+    <member name="P:Wanderer.Library.Wpf.Controls.DropDownButton.DropDownPlacement">
+      <summary>
             Describes the position of drop-down menu.
             </summary>
-        </member>
-        <member name="P:Wanderer.Library.Wpf.Controls.DropDownButton.DropDown">
-            <summary>
-            The <see cref="T:System.Windows.Controls.ContextMenu"/> object for drop-down menu.
+    </member>
+    <member name="P:Wanderer.Library.Wpf.Controls.DropDownButton.DropDown">
+      <summary>
+            The <see cref="T:System.Windows.Controls.ContextMenu" /> object for drop-down menu.
             </summary>
-        </member>
-        <member name="T:Wanderer.Library.Wpf.Controls.DropDownButton.Placement">
-            <summary>
+    </member>
+    <member name="T:Wanderer.Library.Wpf.Controls.DropDownButton.Placement">
+      <summary>
             Describes the position of drop-down menu.
             </summary>
-        </member>
-        <member name="F:Wanderer.Library.Wpf.Controls.DropDownButton.Placement.Bottom">
-            <summary>
+    </member>
+    <member name="F:Wanderer.Library.Wpf.Controls.DropDownButton.Placement.Bottom">
+      <summary>
             Drop-down menu appears at the bottom of button.
             </summary>
-        </member>
-        <member name="F:Wanderer.Library.Wpf.Controls.DropDownButton.Placement.Right">
-            <summary>
+    </member>
+    <member name="F:Wanderer.Library.Wpf.Controls.DropDownButton.Placement.Right">
+      <summary>
             Drop-down menu appears from the right side of the button.
             </summary>
-        </member>
-        <member name="T:Wanderer.Library.Wpf.Markup.EnumerationExtension">
-            <summary>
+    </member>
+    <member name="T:Wanderer.Library.Wpf.Markup.EnumerationExtension">
+      <summary>
             Helps to use enumeration type as items source.
             </summary>
-        </member>
-        <member name="M:Wanderer.Library.Wpf.Markup.EnumerationExtension.#ctor(System.Type)">
-            <summary>
+    </member>
+    <member name="M:Wanderer.Library.Wpf.Markup.EnumerationExtension.#ctor(System.Type)">
+      <summary>
             Initialization constructor.
             </summary>
-            <param name="enumType">enumeration type</param>
-        </member>
-        <member name="M:Wanderer.Library.Wpf.Markup.EnumerationExtension.ProvideValue(System.IServiceProvider)">
-            <summary>
-            Returns array of <see cref="T:Wanderer.Library.Wpf.Markup.EnumerationExtension.EnumerationMember"/> that corresponds target enum values.
+      <param name="enumType">enumeration type</param>
+      <requires description="enumType" exception="T:System.ArgumentNullException" csharp="enumType != (System.Type)null" vb="enumType &lt;&gt; ((System.Type)Nothing) ">enumType != (System.Type)null</requires>
+      <exception cref="T:System.ArgumentNullException">!enumType != (System.Type)null</exception>
+    </member>
+    <member name="M:Wanderer.Library.Wpf.Markup.EnumerationExtension.ProvideValue(System.IServiceProvider)">
+      <summary>
+            Returns array of <see cref="T:Wanderer.Library.Wpf.Markup.EnumerationExtension.EnumerationMember" /> that corresponds target enum values.
             </summary>
-            <param name="serviceProvider">a service provider helper that can provide services for the markup extension</param>
-            <returns>array of <see cref="T:Wanderer.Library.Wpf.Markup.EnumerationExtension.EnumerationMember"/> that corresponds target enum values</returns>
-        </member>
-        <member name="T:Wanderer.Library.Wpf.RelayCommand">
-            <summary>
-            Simple implementation the <see cref="T:System.Windows.Input.ICommand"/> interface and wraps up all the verbose stuff so that you can just pass two delegates:
-            one for the <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/> and second for the <see cref="M:System.Windows.Input.ICommand.Execute(System.Object)"/>.
+      <param name="serviceProvider">a service provider helper that can provide services for the markup extension</param>
+      <returns>array of <see cref="T:Wanderer.Library.Wpf.Markup.EnumerationExtension.EnumerationMember" /> that corresponds target enum values</returns>
+    </member>
+    <member name="T:Wanderer.Library.Wpf.RelayCommand">
+      <summary>
+            Simple implementation the <see cref="T:System.Windows.Input.ICommand" /> interface and wraps up all the verbose stuff so that you can just pass two delegates:
+            one for the <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)" /> and second for the <see cref="M:System.Windows.Input.ICommand.Execute(System.Object)" />.
             </summary>
-        </member>
-        <member name="M:Wanderer.Library.Wpf.RelayCommand.CanExecute(System.Object)">
-            <summary>
+    </member>
+    <member name="M:Wanderer.Library.Wpf.RelayCommand.CanExecute(System.Object)">
+      <summary>
             Checks if the command method can run.
             </summary>
-            <param name="parameter">the command parameter to be passed</param>
-            <returns>
+      <param name="parameter">the command parameter to be passed</param>
+      <returns>
             Returns true if the command can be executed.
-            By default true is returned so that if the user of <see cref="T:Wanderer.Library.Wpf.RelayCommand"/> does not specify a <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/> delegate the command still executes.
+            By default true is returned so that if the user of <see cref="T:Wanderer.Library.Wpf.RelayCommand" /> does not specify a <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)" /> delegate the command still executes.
             </returns>
-        </member>
-        <member name="M:Wanderer.Library.Wpf.RelayCommand.Execute(System.Object)">
-            <summary>
+    </member>
+    <member name="M:Wanderer.Library.Wpf.RelayCommand.Execute(System.Object)">
+      <summary>
             Executes the actual command.
             </summary>
-            <param name="parameter">the command parameter to be passed</param>
-        </member>
-        <member name="M:Wanderer.Library.Wpf.RelayCommand.#ctor(System.Action{System.Object},System.Predicate{System.Object})">
-            <summary>
+      <param name="parameter">the command parameter to be passed</param>
+    </member>
+    <member name="M:Wanderer.Library.Wpf.RelayCommand.#ctor(System.Action{System.Object},System.Predicate{System.Object})">
+      <summary>
             Initialization constructor.
             </summary>
-            <param name="execute">delegate for th <see cref="M:System.Windows.Input.ICommand.Execute(System.Object)"/></param>
-            <param name="canExecute">delegate for the <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)"/></param>
-        </member>
-        <member name="E:Wanderer.Library.Wpf.RelayCommand.CanExecuteChanged">
-            <summary>
+      <param name="execute">delegate for th <see cref="M:System.Windows.Input.ICommand.Execute(System.Object)" /></param>
+      <param name="canExecute">delegate for the <see cref="M:System.Windows.Input.ICommand.CanExecute(System.Object)" /></param>
+      <requires description="execute" exception="T:System.ArgumentNullException" csharp="execute != null" vb="execute &lt;&gt; Nothing">execute != null</requires>
+      <exception cref="T:System.ArgumentNullException">execute == null</exception>
+    </member>
+    <member name="E:Wanderer.Library.Wpf.RelayCommand.CanExecuteChanged">
+      <summary>
             Occurs when changes occur that affect whether or not the command should execute.
             </summary>
-        </member>
-        <member name="T:Wanderer.Library.Wpf.UIHelper">
-            <summary>
+    </member>
+    <member name="T:Wanderer.Library.Wpf.UIHelper">
+      <summary>
             Class with helpful methods for various UI needs.
             </summary>
-        </member>
-        <member name="M:Wanderer.Library.Wpf.UIHelper.FindChild``1(System.Windows.DependencyObject,System.String)">
-            <summary>
+    </member>
+    <member name="M:Wanderer.Library.Wpf.UIHelper.FindChild``1(System.Windows.DependencyObject,System.String)">
+      <summary>
             Finds a child of a given item in the visual tree.
             </summary>
-            <typeparam name="T">a type of the queried item</typeparam>
-            <param name="parent">a direct parent of the queried item</param>
-            <param name="childName">x:Name or Name of child</param>
-            <returns>
+      <typeparam name="T">a type of the queried item</typeparam>
+      <param name="parent">a direct parent of the queried item</param>
+      <param name="childName">x:Name or Name of child</param>
+      <returns>
             The first child item that matches the submited type parameter.
             If not matching item can be found, a null parent is being returned.
             </returns>
-        </member>
-        <member name="M:Wanderer.Library.Wpf.UIHelper.FindParent``1(System.Windows.DependencyObject)">
-            <summary>
+    </member>
+    <member name="M:Wanderer.Library.Wpf.UIHelper.FindParent``1(System.Windows.DependencyObject)">
+      <summary>
             Finds a parent a given item in the visual tree.
             </summary>
-            <typeparam name="T">a type of the queried item</typeparam>
-            <param name="child">a direct or indirect child of the queried item</param>
-            <returns>
+      <typeparam name="T">a type of the queried item</typeparam>
+      <param name="child">a direct or indirect child of the queried item</param>
+      <returns>
             The first parent item that matches the submited type parameter.
             If not matching item can be found, a null parent is being returned.
             </returns>
-        </member>
-    </members>
+    </member>
+  </members>
 </doc>
