@@ -136,5 +136,21 @@
       <requires description="locker cannot be null" exception="T:System.ArgumentNullException" csharp="locker != null" vb="locker &lt;&gt; Nothing">locker != null</requires>
       <exception cref="T:System.ArgumentNullException">locker == null</exception>
     </member>
+    <member name="M:Wanderer.Library.Extensions.Threading.EnumerableAsyncExtentions.ParallelSelect``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Int32)">
+      <requires description="source cannot be null" exception="T:System.ArgumentNullException" csharp="source != null" vb="source &lt;&gt; Nothing">source != null</requires>
+      <exception cref="T:System.ArgumentNullException">source == null</exception>
+      <requires description="selector cannot be null" exception="T:System.ArgumentNullException" csharp="selector != null" vb="selector &lt;&gt; Nothing">selector != null</requires>
+      <exception cref="T:System.ArgumentNullException">selector == null</exception>
+      <requires description="degreeOfPrallelism cannot be less than 1" exception="T:System.ArgumentOutOfRangeException" csharp="degreeOfParallelism &lt; 1" vb="degreeOfParallelism &lt; 1">degreeOfParallelism &lt; 1</requires>
+      <exception cref="T:System.ArgumentOutOfRangeException">degreeOfParallelism &gt;= 1</exception>
+    </member>
+    <member name="M:Wanderer.Library.Extensions.Threading.EnumerableAsyncExtentions.ParallelUnorderedSelect``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Int32)">
+      <requires description="source cannot be null" exception="T:System.ArgumentNullException" csharp="source != null" vb="source &lt;&gt; Nothing">source != null</requires>
+      <exception cref="T:System.ArgumentNullException">source == null</exception>
+      <requires description="selector cannot be null" exception="T:System.ArgumentNullException" csharp="selector != null" vb="selector &lt;&gt; Nothing">selector != null</requires>
+      <exception cref="T:System.ArgumentNullException">selector == null</exception>
+      <requires description="degreeOfPrallelism cannot be less than 1" exception="T:System.ArgumentOutOfRangeException" csharp="degreeOfParallelism &lt; 1" vb="degreeOfParallelism &lt; 1">degreeOfParallelism &lt; 1</requires>
+      <exception cref="T:System.ArgumentOutOfRangeException">degreeOfParallelism &gt;= 1</exception>
+    </member>
   </members>
 </doc>
