@@ -26,6 +26,78 @@
             Extension methods to process <see cref="T:System.Collections.Generic.IEnumerable`1" /> in async way.
             </summary>
     </member>
+    <member name="M:Wanderer.Library.Extensions.Threading.EnumerableAsyncExtentions.ConsumeWithQueue``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+      <summary>
+            Consume elements from <paramref name="producer" /> in async way through internal thread-safe collection.
+            </summary>
+      <typeparam name="T">type of elements in <paramref name="producer" /></typeparam>
+      <param name="producer">source of elements for consuming</param>
+      <param name="boundedCapacity">bounded size of the internal collection</param>
+      <returns>enumeration of elements from <paramref name="producer" /></returns>
+      <requires description="producer cannot be null" exception="T:System.ArgumentNullException" csharp="producer != null" vb="producer &lt;&gt; Nothing">producer != null</requires>
+      <exception cref="T:System.ArgumentNullException">producer == null</exception>
+    </member>
+    <member name="M:Wanderer.Library.Extensions.Threading.EnumerableAsyncExtentions.ConsumeWithQueue``1(System.Collections.Generic.IEnumerable{``0},System.Threading.CancellationToken,System.Int32)">
+      <summary>
+            Consume elements from <paramref name="producer" /> in async way through internal thread-safe collection.
+            </summary>
+      <typeparam name="T">type of elements in <paramref name="producer" /></typeparam>
+      <param name="producer">source of elements for consuming</param>
+      <param name="cancellationToken">notify when cancellation is needed</param>
+      <param name="boundedCapacity">bounded size of the internal collection</param>
+      <returns>enumeration of elements from <paramref name="producer" /></returns>
+      <requires description="producer cannot be null" exception="T:System.ArgumentNullException" csharp="producer != null" vb="producer &lt;&gt; Nothing">producer != null</requires>
+      <exception cref="T:System.ArgumentNullException">producer == null</exception>
+    </member>
+    <member name="M:Wanderer.Library.Extensions.Threading.EnumerableAsyncExtentions.ConsumeWithQueue``1(System.Collections.Generic.IEnumerable{``0},System.Action{System.Int32},System.Int32)">
+      <summary>
+            Consume elements from <paramref name="producer" /> in async way through internal thread-safe collection.
+            </summary>
+      <typeparam name="T">type of elements in <paramref name="producer" /></typeparam>
+      <param name="producer">source of elements for consuming</param>
+      <param name="producedCountTracker">action to count produced elements</param>
+      <param name="boundedCapacity">bounded size of the internal collection</param>
+      <returns>enumeration of elements from <paramref name="producer" /></returns>
+      <requires description="producer cannot be null" exception="T:System.ArgumentNullException" csharp="producer != null" vb="producer &lt;&gt; Nothing">producer != null</requires>
+      <exception cref="T:System.ArgumentNullException">producer == null</exception>
+    </member>
+    <member name="M:Wanderer.Library.Extensions.Threading.EnumerableAsyncExtentions.ConsumeWithQueue``1(System.Collections.Generic.IEnumerable{``0},System.Threading.CancellationToken,System.Action{System.Int32},System.Int32)">
+      <summary>
+            Consume elements from <paramref name="producer" /> in async way through internal thread-safe collection.
+            </summary>
+      <typeparam name="T">type of elements in <paramref name="producer" /></typeparam>
+      <param name="producer">source of elements for consuming</param>
+      <param name="cancellationToken">notify when cancellation is needed</param>
+      <param name="producedCountTracker">action to count produced elements</param>
+      <param name="boundedCapacity">bounded size of the internal collection</param>
+      <returns>enumeration of elements from <paramref name="producer" /></returns>
+      <requires description="producer cannot be null" exception="T:System.ArgumentNullException" csharp="(() =&gt; {&#xD;&#xA;    {&#xD;&#xA;        System.Collections.Generic.IEnumerable&lt;T&gt; loc0;&#xD;&#xA;        System.Threading.CancellationToken loc1;&#xD;&#xA;        System.Action&lt;int&gt; loc2;&#xD;&#xA;    }&#xD;&#xA;    return (() =&gt; {&#xD;&#xA;        {&#xD;&#xA;            loc0 = producer;&#xD;&#xA;            loc1 = cancellationToken;&#xD;&#xA;            loc2 = producedCountTracker;&#xD;&#xA;        }&#xD;&#xA;        return producer != null; })(); })()" vb="(() =&gt; {&#xD;&#xA;    System.Collections.Generic.IEnumerable&lt;T&gt; loc0;&#xD;&#xA;    System.Threading.CancellationToken loc1;&#xD;&#xA;    System.Action&lt;int&gt; loc2;&#xD;&#xA;    return (() =&gt; {&#xD;&#xA;        loc0 = producer&#xD;&#xA;        loc1 = cancellationToken&#xD;&#xA;        loc2 = producedCountTracker&#xD;&#xA;        return producer &lt;&gt; Nothing; })(); })()">(() =&gt; {
+    {
+        System.Collections.Generic.IEnumerable&lt;T&gt; loc0;
+        System.Threading.CancellationToken loc1;
+        System.Action&lt;int&gt; loc2;
+    }
+    return (() =&gt; {
+        {
+            loc0 = producer;
+            loc1 = cancellationToken;
+            loc2 = producedCountTracker;
+        }
+        return producer != null; })(); })()</requires>
+      <exception cref="T:System.ArgumentNullException">!(() =&gt; {
+    {
+        System.Collections.Generic.IEnumerable&lt;T&gt; loc0;
+        System.Threading.CancellationToken loc1;
+        System.Action&lt;int&gt; loc2;
+    }
+    return (() =&gt; {
+        {
+            (loc0 = producer);
+            (loc1 = cancellationToken);
+            (loc2 = producedCountTracker);
+        }
+        return (producer != null); })(); })()</exception>
+    </member>
     <member name="T:System.Threading.ReaderWriterLockSlimExtensions">
       <summary>
             Extension methods for using <see cref="T:System.Threading.ReaderWriterLockSlim" /> class with <see cref="T:Wanderer.Library.Common.DisposeAction" />.
@@ -39,7 +111,7 @@
         <see cref="T:System.Threading.ReaderWriterLockSlim" /> object</param>
       <returns>
         <see cref="T:Wanderer.Library.Common.DisposeAction" /> object</returns>
-      <requires exception="T:System.ArgumentNullException" csharp="locker != null" vb="locker &lt;&gt; Nothing">locker != null</requires>
+      <requires description="locker cannot be null" exception="T:System.ArgumentNullException" csharp="locker != null" vb="locker &lt;&gt; Nothing">locker != null</requires>
       <exception cref="T:System.ArgumentNullException">locker == null</exception>
     </member>
     <member name="M:System.Threading.ReaderWriterLockSlimExtensions.GetUpgradeableReadLock(System.Threading.ReaderWriterLockSlim)">
@@ -50,7 +122,7 @@
         <see cref="T:System.Threading.ReaderWriterLockSlim" /> object</param>
       <returns>
         <see cref="T:Wanderer.Library.Common.DisposeAction" /> object</returns>
-      <requires exception="T:System.ArgumentNullException" csharp="locker != null" vb="locker &lt;&gt; Nothing">locker != null</requires>
+      <requires description="locker cannot be null" exception="T:System.ArgumentNullException" csharp="locker != null" vb="locker &lt;&gt; Nothing">locker != null</requires>
       <exception cref="T:System.ArgumentNullException">locker == null</exception>
     </member>
     <member name="M:System.Threading.ReaderWriterLockSlimExtensions.GetWriteLock(System.Threading.ReaderWriterLockSlim)">
@@ -61,7 +133,7 @@
         <see cref="T:System.Threading.ReaderWriterLockSlim" /> object</param>
       <returns>
         <see cref="T:Wanderer.Library.Common.DisposeAction" /> object</returns>
-      <requires exception="T:System.ArgumentNullException" csharp="locker != null" vb="locker &lt;&gt; Nothing">locker != null</requires>
+      <requires description="locker cannot be null" exception="T:System.ArgumentNullException" csharp="locker != null" vb="locker &lt;&gt; Nothing">locker != null</requires>
       <exception cref="T:System.ArgumentNullException">locker == null</exception>
     </member>
   </members>
