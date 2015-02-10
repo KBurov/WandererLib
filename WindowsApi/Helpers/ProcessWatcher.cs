@@ -48,6 +48,25 @@ namespace Wanderer.Library.WindowsApi.Helpers
 
             GC.SuppressFinalize(this);
         }
+
+        /// <summary>
+        /// Internal implementation of <see cref="IDisposable"/> interface.
+        /// </summary>
+        /// <param name="disposing">indicates that method called from public Dispose method</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            Contract.Ensures(IsDisposed);
+
+            if (IsDisposed) {
+                return;
+            }
+
+            if (disposing) {
+                _processExtended.Dispose();
+            }
+
+            IsDisposed = true;
+        }
         #endregion
 
         #region IEquatable<IProcessWatcher> implemetation
@@ -118,25 +137,6 @@ namespace Wanderer.Library.WindowsApi.Helpers
         public override int GetHashCode()
         {
             return WatchedProcess.GetHashCode();
-        }
-
-        /// <summary>
-        /// Internal implementation of <see cref="IDisposable"/> interface.
-        /// </summary>
-        /// <param name="disposing">indicates that method called from public Dispose method</param>
-        protected virtual void Dispose(bool disposing)
-        {
-            Contract.Ensures(IsDisposed);
-
-            if (IsDisposed) {
-                return;
-            }
-
-            if (disposing) {
-                _processExtended.Dispose();
-            }
-
-            IsDisposed = true;
         }
     }
 }
