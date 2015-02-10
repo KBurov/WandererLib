@@ -44,10 +44,10 @@ namespace Wanderer.Library.WindowsApi.Helpers
                     Thread.Sleep(10);
                 }
 
-                long currentTotalProcessTime = _process.TotalProcessorTime.Ticks;
-                DateTime updateTime = DateTime.Now;
-                long usedTotalProcessTime = currentTotalProcessTime - _totalProcessorTime;
-                long updateDelay = updateTime.Ticks - _totalProcessorTimeUpdate.Ticks;
+                var currentTotalProcessTime = _process.TotalProcessorTime.Ticks;
+                var updateTime = DateTime.Now;
+                var usedTotalProcessTime = currentTotalProcessTime - _totalProcessorTime;
+                var updateDelay = updateTime.Ticks - _totalProcessorTimeUpdate.Ticks;
 
                 return (uint) (usedTotalProcessTime * 100 / updateDelay / Environment.ProcessorCount);
             }
