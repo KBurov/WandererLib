@@ -84,7 +84,10 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <summary>
         /// <see cref="IDisposable"/> interface implementation.
         /// </summary>
-        void IDisposable.Dispose() {}
+        void IDisposable.Dispose()
+        {
+            Contract.Ensures(IsDisposed);
+        }
         #endregion
     }
 }
