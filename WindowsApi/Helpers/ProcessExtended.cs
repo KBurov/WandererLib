@@ -103,6 +103,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         public void Dispose()
         {
             Dispose(true);
+
             GC.SuppressFinalize(this);
         }
 
