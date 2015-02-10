@@ -102,10 +102,25 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// </summary>
         public void Dispose()
         {
-            Contract.Ensures(IsDisposed);
-
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Internal implementation of <see cref="IDisposable" /> interface.
+        /// </summary>
+        /// <param name="disposing">indicates that method called from public Dispose method</param>
+        private void Dispose(bool disposing)
+        {
+            if (IsDisposed) {
+                return;
+            }
+
+            if (disposing) {
+                _process.Dispose();
+            }
+
+            IsDisposed = true;
         }
         #endregion
 
@@ -147,23 +162,6 @@ namespace Wanderer.Library.WindowsApi.Helpers
             Dispose(false);
         }
         #endregion
-
-        /// <summary>
-        /// Internal implementation of <see cref="IDisposable" /> interface.
-        /// </summary>
-        /// <param name="disposing">indicates that method called from public Dispose method</param>
-        private void Dispose(bool disposing)
-        {
-            if (IsDisposed) {
-                return;
-            }
-
-            if (disposing) {
-                _process.Dispose();
-            }
-
-            IsDisposed = true;
-        }
 
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"), PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         private void ExecuteResumeSuspend(Func<IntPtr, NtStatus> func)
