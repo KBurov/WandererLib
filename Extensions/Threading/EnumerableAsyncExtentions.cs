@@ -17,6 +17,7 @@ namespace Wanderer.Library.Extensions.Threading
     /// </summary>
     public static class EnumerableAsyncExtentions
     {
+        private const string ProducerNullErrorMessage = "producer cannot be null";
         private const string SourceNullErrorMessage = "source cannot be null";
         private const string SelectorNullErrorMessage = "selector cannot be null";
         private const string DegreeOfParallelismOutOfRangeErrorMessage = "degreeOfPrallelism cannot be less than 1";
@@ -31,7 +32,7 @@ namespace Wanderer.Library.Extensions.Threading
         /// <returns>enumeration of elements from <paramref name="producer"/></returns>
         public static IEnumerable<T> ConsumeWithQueue<T>(this IEnumerable<T> producer, int boundedCapacity = 0)
         {
-            Contract.Requires<ArgumentNullException>(producer != null, "producer cannot be null");
+            Contract.Requires<ArgumentNullException>(producer != null, ProducerNullErrorMessage);
 
             return ConsumeWithQueue(producer, CancellationToken.None, null, boundedCapacity);
         }
@@ -46,7 +47,7 @@ namespace Wanderer.Library.Extensions.Threading
         /// <returns>enumeration of elements from <paramref name="producer"/></returns>
         public static IEnumerable<T> ConsumeWithQueue<T>(this IEnumerable<T> producer, CancellationToken cancellationToken, int boundedCapacity = 0)
         {
-            Contract.Requires<ArgumentNullException>(producer != null, "producer cannot be null");
+            Contract.Requires<ArgumentNullException>(producer != null, ProducerNullErrorMessage);
 
             return ConsumeWithQueue(producer, cancellationToken, null, boundedCapacity);
         }
@@ -61,7 +62,7 @@ namespace Wanderer.Library.Extensions.Threading
         /// <returns>enumeration of elements from <paramref name="producer"/></returns>
         public static IEnumerable<T> ConsumeWithQueue<T>(this IEnumerable<T> producer, Action<int> producedCountTracker, int boundedCapacity = 0)
         {
-            Contract.Requires<ArgumentNullException>(producer != null, "producer cannot be null");
+            Contract.Requires<ArgumentNullException>(producer != null, ProducerNullErrorMessage);
 
             return ConsumeWithQueue(producer, CancellationToken.None, producedCountTracker, boundedCapacity);
         }
@@ -78,7 +79,7 @@ namespace Wanderer.Library.Extensions.Threading
         public static IEnumerable<T> ConsumeWithQueue<T>(this IEnumerable<T> producer, CancellationToken cancellationToken, Action<int> producedCountTracker,
                                                          int boundedCapacity = 0)
         {
-            Contract.Requires<ArgumentNullException>(producer != null, "producer cannot be null");
+            Contract.Requires<ArgumentNullException>(producer != null, ProducerNullErrorMessage);
 
             var queue = boundedCapacity > 0
                 ? new BlockingCollection<T>(boundedCapacity)
