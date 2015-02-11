@@ -5,6 +5,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
     /// <summary>
     /// Helper interface for process CPU clamping.
     /// </summary>
+    // TODO: Create separate code contract class
     public interface IProcessWatcher : IDisposable, IEquatable<IProcessWatcher>
     {
         /// <summary>
