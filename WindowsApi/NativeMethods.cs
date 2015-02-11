@@ -1,7 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics.Contracts;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
+
+using Wanderer.Library.WindowsApi.SafeHandles;
 
 namespace Wanderer.Library.WindowsApi
 {
@@ -23,5 +26,26 @@ namespace Wanderer.Library.WindowsApi
         [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool CloseHandle([In] IntPtr handle);
+
+        #region GetExitCodeProcess
+        public static uint GetExitCodeProcess(SafeTokenHandle processHandle)
+        {
+            Contract.Requires<ArgumentNullException>(processHandle != null, "processHandle cannot be null");
+
+            uint exitCode;
+
+            if (!GetExitCodeProcess(processHandle.DangerousGetHandle(), out exitCode)) {
+                ReportWin32Exception();
+            }
+
+            return exitCode;
+        }
+
+        [DllImport(Kernel32, SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool GetExitCodeProcess(
+            [In] IntPtr hProcess,
+            [Out] out uint lpExitCode);
+        #endregion
     }
 }
