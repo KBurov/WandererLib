@@ -11,7 +11,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
     internal abstract class IProcessContract : IProcess
 // ReSharper restore InconsistentNaming
     {
-        private const string ObjectDisposedExceptionMessage = "IProcessExtended already disposed";
+        private const string ObjectDisposedExceptionMessage = "IProcess already disposed";
 
         #region IProcess implementation
         /// <summary>
