@@ -152,7 +152,12 @@
     <Compile Include="COM\NativeMethods.cs" />
     <Compile Include="Desktop\NativeMethods.cs" />
     <Compile Include="ErrorCodes.cs" />
+    <Compile Include="Helpers\InternalProcess.cs" />
+    <Compile Include="Helpers\IProcess.cs" />
+    <Compile Include="Helpers\IProcessContract.cs" />
     <Compile Include="Helpers\IProcessExtendedContract.cs" />
+    <Compile Include="Helpers\IProcessManagement.cs" />
+    <Compile Include="Helpers\IProcessManagementContract.cs" />
     <Compile Include="Helpers\ObjectPicker\DirectoryObject.cs" />
     <Compile Include="Helpers\ObjectPicker\EntityPickerDialog.cs">
       <SubType>Component</SubType>
@@ -164,6 +169,7 @@
     </Compile>
     <Compile Include="Helpers\ObjectPicker\ObjectType.cs" />
     <Compile Include="Helpers\ObjectPicker\PathProvider.cs" />
+    <Compile Include="Helpers\ServiceProcessManagement.cs" />
     <Compile Include="HResults.cs" />
     <Compile Include="Memory\NativeMethods.cs" />
     <Compile Include="NativeConstants.cs" />
@@ -179,6 +185,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SafeHandles\SafeTokenHandle.cs" />
     <Compile Include="SafeHandles\SafeWindowStationHandle.cs" />
+    <Compile Include="Synchronization\NativeMethods.cs" />
+    <Compile Include="Synchronization\WaitResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
