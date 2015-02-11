@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 
 namespace Wanderer.Library.WindowsApi.Helpers
 {
     /// <summary>
     /// Helper interface for process CPU clamping.
     /// </summary>
-    // TODO: Create separate code contract class
+    [ContractClass(typeof (IProcessWatcherContract))]
     public interface IProcessWatcher : IDisposable, IEquatable<IProcessWatcher>
     {
         /// <summary>
@@ -17,5 +18,10 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// Maximum avaliable CPU usage for the process.
         /// </summary>
         uint MaxCpuUsage { get; }
+
+        /// <summary>
+        /// Determines whether object already disposed or not.
+        /// </summary>
+        bool IsDisposed { get; }
     }
 }

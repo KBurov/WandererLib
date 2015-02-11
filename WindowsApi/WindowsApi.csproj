@@ -158,6 +158,7 @@
     <Compile Include="Helpers\IProcessExtendedContract.cs" />
     <Compile Include="Helpers\IProcessManagement.cs" />
     <Compile Include="Helpers\IProcessManagementContract.cs" />
+    <Compile Include="Helpers\IProcessWatcherContract.cs" />
     <Compile Include="Helpers\ObjectPicker\DirectoryObject.cs" />
     <Compile Include="Helpers\ObjectPicker\EntityPickerDialog.cs">
       <SubType>Component</SubType>

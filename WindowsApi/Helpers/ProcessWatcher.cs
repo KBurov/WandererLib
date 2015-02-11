@@ -9,8 +9,6 @@ namespace Wanderer.Library.WindowsApi.Helpers
     /// </summary>
     public class ProcessWatcher : IProcessWatcher
     {
-        private const string ObjectDisposedExceptionMessage = "IProcessWatcher already disposed";
-
         #region Variables
         private readonly IProcessExtended _processExtended;
         private readonly uint _maxCpuUsage;
@@ -20,20 +18,17 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <summary>
         /// Controlled process.
         /// </summary>
-        public IProcessExtended WatchedProcess
-        {
-            get
-            {
-                Contract.Requires<ObjectDisposedException>(!IsDisposed, ObjectDisposedExceptionMessage);
-
-                return _processExtended;
-            }
-        }
+        public IProcessExtended WatchedProcess { get { return _processExtended; } }
 
         /// <summary>
         /// Maximum avaliable CPU usage for the process.
         /// </summary>
         public uint MaxCpuUsage { get { return _maxCpuUsage; } }
+
+        /// <summary>
+        /// Determines whether object already disposed or not.
+        /// </summary>
+        public bool IsDisposed { get; private set; }
         #endregion
 
         #region IDisposable implementation
@@ -42,8 +37,6 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// </summary>
         public void Dispose()
         {
-            Contract.Ensures(IsDisposed);
-
             Dispose(true);
 
             GC.SuppressFinalize(this);
@@ -55,8 +48,6 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <param name="disposing">indicates that method called from public Dispose method</param>
         protected virtual void Dispose(bool disposing)
         {
-            Contract.Ensures(IsDisposed);
-
             if (IsDisposed) {
                 return;
             }
@@ -86,11 +77,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         }
         #endregion
 
-        /// <summary>
-        /// Determines whether object already disposed or not.
-        /// </summary>
-        public bool IsDisposed { get; private set; }
-
+        #region Constructor
         /// <summary>
         /// Initialize constructor.
         /// </summary>
@@ -98,7 +85,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <param name="maxCpuUsage">maximum avaliable CPU usage for the process</param>
         public ProcessWatcher(IProcessExtended processExtended, uint maxCpuUsage)
         {
-            Contract.Requires<ArgumentNullException>(processExtended != null);
+            Contract.Requires<ArgumentNullException>(processExtended != null, "processExtended cannot be null");
             Contract.Ensures(_processExtended != null);
 
             _processExtended = processExtended;
@@ -112,6 +99,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         {
             Dispose(false);
         }
+        #endregion
 
         /// <summary>
         /// Determines whether the specified object is equal to the current object.
