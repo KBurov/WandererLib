@@ -54,12 +54,12 @@
             Occurs when a property value changes.
             </summary>
     </member>
-    <member name="T:Wanderer.Library.Common.Collections.Generic.InvariantCultureIgnoreCaseStringComparer">
+    <member name="T:Wanderer.Library.Common.Collections.InvariantCultureIgnoreCaseStringComparer">
       <summary>
             Implement <see cref="T:System.Collections.Generic.IComparer`1" /> for strings with <see cref="F:System.StringComparison.InvariantCultureIgnoreCase" /> option.
             </summary>
     </member>
-    <member name="M:Wanderer.Library.Common.Collections.Generic.InvariantCultureIgnoreCaseStringComparer.Compare(System.String,System.String)">
+    <member name="M:Wanderer.Library.Common.Collections.InvariantCultureIgnoreCaseStringComparer.Compare(System.String,System.String)">
       <summary>
             Compares two strings and returns a value indicating whether one is less than, equal to, or greater than the other.
             </summary>
@@ -204,12 +204,12 @@
       <requires description="numberOfRetries should be greater than 0" exception="T:System.ArgumentException" csharp="numberOfRetries &gt; uint0" vb="numberOfRetries &gt; UInteger 0">numberOfRetries &gt; uint0</requires>
       <exception cref="T:System.ArgumentException">numberOfRetries &lt;= 0</exception>
     </member>
-    <member name="M:Wanderer.Library.Common.DisposeAction.Dispose(System.Boolean)">
-      <ensures csharp="this._disposed" vb="Me._disposed">this._disposed</ensures>
-    </member>
     <member name="M:Wanderer.Library.Common.BindableObject.RaisePropertyChangedNotVerified(System.String)">
       <requires description="propertyName cannot be null or empty" exception="T:System.ArgumentException" csharp="!IsNullOrWhiteSpace(propertyName)" vb="Not IsNullOrWhiteSpace(propertyName)">!string.IsNullOrWhiteSpace(propertyName)</requires>
       <exception cref="T:System.ArgumentException">string.IsNullOrWhiteSpace(propertyName)</exception>
+    </member>
+    <member name="M:Wanderer.Library.Common.DisposeAction.Dispose(System.Boolean)">
+      <ensures csharp="this._disposed" vb="Me._disposed">this._disposed</ensures>
     </member>
   </members>
 </doc>

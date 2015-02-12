@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Wanderer.Library.Common.Collections.Generic
+namespace Wanderer.Library.Common.Collections
 {
     /// <summary>
     /// Implement <see cref="IComparer{T}" /> for strings with <see cref="StringComparison.InvariantCultureIgnoreCase" /> option.
