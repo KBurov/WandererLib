@@ -15,7 +15,7 @@ namespace Wanderer.Library.Extensions.Threading
     /// <summary>
     /// Extension methods to process <see cref="IEnumerable{T}"/> in async way.
     /// </summary>
-    public static class EnumerableAsyncExtentions
+    public static class EnumerableAsyncExtensions
     {
         private const string ProducerNullErrorMessage = "producer cannot be null";
         private const string SourceNullErrorMessage = "source cannot be null";
