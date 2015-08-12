@@ -10,10 +10,7 @@ namespace Wanderer.Library.Common
     public sealed class OperatingSystemEx
     {
         #region Variables
-        private readonly PlatformID _platform;
-        private readonly Version _version;
         private readonly string _servicePack;
-        private readonly bool _is64BitPlatform;
 
         private readonly Lazy<string> _lazyVersionString;
         #endregion
@@ -22,31 +19,31 @@ namespace Wanderer.Library.Common
         /// Gets a <see cref="PlatformID"/> enumeration value that identifies the operating system platform.
         /// </summary>
         /// <returns>one of the <see cref="PlatformID"/> values</returns>
-        public PlatformID Platform { get { return _platform; } }
+        public PlatformID Platform { get; }
 
         /// <summary>
         /// Gets a <see cref="Version"/> object that identifies the operating system.
         /// </summary>
         /// <returns>a <see cref="Version"/> object that describes the major version, minor version, build, and revision numbers for the operating system</returns>
-        public Version Version { get { return _version; } }
+        public Version Version { get; }
 
         /// <summary>
         /// Gets the service pack version represented by this <see cref="OperatingSystemEx"/> object.
         /// </summary>
         /// <returns>the service pack version, if service packs are supported and at least one is installed; otherwise, an empty string ("")</returns>
-        public string ServicePack { get { return _servicePack ?? string.Empty; } }
+        public string ServicePack => _servicePack ?? string.Empty;
 
         /// <summary>
         /// Determines whether the operating system is a 64-bit operating system.
         /// </summary>
-        public bool Is64BitPlatform { get { return _is64BitPlatform; } }
+        public bool Is64BitPlatform { get; }
 
         /// <summary>
         /// Gets the concatenated string representation of the platform identifier, version, and service pack that are currently installed on the operating system.
         /// </summary>
         /// <returns>the string representation of the values returned by the <see cref="OperatingSystemEx.Platform"/>, <see cref="OperatingSystemEx.Version"/>
         /// and <see cref="OperatingSystemEx.ServicePack"/> properties</returns>
-        public string VersionString { get { return _lazyVersionString.Value; } }
+        public string VersionString => _lazyVersionString.Value;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OperatingSystemEx"/> class, using the specified platform identifier value, version object and service pack string.
@@ -63,11 +60,11 @@ namespace Wanderer.Library.Common
             Contract.Requires<ArgumentNullException>(version != null, "version cannot be null");
             Contract.Ensures(Version != null);
 
-            _platform = platform;
-            _version = version;
+            Platform = platform;
+            Version = version;
             _servicePack = servicePack;
-            _is64BitPlatform = is64BitPlatform;
-            _lazyVersionString = new Lazy<string>(() => GetVersionString(_platform, _version, _servicePack));
+            Is64BitPlatform = is64BitPlatform;
+            _lazyVersionString = new Lazy<string>(() => GetVersionString(Platform, Version, _servicePack));
         }
 
         /// <summary>

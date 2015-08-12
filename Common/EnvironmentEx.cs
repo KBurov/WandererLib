@@ -15,7 +15,7 @@ namespace Wanderer.Library.Common
         /// <summary>
         /// Variable name for operating system service pack version number.
         /// </summary>
-        public const string ServicePackNumberVariableName = "%" + InternalServicePackNumberVariableName + "%";
+        public const string ServicePackNumberVariableName = "%{InternalServicePackNumberVariableName}%";
 
         /// <summary>
         /// Replaces the name of each environment variable embedded in the specified string with the string equivalent of the value of the variable,
@@ -28,7 +28,7 @@ namespace Wanderer.Library.Common
         /// <returns>a string with each environment variable replaced by its value</returns>
         public static string ExpandEnvironmentVariables(string name)
         {
-            var nameParts = name.Split(new[] {'%'});
+            var nameParts = name.Split('%');
             var builder = new StringBuilder(nameParts[0]);
 
             for (var i = 1;i < nameParts.Length - 1;++i) {
@@ -52,15 +52,19 @@ namespace Wanderer.Library.Common
                 var query = new SelectQuery("Win32_OperatingSystem");
 
                 using (var searcher = new ManagementObjectSearcher(query)) {
-                    foreach (ManagementObject mo in searcher.Get()) {
-                        return mo["ServicePackMajorVersion"].ToString();
+                    foreach (var mo in searcher.Get()) {
+                        var managementObject = mo as ManagementObject;
+
+                        if (managementObject != null) {
+                            return mo["ServicePackMajorVersion"].ToString();
+                        }
                     }
                 }
 
                 return DefaultServicePackNumber;
             }
 
-            return "%" + name + "%";
+            return "%{name}%";
         }
     }
 }

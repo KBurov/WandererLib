@@ -97,8 +97,7 @@ namespace Wanderer.Library.Common
 
             var propertyChanged = PropertyChanged;
 
-            if (propertyChanged != null)
-                propertyChanged(this, GetPropertyChangedEventArgs(propertyName));
+            propertyChanged?.Invoke(this, GetPropertyChangedEventArgs(propertyName));
 
             AfterPropertyChanged(propertyName);
         }
@@ -109,8 +108,7 @@ namespace Wanderer.Library.Common
 
             var propertyChanged = PropertyChanged;
 
-            if (propertyChanged != null)
-                propertyChanged(this, GetPropertyChangedEventArgs(propertyName));
+            propertyChanged?.Invoke(this, GetPropertyChangedEventArgs(propertyName));
 
             AfterPropertyChanged(propertyName);
         }
