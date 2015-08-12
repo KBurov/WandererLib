@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Math", "Math\Math.csproj", "{BD82BD60-833D-4843-894A-64586752AE60}"
 EndProject
@@ -18,8 +18,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.ConsoleTests", "Tests\Common.ConsoleTests\Common.ConsoleTests.csproj", "{B8A38096-E635-4C6A-935F-BE9A783B2174}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.UnitTests", "Tests\Extensions.UnitTests\Extensions.UnitTests.csproj", "{2A785D78-D536-40E7-B0C2-6E74D7E72D01}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finance", "Finance\Finance.csproj", "{63C570B5-F714-4AFF-85FC-86D49920C821}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf", "Wpf\Wpf.csproj", "{2D9F93B3-F0D1-4ACF-A6D4-7E5D609D831B}"
 EndProject
@@ -109,16 +107,6 @@ Global
 		{2A785D78-D536-40E7-B0C2-6E74D7E72D01}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{2A785D78-D536-40E7-B0C2-6E74D7E72D01}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{2A785D78-D536-40E7-B0C2-6E74D7E72D01}.Release|x86.ActiveCfg = Release|Any CPU
-		{63C570B5-F714-4AFF-85FC-86D49920C821}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{63C570B5-F714-4AFF-85FC-86D49920C821}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{63C570B5-F714-4AFF-85FC-86D49920C821}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{63C570B5-F714-4AFF-85FC-86D49920C821}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{63C570B5-F714-4AFF-85FC-86D49920C821}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{63C570B5-F714-4AFF-85FC-86D49920C821}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{63C570B5-F714-4AFF-85FC-86D49920C821}.Release|Any CPU.Build.0 = Release|Any CPU
-		{63C570B5-F714-4AFF-85FC-86D49920C821}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{63C570B5-F714-4AFF-85FC-86D49920C821}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{63C570B5-F714-4AFF-85FC-86D49920C821}.Release|x86.ActiveCfg = Release|Any CPU
 		{2D9F93B3-F0D1-4ACF-A6D4-7E5D609D831B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2D9F93B3-F0D1-4ACF-A6D4-7E5D609D831B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D9F93B3-F0D1-4ACF-A6D4-7E5D609D831B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
