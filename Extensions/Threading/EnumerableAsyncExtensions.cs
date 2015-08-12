@@ -94,9 +94,7 @@ namespace Wanderer.Library.Extensions.Threading
                             foreach (var item in producer) {
                                 cancellationToken.ThrowIfCancellationRequested();
 
-                                if (producedCountTracker != null) {
-                                    producedCountTracker(i++);
-                                }
+                                producedCountTracker?.Invoke(i++);
 
                                 queue.Add(item);
                             }

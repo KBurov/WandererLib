@@ -57,7 +57,7 @@ namespace Wanderer.Library.Extensions
         /// <summary>
         /// Gets the current element in the collection.
         /// </summary>
-        object IEnumerator.Current { get { return Current; } }
+        object IEnumerator.Current => Current;
         #endregion
 
         #region IDisposable implementation
