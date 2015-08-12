@@ -53,6 +53,7 @@ packages/
 *.pidb
 *.log
 *.scc
+*.xml.old
 
 # Visual C++ cache files
 ipch/
