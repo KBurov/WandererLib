@@ -25,8 +25,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsApi", "WindowsApi\Wi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFramework", "TestFramework\TestFramework.csproj", "{E88F19BD-DBD5-4DED-8478-046E564149AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Functional", "Functional\Functional.csproj", "{5B79BD75-BC21-4397-A920-3AA009FF55BE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -137,16 +135,6 @@ Global
 		{E88F19BD-DBD5-4DED-8478-046E564149AC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E88F19BD-DBD5-4DED-8478-046E564149AC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E88F19BD-DBD5-4DED-8478-046E564149AC}.Release|x86.ActiveCfg = Release|Any CPU
-		{5B79BD75-BC21-4397-A920-3AA009FF55BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5B79BD75-BC21-4397-A920-3AA009FF55BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5B79BD75-BC21-4397-A920-3AA009FF55BE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{5B79BD75-BC21-4397-A920-3AA009FF55BE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{5B79BD75-BC21-4397-A920-3AA009FF55BE}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{5B79BD75-BC21-4397-A920-3AA009FF55BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5B79BD75-BC21-4397-A920-3AA009FF55BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5B79BD75-BC21-4397-A920-3AA009FF55BE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{5B79BD75-BC21-4397-A920-3AA009FF55BE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{5B79BD75-BC21-4397-A920-3AA009FF55BE}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
