@@ -18,8 +18,6 @@ namespace Wanderer.Library.WindowsApi.Helpers
         private const string ResumeSuspendErrorMessage = "An error occured during the execution of resume/suspend the process (process id: {0}).";
 
         #region Variables
-        private readonly Process _process;
-
         private long _totalProcessorTime;
         private DateTime _totalProcessorTimeUpdate;
         #endregion
@@ -28,7 +26,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <summary>
         /// Extended process.
         /// </summary>
-        public Process Process { get { return _process; } }
+        public Process Process { get; }
 
         /// <summary>
         /// CPU usage in percent.
@@ -44,7 +42,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
                     Thread.Sleep(10);
                 }
 
-                var currentTotalProcessTime = _process.TotalProcessorTime.Ticks;
+                var currentTotalProcessTime = Process.TotalProcessorTime.Ticks;
                 var updateTime = DateTime.Now;
                 var usedTotalProcessTime = currentTotalProcessTime - _totalProcessorTime;
                 var updateDelay = updateTime.Ticks - _totalProcessorTimeUpdate.Ticks;
@@ -69,7 +67,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"), PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         public void ResetCpuUsage()
         {
-            _totalProcessorTime = _process.TotalProcessorTime.Ticks;
+            _totalProcessorTime = Process.TotalProcessorTime.Ticks;
             _totalProcessorTimeUpdate = DateTime.Now;
         }
 
@@ -118,7 +116,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
             }
 
             if (disposing) {
-                _process.Dispose();
+                Process.Dispose();
             }
 
             IsDisposed = true;
@@ -133,9 +131,9 @@ namespace Wanderer.Library.WindowsApi.Helpers
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"), PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         public ProcessExtended(int processId)
         {
-            Contract.Ensures(_process != null);
+            Contract.Ensures(Process != null);
 
-            _process = Process.GetProcessById(processId);
+            Process = Process.GetProcessById(processId);
 
             ResetCpuUsage();
         }
@@ -148,9 +146,9 @@ namespace Wanderer.Library.WindowsApi.Helpers
         public ProcessExtended(Process process)
         {
             Contract.Requires<ArgumentNullException>(process != null, "process cannot be null");
-            Contract.Ensures(_process != null);
+            Contract.Ensures(Process != null);
 
-            _process = process;
+            Process = process;
 
             ResetCpuUsage();
         }
@@ -167,10 +165,10 @@ namespace Wanderer.Library.WindowsApi.Helpers
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"), PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         private void ExecuteResumeSuspend(Func<IntPtr, NtStatus> func)
         {
-            var result = func(_process.Handle);
+            var result = func(Process.Handle);
 
             if (result != NtStatus.Success) {
-                throw new ApplicationException(string.Format(ResumeSuspendErrorMessage, _process.Id));
+                throw new ApplicationException(string.Format(ResumeSuspendErrorMessage, Process.Id));
             }
         }
     }

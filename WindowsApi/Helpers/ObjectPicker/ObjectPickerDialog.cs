@@ -20,12 +20,14 @@ namespace Wanderer.Library.WindowsApi.Helpers.ObjectPicker
             private readonly int _length;
             private readonly IntPtr[] _unmanagedStrings;
 
-            private IntPtr _unmanagedArray;
             private bool _disposed;
 
-            public IntPtr ArrayPtr { get { return _unmanagedArray; } }
+            public IntPtr ArrayPtr { get; private set; }
 
             #region IDisposable implementation
+            /// <summary>
+            /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resource.
+            /// </summary>
             public void Dispose()
             {
                 Dispose(true);
@@ -40,10 +42,10 @@ namespace Wanderer.Library.WindowsApi.Helpers.ObjectPicker
                 }
 
                 if (disposing) {
-                    if (_unmanagedArray != IntPtr.Zero) {
-                        Marshal.FreeCoTaskMem(_unmanagedArray);
+                    if (ArrayPtr != IntPtr.Zero) {
+                        Marshal.FreeCoTaskMem(ArrayPtr);
 
-                        _unmanagedArray = IntPtr.Zero;
+                        ArrayPtr = IntPtr.Zero;
                     }
 
                     for (var cx = 0;cx < _length;cx++) {
@@ -67,12 +69,12 @@ namespace Wanderer.Library.WindowsApi.Helpers.ObjectPicker
 
                     var neededSize = _length * IntPtr.Size;
 
-                    _unmanagedArray = Marshal.AllocCoTaskMem(neededSize);
+                    ArrayPtr = Marshal.AllocCoTaskMem(neededSize);
 
                     for (var cx = _length - 1;cx >= 0;cx--) {
                         _unmanagedStrings[cx] = Marshal.StringToCoTaskMemUni(strings[cx]);
 
-                        Marshal.WriteIntPtr(_unmanagedArray, cx * IntPtr.Size, _unmanagedStrings[cx]);
+                        Marshal.WriteIntPtr(ArrayPtr, cx * IntPtr.Size, _unmanagedStrings[cx]);
                     }
                 }
             }
@@ -83,8 +85,6 @@ namespace Wanderer.Library.WindowsApi.Helpers.ObjectPicker
             }
         }
         #endregion
-
-        private readonly List<string> _attributesToFetch = new List<string>();
 
         private DirectoryObject[] _selectedObjects;
 
@@ -126,15 +126,12 @@ namespace Wanderer.Library.WindowsApi.Helpers.ObjectPicker
         /// <summary>
         /// List of LDAP attribute names that will be retrieved for picked objects.
         /// </summary>
-        public List<string> AttributesToFetch { get { return _attributesToFetch; } }
+        public List<string> AttributesToFetch { get; } = new List<string>();
 
         /// <summary>
         /// Gets an array of the directory objects selected in the dialog.
         /// </summary>
-        protected DirectoryObject[] SelectedObjects
-        {
-            get { return (_selectedObjects == null) ? new DirectoryObject[0] : (DirectoryObject[]) _selectedObjects.Clone(); }
-        }
+        protected DirectoryObject[] SelectedObjects => (_selectedObjects == null) ? new DirectoryObject[0] : (DirectoryObject[]) _selectedObjects.Clone();
 
         /// <summary>
         /// Gets or sets whether objects flagged as show in advanced view only are displayed (up-level).
@@ -527,7 +524,7 @@ namespace Wanderer.Library.WindowsApi.Helpers.ObjectPicker
                     result[i] = (largeInteger.HighPart * 0x100000000L) + ((uint) largeInteger.LowPart);
                 }
 
-                if (_attributesToFetch[i].Equals("objectClass", StringComparison.OrdinalIgnoreCase)) {
+                if (AttributesToFetch[i].Equals("objectClass", StringComparison.OrdinalIgnoreCase)) {
                     result[i] = schemaClassName;
                 }
             }

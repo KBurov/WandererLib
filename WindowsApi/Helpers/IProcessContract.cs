@@ -43,7 +43,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <summary>
         /// Determines whether object already disposed or not.
         /// </summary>
-        public bool IsDisposed { get { return default(bool); } }
+        public bool IsDisposed => default(bool);
 
         /// <summary>
         /// Wait indefinitely for the associated process to exit.

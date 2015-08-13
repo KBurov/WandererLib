@@ -20,7 +20,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <summary>
         /// Gets the value that the associated process specified when it terminated.
         /// </summary>
-        public uint ExitCode { get { return HasExited ? _exitCode : NativeConstants.StillActive; } }
+        public uint ExitCode => HasExited ? _exitCode : NativeConstants.StillActive;
 
         /// <summary>
         /// Gets a value indicating whether the associated process has been terminated.
@@ -73,8 +73,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
 
         #region IDisposable implementation
         /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing,
-        /// or resetting unmanaged resources.
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
         [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         public void Dispose()

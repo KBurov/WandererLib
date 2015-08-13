@@ -46,12 +46,12 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <summary>
         /// Indicates that the process was suspended.
         /// </summary>
-        public bool IsSuspended { get { return default(bool); } }
+        public bool IsSuspended => default(bool);
 
         /// <summary>
         /// Determines whether object already disposed or not.
         /// </summary>
-        public bool IsDisposed { get { return default(bool); } }
+        public bool IsDisposed => default(bool);
 
         /// <summary>
         /// Reset CPU usage value and time.

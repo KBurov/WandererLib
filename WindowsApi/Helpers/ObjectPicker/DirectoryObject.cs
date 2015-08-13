@@ -5,36 +5,30 @@
     /// </summary>
     public sealed class DirectoryObject
     {
-        private readonly string _path;
-        private readonly string _className;
-        private readonly string _name;
-        private readonly string _upn;
-        private readonly object[] _fetchedAttributes;
-
         /// <summary>
         /// Gets the Active Directory path for this directory object.
         /// </summary>
-        public string Path { get { return _path; } }
+        public string Path { get; }
 
         /// <summary>
         /// Gets the name of the schema class for this directory object (objectClass attribute).
         /// </summary>
-        public string SchemaClassName { get { return _className; } }
+        public string SchemaClassName { get; }
 
         /// <summary>
         /// Gets the directory object's relative distinguished name (RDN).
         /// </summary>
-        public string Name { get { return _name; } }
+        public string Name { get; }
 
         /// <summary>
         /// Gets the objects user principal name (userPrincipalName attribute).
         /// </summary>
-        public string Upn { get { return _upn; } }
+        public string Upn { get; }
 
         /// <summary>
         /// Gets attributes retrieved by the object picker as it makes the selection.
         /// </summary>
-        public object[] FetchedAttributes { get { return _fetchedAttributes; } }
+        public object[] FetchedAttributes { get; }
 
         /// <summary>
         /// Initialize constructor.
@@ -46,11 +40,11 @@
         /// <param name="fetchedAttributes">attributes retrieved by the object picker as it makes the selection</param>
         public DirectoryObject(string name, string path, string schemaClass, string upn, object[] fetchedAttributes)
         {
-            _name = name;
-            _path = path;
-            _className = schemaClass;
-            _upn = upn;
-            _fetchedAttributes = fetchedAttributes;
+            Name = name;
+            Path = path;
+            SchemaClassName = schemaClass;
+            Upn = upn;
+            FetchedAttributes = fetchedAttributes;
         }
     }
 }

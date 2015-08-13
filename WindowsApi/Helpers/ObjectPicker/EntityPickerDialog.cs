@@ -18,7 +18,7 @@ namespace Wanderer.Library.WindowsApi.Helpers.ObjectPicker
         /// <summary>
         /// List of selected users.
         /// </summary>
-        public IList<string> SelectedEntities { get { return _selectedEntities ?? (_selectedEntities = GetSelectedEntities()); } }
+        public IList<string> SelectedEntities => _selectedEntities ?? (_selectedEntities = GetSelectedEntities());
 
         /// <summary>
         /// Default/Initialize constructor.
@@ -114,8 +114,8 @@ namespace Wanderer.Library.WindowsApi.Helpers.ObjectPicker
 
             using (
                 var domainRoot = defaultNamingContext.Equals(rootDomainNamingContext, StringComparison.InvariantCultureIgnoreCase)
-                    ? new DirectoryEntry(string.Format("LDAP://CN=Partitions,CN=Configuration,{0}", defaultNamingContext))
-                    : new DirectoryEntry(string.Format("LDAP://CN=Partitions,CN=Configuration,{0}", rootDomainNamingContext))) {
+                    ? new DirectoryEntry($"LDAP://CN=Partitions,CN=Configuration,{defaultNamingContext}")
+                    : new DirectoryEntry($"LDAP://CN=Partitions,CN=Configuration,{rootDomainNamingContext}")) {
                 try {
                     foreach (DirectoryEntry c in domainRoot.Children) {
                         try {
@@ -163,8 +163,12 @@ namespace Wanderer.Library.WindowsApi.Helpers.ObjectPicker
                 using (var searcher = new ManagementObjectSearcher(query)) {
                     var results = searcher.Get();
 
-                    foreach (ManagementObject mo in results) {
-                        result = (bool) mo["partofdomain"] ? mo["domain"].ToString() : mo["workgroup"].ToString();
+                    foreach (var mo in results) {
+                        var managementObject = mo as ManagementObject;
+
+                        if (managementObject != null) {
+                            result = (bool) managementObject["partofdomain"] ? managementObject["domain"].ToString() : managementObject["workgroup"].ToString();
+                        }
                     }
                 }
             }

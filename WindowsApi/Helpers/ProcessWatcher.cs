@@ -9,21 +9,16 @@ namespace Wanderer.Library.WindowsApi.Helpers
     /// </summary>
     public class ProcessWatcher : IProcessWatcher
     {
-        #region Variables
-        private readonly IProcessExtended _processExtended;
-        private readonly uint _maxCpuUsage;
-        #endregion
-
         #region IProcessWatcher implementation
         /// <summary>
         /// Controlled process.
         /// </summary>
-        public IProcessExtended WatchedProcess { get { return _processExtended; } }
+        public IProcessExtended WatchedProcess { get; }
 
         /// <summary>
         /// Maximum avaliable CPU usage for the process.
         /// </summary>
-        public uint MaxCpuUsage { get { return _maxCpuUsage; } }
+        public uint MaxCpuUsage { get; }
 
         /// <summary>
         /// Determines whether object already disposed or not.
@@ -53,7 +48,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
             }
 
             if (disposing) {
-                _processExtended.Dispose();
+                WatchedProcess.Dispose();
             }
 
             IsDisposed = true;
@@ -69,11 +64,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"), PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         public bool Equals(IProcessWatcher other)
         {
-            if (other == null) {
-                return false;
-            }
-
-            return WatchedProcess.Process.Id == other.WatchedProcess.Process.Id;
+            return WatchedProcess.Process.Id == other?.WatchedProcess.Process.Id;
         }
         #endregion
 
@@ -86,10 +77,10 @@ namespace Wanderer.Library.WindowsApi.Helpers
         public ProcessWatcher(IProcessExtended processExtended, uint maxCpuUsage)
         {
             Contract.Requires<ArgumentNullException>(processExtended != null, "processExtended cannot be null");
-            Contract.Ensures(_processExtended != null);
+            Contract.Ensures(WatchedProcess != null);
 
-            _processExtended = processExtended;
-            _maxCpuUsage = maxCpuUsage;
+            WatchedProcess = processExtended;
+            MaxCpuUsage = maxCpuUsage;
         }
 
         /// <summary>

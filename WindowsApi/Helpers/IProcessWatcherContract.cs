@@ -27,12 +27,12 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <summary>
         /// Maximum avaliable CPU usage for the process.
         /// </summary>
-        uint IProcessWatcher.MaxCpuUsage { get { return default(uint); } }
+        uint IProcessWatcher.MaxCpuUsage => default(uint);
 
         /// <summary>
         /// Determines whether object already disposed or not.
         /// </summary>
-        public bool IsDisposed { get { return default(bool); } }
+        public bool IsDisposed => default(bool);
         #endregion
 
         #region IDisposable implementation
