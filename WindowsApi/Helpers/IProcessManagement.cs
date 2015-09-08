@@ -17,8 +17,8 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// </summary>
         /// <param name="applicationName">the name of the module to be executed</param>
         /// <param name="arguments">the arguments for a new process</param>
-        /// <returns><see cref="IProcess"/> object which describes created process</returns>
-        IProcess CreateProcess(string applicationName, string arguments);
+        /// <returns><see cref="IProcessExtended"/> object which describes created process</returns>
+        IProcessExtended CreateProcess(string applicationName, string arguments);
 
         /// <summary>
         /// Create a new process.
@@ -26,8 +26,8 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <param name="applicationName">the name of the module to be executed</param>
         /// <param name="arguments">the arguments for a new process</param>
         /// <param name="environmentVariables">the list of environment variables to add/modify</param>
-        /// <returns><see cref="IProcess"/> object which describes created process</returns>
-        IProcess CreateProcess(string applicationName, string arguments, IDictionary<string, string> environmentVariables);
+        /// <returns><see cref="IProcessExtended"/> object which describes created process</returns>
+        IProcessExtended CreateProcess(string applicationName, string arguments, IDictionary<string, string> environmentVariables);
 
         /// <summary>
         /// Create a new process with the specified credentials.
@@ -37,8 +37,8 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <param name="userName">user name</param>
         /// <param name="domain">user domain</param>
         /// <param name="password">user password</param>
-        /// <returns><see cref="IProcess"/> object which describes created process</returns>
-        IProcess CreateProcess(string applicationName, string arguments, string userName, string domain, string password);
+        /// <returns><see cref="IProcessExtended"/> object which describes created process</returns>
+        IProcessExtended CreateProcess(string applicationName, string arguments, string userName, string domain, string password);
 
         /// <summary>
         /// Create a new process with the specified credentials.
@@ -49,8 +49,8 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <param name="domain">user domain</param>
         /// <param name="password">user password</param>
         /// <param name="environmentVariables">the list of environment variables to add/modify</param>
-        /// <returns><see cref="IProcess"/> object which describes created process</returns>
-        IProcess CreateProcess(string applicationName, string arguments, string userName, string domain, string password, IDictionary<string, string> environmentVariables);
+        /// <returns><see cref="IProcessExtended"/> object which describes created process</returns>
+        IProcessExtended CreateProcess(string applicationName, string arguments, string userName, string domain, string password, IDictionary<string, string> environmentVariables);
 
         /// <summary>
         /// Close all processes with specified name.

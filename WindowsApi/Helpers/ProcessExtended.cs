@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
+using System.Linq;
 using System.Security;
 using System.Security.Permissions;
 using System.Threading;
 
 using Wanderer.Library.WindowsApi.Nt;
+using Wanderer.Library.WindowsApi.SafeHandles;
 
 namespace Wanderer.Library.WindowsApi.Helpers
 {
@@ -15,11 +17,14 @@ namespace Wanderer.Library.WindowsApi.Helpers
     [SecurityCritical]
     public sealed class ProcessExtended : IProcessExtended
     {
-        private const string ResumeSuspendErrorMessage = "An error occured during the execution of resume/suspend the process (process id: {0}).";
-
         #region Variables
+        private readonly SafeTokenHandle _processHandle;
+        private readonly bool _initializedByProcessHandle;
+
         private long _totalProcessorTime;
         private DateTime _totalProcessorTimeUpdate;
+        private bool _exited;
+        private uint _exitCode;
         #endregion
 
         #region IProcessExtended implementation
@@ -62,6 +67,38 @@ namespace Wanderer.Library.WindowsApi.Helpers
         public bool IsDisposed { get; private set; }
 
         /// <summary>
+        /// Gets the value that the associated process specified when it terminated.
+        /// </summary>
+        public uint ExitCode => HasExited ? (_initializedByProcessHandle ? _exitCode : (uint) Process.ExitCode) : NativeConstants.StillActive;
+
+        /// <summary>
+        /// Gets a value indicating whether the associated process has been terminated.
+        /// </summary>
+        public bool HasExited
+        {
+            get
+            {
+                if (_initializedByProcessHandle) {
+                    if (!_exited) {
+                        if (Synchronization.NativeMethods.WaitForSingleObject(_processHandle, 0)) {
+                            var exitCode = NativeMethods.GetExitCodeProcess(_processHandle);
+
+                            if (exitCode != NativeConstants.StillActive) {
+                                _exited = true;
+                                _exitCode = exitCode;
+                            }
+                        }
+                    }
+
+                    return _exited;
+                }
+                else {
+                    return Process.HasExited;
+                }
+            }
+        }
+
+        /// <summary>
         /// Reset CPU usage value and time.
         /// </summary>
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"), PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
@@ -92,6 +129,34 @@ namespace Wanderer.Library.WindowsApi.Helpers
 
             IsSuspended = true;
         }
+
+        /// <summary>
+        /// Wait indefinitely for the associated process to exit.
+        /// </summary>
+        public void WaitForExit()
+        {
+            if (_initializedByProcessHandle) {
+                WaitForExit(Synchronization.NativeMethods.InfiniteTimeout);
+            }
+            else {
+                Process.WaitForExit();
+            }
+        }
+
+        /// <summary>
+        /// wait the specified number of milliseconds for the associated process to exit.
+        /// </summary>
+        /// <param name="milliseconds">
+        /// The amount of time, in milliseconds, to wait for the associated process to exit.
+        /// The maximum is the largest possible value of a 32-bit integer, which represents infinity to the operating system
+        /// </param>
+        /// <returns>true if the associated process has exited; otherwise, false</returns>
+        public bool WaitForExit(uint milliseconds)
+        {
+            return _initializedByProcessHandle
+                ? (_exited || Synchronization.NativeMethods.WaitForSingleObject(_processHandle, milliseconds))
+                : Process.WaitForExit((int) milliseconds);
+        }
         #endregion
 
         #region IDisposable implementation
@@ -116,6 +181,8 @@ namespace Wanderer.Library.WindowsApi.Helpers
             }
 
             if (disposing) {
+                _processHandle.Dispose();
+
                 Process.Dispose();
             }
 
@@ -132,8 +199,12 @@ namespace Wanderer.Library.WindowsApi.Helpers
         public ProcessExtended(int processId)
         {
             Contract.Ensures(Process != null);
+            Contract.Ensures(_processHandle != null);
 
             Process = Process.GetProcessById(processId);
+            _processHandle = new SafeTokenHandle(Process.Handle, false);
+
+            _initializedByProcessHandle = false;
 
             ResetCpuUsage();
         }
@@ -147,10 +218,32 @@ namespace Wanderer.Library.WindowsApi.Helpers
         {
             Contract.Requires<ArgumentNullException>(process != null, "process cannot be null");
             Contract.Ensures(Process != null);
+            Contract.Ensures(_processHandle != null);
 
             Process = process;
+            _processHandle = new SafeTokenHandle(Process.Handle, false);
+
+            _initializedByProcessHandle = false;
 
             ResetCpuUsage();
+        }
+
+        /// <summary>
+        /// Initialize constructor.
+        /// </summary>
+        /// <param name="processHandle">process handle</param>
+        public ProcessExtended(SafeTokenHandle processHandle)
+        {
+            Contract.Requires<ArgumentNullException>(processHandle != null, "processHandle cannot be null");
+            Contract.Ensures(Process != null);
+            Contract.Ensures(_processHandle != null);
+
+            var handle = processHandle.DangerousGetHandle();
+
+            Process = Process.GetProcesses().Single(p => p.Id != 0 && p.Handle == handle);
+            _processHandle = processHandle;
+
+            _initializedByProcessHandle = true;
         }
 
         /// <summary>
@@ -168,7 +261,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
             var result = func(Process.Handle);
 
             if (result != NtStatus.Success) {
-                throw new ApplicationException(string.Format(ResumeSuspendErrorMessage, Process.Id));
+                throw new ApplicationException($"An error occured during the execution of resume/suspend the process (process id: {Process.Id}).");
             }
         }
     }
