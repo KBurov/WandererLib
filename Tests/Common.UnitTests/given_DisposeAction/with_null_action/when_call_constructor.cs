@@ -8,7 +8,7 @@ namespace Wanderer.Library.Common.UnitTests.given_DisposeAction.with_null_action
 {
     [TestFixture]
     [Category(TestCategory.Unit)]
-// ReSharper disable InconsistentNaming
+// ReSharper disable once InconsistentNaming
     public class when_call_constructor
     {
         [Test]

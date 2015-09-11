@@ -1,9 +1,8 @@
 ﻿using System.Diagnostics.Contracts;
 
 using Wanderer.Library.Common;
-// ReSharper disable CheckNamespace
+// ReSharper disable once CheckNamespace
 namespace System.Threading
-// ReSharper restore CheckNamespace
 {
     /// <summary>
     /// Extension methods for using <see cref="ReaderWriterLockSlim"/> class with <see cref="DisposeAction"/>.

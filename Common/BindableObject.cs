@@ -47,9 +47,8 @@ namespace Wanderer.Library.Common
         /// <summary>
         /// Default constructor.
         /// </summary>
-// ReSharper disable EmptyConstructor
+// ReSharper disable once EmptyConstructor
         protected BindableObject() {}
-// ReSharper restore EmptyConstructor
         #endregion
 
         /// <summary>

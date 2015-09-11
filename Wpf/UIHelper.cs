@@ -6,9 +6,8 @@ namespace Wanderer.Library.Wpf
     /// <summary>
     /// Class with helpful methods for various UI needs.
     /// </summary>
-// ReSharper disable InconsistentNaming
+// ReSharper disable once InconsistentNaming
     public static class UIHelper
-// ReSharper restore InconsistentNaming
     {
         /// <summary>
         /// Finds a child of a given item in the visual tree.

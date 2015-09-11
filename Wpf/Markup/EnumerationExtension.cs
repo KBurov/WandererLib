@@ -76,11 +76,9 @@ namespace Wanderer.Library.Wpf.Markup
 
         private class EnumerationMember
         {
-// ReSharper disable UnusedAutoPropertyAccessor.Local
             public string Description { get; set; }
 
             public object Value { get; set; }
-// ReSharper restore UnusedAutoPropertyAccessor.Local
         }
     }
 }

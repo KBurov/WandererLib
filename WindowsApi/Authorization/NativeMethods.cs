@@ -223,7 +223,6 @@ namespace Wanderer.Library.WindowsApi.Authorization
             [In] System.Security.Principal.TokenImpersonationLevel ImpersonationLevel,
             [In] TokenType TokenType,
             [Out] out IntPtr phNewToken);
-
         // ReSharper restore InconsistentNaming
         #endregion
 

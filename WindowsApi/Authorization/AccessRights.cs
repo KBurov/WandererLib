@@ -83,15 +83,13 @@ namespace Wanderer.Library.WindowsApi.Authorization
             /// <summary>
             /// The right to read extended file attributes.
             /// </summary>
-            // ReSharper disable InconsistentNaming
+            // ReSharper disable once InconsistentNaming
             ReadEA = 0x0008,
-            // ReSharper restore InconsistentNaming
             /// <summary>
             /// The right to write extended file attributes.
             /// </summary>
-            // ReSharper disable InconsistentNaming
+            // ReSharper disable once InconsistentNaming
             WriteEA = 0x0010,
-            // ReSharper restore InconsistentNaming
             /// <summary>
             /// For a native code file, the right to execute the file.
             /// This access right given to scripts may cause the script to be executable,

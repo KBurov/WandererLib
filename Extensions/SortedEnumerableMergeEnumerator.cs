@@ -15,9 +15,8 @@ namespace Wanderer.Library.Extensions
         /// <summary>
         /// Determines whether object already disposed or not.
         /// </summary>
-// ReSharper disable MemberCanBePrivate.Global
+// ReSharper disable once MemberCanBePrivate.Global
         public bool IsDisposed { get; private set; }
-// ReSharper restore MemberCanBePrivate.Global
 
         #region IEnumerator<T> implementation
         /// <summary>

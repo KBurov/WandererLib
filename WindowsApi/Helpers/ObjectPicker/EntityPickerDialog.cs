@@ -123,14 +123,12 @@ namespace Wanderer.Library.WindowsApi.Helpers.ObjectPicker
                                 return c.Properties["NetBIOSName"].Value.ToString();
                             }
                         }
-// ReSharper disable EmptyGeneralCatchClause
+// ReSharper disable once EmptyGeneralCatchClause
                         catch {}
-// ReSharper restore EmptyGeneralCatchClause
                     }
                 }
-// ReSharper disable EmptyGeneralCatchClause
+// ReSharper disable once EmptyGeneralCatchClause
                 catch {}
-// ReSharper restore EmptyGeneralCatchClause
             }
 
             return string.Empty;
@@ -147,9 +145,9 @@ namespace Wanderer.Library.WindowsApi.Helpers.ObjectPicker
                     return results.Cast<ManagementBaseObject>().Any(o => (bool) o["partofdomain"]);
                 }
             }
-// ReSharper disable EmptyGeneralCatchClause
+// ReSharper disable once EmptyGeneralCatchClause
             catch {}
-// ReSharper restore EmptyGeneralCatchClause
+
             return false;
         }
 
@@ -172,17 +170,17 @@ namespace Wanderer.Library.WindowsApi.Helpers.ObjectPicker
                     }
                 }
             }
-// ReSharper disable EmptyGeneralCatchClause
+// ReSharper disable once EmptyGeneralCatchClause
             catch {}
-// ReSharper restore EmptyGeneralCatchClause
+
             try {
                 if (result.Contains(".")) {
                     result = result.Split('.')[0];
                 }
             }
-// ReSharper disable EmptyGeneralCatchClause
+// ReSharper disable once EmptyGeneralCatchClause
             catch {}
-// ReSharper restore EmptyGeneralCatchClause
+
             return result;
         }
     }

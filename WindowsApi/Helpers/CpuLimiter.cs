@@ -39,9 +39,8 @@ namespace Wanderer.Library.WindowsApi.Helpers
                         try {
                             processWatcher.WatchedProcess.Resume();
                         }
-// ReSharper disable EmptyGeneralCatchClause
+// ReSharper disable once EmptyGeneralCatchClause
                         catch {}
-// ReSharper restore EmptyGeneralCatchClause
                     }
                     processWatcher.Dispose();
                 }

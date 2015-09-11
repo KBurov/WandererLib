@@ -4,9 +4,8 @@ using System.Diagnostics.Contracts;
 namespace Wanderer.Library.WindowsApi.Helpers
 {
     [ContractClassFor(typeof (IProcessWatcher))]
-// ReSharper disable InconsistentNaming
+// ReSharper disable once InconsistentNaming
     internal abstract class IProcessWatcherContract : IProcessWatcher
-// ReSharper restore InconsistentNaming
     {
         private const string ObjectDisposedExceptionMessage = "IProcessWatcher already disposed";
 

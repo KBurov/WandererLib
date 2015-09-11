@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Security;
 
 using Wanderer.Library.WindowsApi.SafeHandles;
 
@@ -10,6 +11,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
     /// Contains set of functions for process management.
     /// </summary>
     [ContractClass(typeof (IProcessManagementContract))]
+    [SecurityCritical]
     public interface IProcessManagement
     {
         /// <summary>
