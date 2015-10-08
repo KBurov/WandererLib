@@ -76,7 +76,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <param name="maxCpuUsage">maximum avaliable CPU usage for the process</param>
         public ProcessWatcher(IProcessExtended processExtended, uint maxCpuUsage)
         {
-            Contract.Requires<ArgumentNullException>(processExtended != null, $"{nameof(processExtended)} cannot be null");
+            Contract.Requires<ArgumentNullException>(processExtended != null, "processExtended cannot be null");
             Contract.Ensures(WatchedProcess != null);
 
             WatchedProcess = processExtended;

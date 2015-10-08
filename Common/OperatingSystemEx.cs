@@ -56,8 +56,8 @@ namespace Wanderer.Library.Common
         /// <exception cref="ArgumentNullException"><paramref name="version"/> is null</exception>
         public OperatingSystemEx(PlatformID platform, Version version, string servicePack, bool is64BitPlatform)
         {
-            Contract.Requires<ArgumentException>(Enum.IsDefined(typeof (PlatformID), platform), $"{nameof(platform)} contains incorrect value");
-            Contract.Requires<ArgumentNullException>(version != null, $"{nameof(version)} cannot be null");
+            Contract.Requires<ArgumentException>(Enum.IsDefined(typeof (PlatformID), platform), "platform contains incorrect value");
+            Contract.Requires<ArgumentNullException>(version != null, "version cannot be null");
             Contract.Ensures(Version != null);
 
             Platform = platform;

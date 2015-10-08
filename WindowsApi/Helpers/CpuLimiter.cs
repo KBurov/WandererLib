@@ -78,7 +78,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <param name="processWatcher"><see cref="IProcessWatcher"/></param>
         public void AddProcessToWatchList(IProcessWatcher processWatcher)
         {
-            Contract.Requires<ArgumentNullException>(processWatcher != null, $"{nameof(processWatcher)} cannot be null");
+            Contract.Requires<ArgumentNullException>(processWatcher != null, "processWatcher cannot be null");
 
             using (_watchListLocker.GetWriteLock()) {
                 if (_watchList.Contains(processWatcher)) {

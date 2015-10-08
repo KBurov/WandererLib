@@ -21,7 +21,7 @@ namespace Wanderer.Library.Wpf.Markup
         /// <param name="enumType">enumeration type</param>
         public EnumerationExtension(Type enumType)
         {
-            Contract.Requires<ArgumentNullException>(enumType != null, $"{nameof(enumType)} cannot be null");
+            Contract.Requires<ArgumentNullException>(enumType != null, "enumType cannot be null");
 
             EnumType = enumType;
         }

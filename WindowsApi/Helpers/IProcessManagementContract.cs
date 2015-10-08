@@ -13,6 +13,10 @@ namespace Wanderer.Library.WindowsApi.Helpers
     // ReSharper disable once InconsistentNaming
     internal abstract class IProcessManagementContract : IProcessManagement
     {
+        private const string ApplicationNameOrArgumentsExceptionMessage = "applicationName or arguments cannot be null or empty";
+        private const string EnvironmentVariablesExceptionMessage = "environmentVariables cannot be null";
+        private const string ProcessNameExceptionMessage = "processName cannot be null or empty";
+
         #region IProcessManagement implementation
         /// <summary>
         /// Create a new process.
@@ -23,7 +27,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         IProcessExtended IProcessManagement.CreateProcess(string applicationName, string arguments)
         {
             Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(applicationName) || !string.IsNullOrWhiteSpace(arguments),
-                                                 $"{nameof(applicationName)} or {nameof(arguments)} cannot be null or empty");
+                                                 ApplicationNameOrArgumentsExceptionMessage);
             Contract.Ensures(Contract.Result<IProcessExtended>() != null);
 
             return default(IProcessExtended);
@@ -39,8 +43,8 @@ namespace Wanderer.Library.WindowsApi.Helpers
         IProcessExtended IProcessManagement.CreateProcess(string applicationName, string arguments, IDictionary<string, string> environmentVariables)
         {
             Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(applicationName) || !string.IsNullOrWhiteSpace(arguments),
-                                                 $"{nameof(applicationName)} or {nameof(arguments)} cannot be null or empty");
-            Contract.Requires<ArgumentNullException>(environmentVariables != null, $"{nameof(environmentVariables)} cannot be null");
+                                                 ApplicationNameOrArgumentsExceptionMessage);
+            Contract.Requires<ArgumentNullException>(environmentVariables != null, EnvironmentVariablesExceptionMessage);
             Contract.Ensures(Contract.Result<IProcessExtended>() != null);
 
             return default(IProcessExtended);
@@ -58,7 +62,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         IProcessExtended IProcessManagement.CreateProcess(string applicationName, string arguments, string userName, string domain, string password)
         {
             Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(applicationName) || !string.IsNullOrWhiteSpace(arguments),
-                                                 $"{nameof(applicationName)} or {nameof(arguments)} cannot be null or empty");
+                                                 ApplicationNameOrArgumentsExceptionMessage);
             Contract.Ensures(Contract.Result<IProcessExtended>() != null);
 
             return default(IProcessExtended);
@@ -78,8 +82,8 @@ namespace Wanderer.Library.WindowsApi.Helpers
                                                           IDictionary<string, string> environmentVariables)
         {
             Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(applicationName) || !string.IsNullOrWhiteSpace(arguments),
-                                                 $"{nameof(applicationName)} or {nameof(arguments)} cannot be null or empty");
-            Contract.Requires<ArgumentNullException>(environmentVariables != null, $"{nameof(environmentVariables)} cannot be null");
+                                                 ApplicationNameOrArgumentsExceptionMessage);
+            Contract.Requires<ArgumentNullException>(environmentVariables != null, EnvironmentVariablesExceptionMessage);
             Contract.Ensures(Contract.Result<IProcessExtended>() != null);
 
             return default(IProcessExtended);
@@ -91,7 +95,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <param name="processName">process name</param>
         void IProcessManagement.CloseProcess(string processName)
         {
-            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(processName), $"{nameof(processName)} cannot be null or empty");
+            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(processName), ProcessNameExceptionMessage);
         }
 
         /// <summary>
@@ -100,7 +104,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <param name="processName"></param>
         void IProcessManagement.TerminateProcess(string processName)
         {
-            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(processName), $"{nameof(processName)} cannot be null or empty");
+            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(processName), ProcessNameExceptionMessage);
         }
 
         /// <summary>
@@ -111,7 +115,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <returns>result value</returns>
         T IProcessManagement.ActAsLoggedOnUser<T>(Func<SafeTokenHandle, T> func)
         {
-            Contract.Requires<ArgumentNullException>(func != null, $"{nameof(func)}");
+            Contract.Requires<ArgumentNullException>(func != null, "func cannot be null");
 
             return default(T);
         }
@@ -123,7 +127,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <returns>result value</returns>
         void IProcessManagement.ActAsLoggedOnUser(Action<SafeTokenHandle> action)
         {
-            Contract.Requires<ArgumentNullException>(action != null, $"{nameof(action)} cannot be null");
+            Contract.Requires<ArgumentNullException>(action != null, "action cannot be null");
         }
         #endregion
     }

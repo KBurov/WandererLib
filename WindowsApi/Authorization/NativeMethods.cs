@@ -18,6 +18,9 @@ namespace Wanderer.Library.WindowsApi.Authorization
     {
         private const string Advapi32 = "advapi32.dll";
 
+        private const string ExistingTokenExceptionMessage = "existingToken cannot be null";
+        private const string TokenExceptionMessage = "tokenHandle cannot be null";
+
         private static readonly Dictionary<Privilege, Luid> _Luid = new Dictionary<Privilege, Luid>();
         private static readonly ReaderWriterLockSlim _LuidLock = new ReaderWriterLockSlim();
 
@@ -202,7 +205,7 @@ namespace Wanderer.Library.WindowsApi.Authorization
         public static SafeTokenHandle DuplicateTokenEx(SafeTokenHandle existingToken, System.Security.Principal.TokenAccessLevels desiredAccess,
                                                        System.Security.Principal.TokenImpersonationLevel impersonationLevel, TokenType tokenType)
         {
-            Contract.Requires<ArgumentNullException>(existingToken != null, $"{nameof(existingToken)} cannot be null");
+            Contract.Requires<ArgumentNullException>(existingToken != null, ExistingTokenExceptionMessage);
 
             IntPtr token;
 
@@ -229,7 +232,7 @@ namespace Wanderer.Library.WindowsApi.Authorization
         #region ImpersonateLoggedOnUser
         public static void ImpersonateLoggedOnUser(SafeTokenHandle tokenHandle)
         {
-            Contract.Requires<ArgumentNullException>(tokenHandle != null, $"{nameof(tokenHandle)} cannot be null");
+            Contract.Requires<ArgumentNullException>(tokenHandle != null, TokenExceptionMessage);
 
             if (!ImpersonateLoggedOnUser(tokenHandle.DangerousGetHandle())) {
                 WindowsApi.NativeMethods.ReportWin32Exception();

@@ -14,6 +14,8 @@ namespace Wanderer.Library.WindowsApi.Desktop
     {
         private const string User32 = "user32.dll";
 
+        private const string WindowStationHandleExceptionMessage = "windowStationHandle cannot be null";
+
         [DllImport(User32, SetLastError = true)]
         [ReliabilityContract(Consistency.WillNotCorruptState, Cer.MayFail)]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -47,7 +49,7 @@ namespace Wanderer.Library.WindowsApi.Desktop
         #region SetProcessWindowStation
         public static void SetProcessWindowStation(SafeWindowStationHandle windowStationHandle)
         {
-            Contract.Requires<ArgumentNullException>(windowStationHandle != null, $"{nameof(windowStationHandle)} cannot be null");
+            Contract.Requires<ArgumentNullException>(windowStationHandle != null, WindowStationHandleExceptionMessage);
 
             if (!SetProcessWindowStation(windowStationHandle.DangerousGetHandle()))
             {

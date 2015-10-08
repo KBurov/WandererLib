@@ -17,7 +17,7 @@ namespace Wanderer.Library.Common
         /// <param name="millisecondsTimeout">delay between repeating action</param>
         public static void Times(Action action, uint numberOfRetries, uint? millisecondsTimeout = null)
         {
-            Contract.Requires<ArgumentNullException>(action != null, $"{nameof(action)} cannot be null");
+            Contract.Requires<ArgumentNullException>(action != null, "action cannot be null");
 
             if (numberOfRetries > 0u) {
                 var repeat = true;
@@ -51,8 +51,8 @@ namespace Wanderer.Library.Common
         /// <returns>func result</returns>
         public static T Times<T>(Func<T> func, uint numberOfRetries, uint? millisecondsTimeout = null)
         {
-            Contract.Requires<ArgumentNullException>(func != null, $"{nameof(func)} cannot be null");
-            Contract.Requires<ArgumentException>(numberOfRetries > 0, $"{nameof(numberOfRetries)} should be greater than 0");
+            Contract.Requires<ArgumentNullException>(func != null, "func cannot be null");
+            Contract.Requires<ArgumentException>(numberOfRetries > 0, "numberOfRetries should be greater than 0");
 
             while (true) {
                 try {

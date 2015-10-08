@@ -13,6 +13,8 @@ namespace Wanderer.Library.WindowsApi.Synchronization
     {
         private const string Kernel32 = "kernel32.dll";
 
+        private const string TokenHandleExceptionMessage = "tokenHandle cannot be null";
+
         /// <summary>
         /// Infinite wait timeout value.
         /// </summary>
@@ -21,7 +23,7 @@ namespace Wanderer.Library.WindowsApi.Synchronization
         #region WaitForSingleObject
         public static bool WaitForSingleObject(SafeTokenHandle tokenHandle, uint milliseconds = InfiniteTimeout)
         {
-            Contract.Requires<ArgumentNullException>(tokenHandle != null, $"{nameof(tokenHandle)} cannot be null");
+            Contract.Requires<ArgumentNullException>(tokenHandle != null, TokenHandleExceptionMessage);
 
             var waitResult = (WaitResult) WaitForSingleObject(tokenHandle.DangerousGetHandle(), milliseconds);
 

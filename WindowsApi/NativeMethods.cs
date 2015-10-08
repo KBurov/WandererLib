@@ -17,6 +17,8 @@ namespace Wanderer.Library.WindowsApi
         private const string Kernel32 = "kernel32.dll";
         private const string User32 = "user32.dll";
 
+        private const string ProcessHandleExceptionMessage = "processHandle cannot be null";
+
         public static void ReportWin32Exception()
         {
             throw new Win32Exception(Marshal.GetLastWin32Error());
@@ -30,7 +32,7 @@ namespace Wanderer.Library.WindowsApi
         #region GetExitCodeProcess
         public static uint GetExitCodeProcess(SafeTokenHandle processHandle)
         {
-            Contract.Requires<ArgumentNullException>(processHandle != null, $"{nameof(processHandle)} cannot be null");
+            Contract.Requires<ArgumentNullException>(processHandle != null, ProcessHandleExceptionMessage);
 
             uint exitCode;
 

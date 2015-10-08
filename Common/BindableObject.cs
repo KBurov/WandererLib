@@ -21,6 +21,7 @@ namespace Wanderer.Library.Common
     public abstract class BindableObject : INotifyPropertyChanged
     {
         private const string ErrorMessage = "{0} is not a public property of {1}";
+        private const string PropertyNameExceptionMessage = "propertyName cannot be null or empty";
 
         #region Variables
         private static readonly IDictionary<string, PropertyChangedEventArgs> _EventArgCache;
@@ -47,7 +48,7 @@ namespace Wanderer.Library.Common
         /// <summary>
         /// Default constructor.
         /// </summary>
-// ReSharper disable once EmptyConstructor
+        // ReSharper disable once EmptyConstructor
         protected BindableObject() {}
         #endregion
 
@@ -90,7 +91,7 @@ namespace Wanderer.Library.Common
         /// <param name="propertyName">The property which was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
         {
-            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(propertyName), $"{nameof(propertyName)} cannot be null or empty");
+            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(propertyName), PropertyNameExceptionMessage);
 
             VerifyPropertyName(propertyName);
 
@@ -103,7 +104,7 @@ namespace Wanderer.Library.Common
 
         internal void RaisePropertyChangedNotVerified(string propertyName)
         {
-            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(propertyName), $"{nameof(propertyName)} cannot be null or empty");
+            Contract.Requires<ArgumentException>(!string.IsNullOrWhiteSpace(propertyName), PropertyNameExceptionMessage);
 
             var propertyChanged = PropertyChanged;
 

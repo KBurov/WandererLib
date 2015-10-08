@@ -216,7 +216,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust"), PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
         public ProcessExtended(Process process)
         {
-            Contract.Requires<ArgumentNullException>(process != null, $"{nameof(process)} cannot be null");
+            Contract.Requires<ArgumentNullException>(process != null, "process cannot be null");
             Contract.Ensures(Process != null);
             Contract.Ensures(_processHandle != null);
 
@@ -234,7 +234,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
         /// <param name="processHandle">process handle</param>
         public ProcessExtended(SafeTokenHandle processHandle)
         {
-            Contract.Requires<ArgumentNullException>(processHandle != null, $"{nameof(processHandle)} cannot be null");
+            Contract.Requires<ArgumentNullException>(processHandle != null, "processHandle cannot be null");
             Contract.Ensures(Process != null);
             Contract.Ensures(_processHandle != null);
 
