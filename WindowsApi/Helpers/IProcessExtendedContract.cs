@@ -8,7 +8,7 @@ namespace Wanderer.Library.WindowsApi.Helpers
     /// Contains code contracts definition for interface <see cref="IProcessExtended" />.
     /// </summary>
     [ContractClassFor(typeof (IProcessExtended))]
-// ReSharper disable once InconsistentNaming
+    // ReSharper disable once InconsistentNaming
     internal abstract class IProcessExtendedContract : IProcessExtended
     {
         private const string ObjectDisposedExceptionMessage = "IProcessExtended already disposed";

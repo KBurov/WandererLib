@@ -18,8 +18,8 @@ namespace Wanderer.Library.WindowsApi.Authorization
     {
         private const string Advapi32 = "advapi32.dll";
 
-        private static readonly Dictionary<Privilege, Luid> _luid = new Dictionary<Privilege, Luid>();
-        private static readonly ReaderWriterLockSlim _luidLock = new ReaderWriterLockSlim();
+        private static readonly Dictionary<Privilege, Luid> _Luid = new Dictionary<Privilege, Luid>();
+        private static readonly ReaderWriterLockSlim _LuidLock = new ReaderWriterLockSlim();
 
         public static string GetPrivilegeName(Privilege privilege)
         {
@@ -106,15 +106,15 @@ namespace Wanderer.Library.WindowsApi.Authorization
             result.LowPart = 0;
             result.HighPart = 0;
 
-            using (_luidLock.GetUpgradeableReadLock()) {
-                if (_luid.ContainsKey(privilege)) {
-                    result = _luid[privilege];
+            using (_LuidLock.GetUpgradeableReadLock()) {
+                if (_Luid.ContainsKey(privilege)) {
+                    result = _Luid[privilege];
                 }
                 else {
-                    using (_luidLock.GetWriteLock()) {
+                    using (_LuidLock.GetWriteLock()) {
                         LookupPrivilegeValue(privilege, out result);
 
-                        _luid[privilege] = result;
+                        _Luid[privilege] = result;
                     }
                 }
             }
@@ -124,8 +124,8 @@ namespace Wanderer.Library.WindowsApi.Authorization
 
         private static Privilege PrivilegeFromLuid(Luid luid)
         {
-            using (_luidLock.GetReadLock()) {
-                return _luid.First(kv => kv.Value.LowPart == luid.LowPart && kv.Value.HighPart == luid.HighPart).Key;
+            using (_LuidLock.GetReadLock()) {
+                return _Luid.First(kv => kv.Value.LowPart == luid.LowPart && kv.Value.HighPart == luid.HighPart).Key;
             }
         }
 
@@ -202,7 +202,7 @@ namespace Wanderer.Library.WindowsApi.Authorization
         public static SafeTokenHandle DuplicateTokenEx(SafeTokenHandle existingToken, System.Security.Principal.TokenAccessLevels desiredAccess,
                                                        System.Security.Principal.TokenImpersonationLevel impersonationLevel, TokenType tokenType)
         {
-            Contract.Requires<ArgumentNullException>(existingToken != null, "existingToken cannot be null");
+            Contract.Requires<ArgumentNullException>(existingToken != null, $"{nameof(existingToken)} cannot be null");
 
             IntPtr token;
 
@@ -229,7 +229,7 @@ namespace Wanderer.Library.WindowsApi.Authorization
         #region ImpersonateLoggedOnUser
         public static void ImpersonateLoggedOnUser(SafeTokenHandle tokenHandle)
         {
-            Contract.Requires<ArgumentNullException>(tokenHandle != null, "tokenHandle cannot be null");
+            Contract.Requires<ArgumentNullException>(tokenHandle != null, $"{nameof(tokenHandle)} cannot be null");
 
             if (!ImpersonateLoggedOnUser(tokenHandle.DangerousGetHandle())) {
                 WindowsApi.NativeMethods.ReportWin32Exception();

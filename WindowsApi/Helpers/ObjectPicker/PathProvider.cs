@@ -7,6 +7,7 @@ namespace Wanderer.Library.WindowsApi.Helpers.ObjectPicker
     /// This provider affects the contents of the ADPath returned.
     /// </summary>
     [Flags]
+    // ReSharper disable InconsistentNaming
     public enum PathProvider
     {
         /// <summary>

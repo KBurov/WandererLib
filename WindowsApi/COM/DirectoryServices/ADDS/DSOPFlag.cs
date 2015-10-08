@@ -6,6 +6,7 @@ namespace Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS
     /// Avaliable option flags for <see cref="DSOPInitInfo.flOptions"/>.
     /// </summary>
     [Flags]
+    // ReSharper disable InconsistentNaming
     internal enum DSOPFlag : uint
     {
         /// <summary>

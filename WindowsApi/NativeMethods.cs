@@ -30,7 +30,7 @@ namespace Wanderer.Library.WindowsApi
         #region GetExitCodeProcess
         public static uint GetExitCodeProcess(SafeTokenHandle processHandle)
         {
-            Contract.Requires<ArgumentNullException>(processHandle != null, "processHandle cannot be null");
+            Contract.Requires<ArgumentNullException>(processHandle != null, $"{nameof(processHandle)} cannot be null");
 
             uint exitCode;
 

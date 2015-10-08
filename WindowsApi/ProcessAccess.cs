@@ -3,6 +3,7 @@
 namespace Wanderer.Library.WindowsApi
 {
     [Flags]
+    // TODO: Fix functions references
     internal enum ProcessAccess
     {
         /// <summary>All possible access rights for a process object.</summary>

@@ -6,6 +6,7 @@ namespace Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS
     /// Flags that indicate the scope types described by <see cref="DSOPScopeInitInfo"/> structure.
     /// </summary>
     [Flags]
+    // ReSharper disable once InconsistentNaming
     internal enum DSOPScopeType : uint
     {
         /// <summary>

@@ -47,7 +47,7 @@ namespace Wanderer.Library.WindowsApi.Desktop
         #region SetProcessWindowStation
         public static void SetProcessWindowStation(SafeWindowStationHandle windowStationHandle)
         {
-            Contract.Requires<ArgumentNullException>(windowStationHandle != null, "windowStationHandle cannot be null");
+            Contract.Requires<ArgumentNullException>(windowStationHandle != null, $"{nameof(windowStationHandle)} cannot be null");
 
             if (!SetProcessWindowStation(windowStationHandle.DangerousGetHandle()))
             {

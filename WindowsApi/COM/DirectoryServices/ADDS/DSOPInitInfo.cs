@@ -8,6 +8,7 @@ namespace Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS
     /// This structure is used with the <see cref="IDsObjectPicker.Initialize"/> method.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+    // ReSharper disable once InconsistentNaming
     internal struct DSOPInitInfo
     {
         /// <summary>

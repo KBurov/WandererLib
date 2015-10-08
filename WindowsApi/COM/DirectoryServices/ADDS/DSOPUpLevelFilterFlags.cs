@@ -8,6 +8,7 @@ namespace Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS
     /// This structure is contained in the <see cref="DSOPFilterFlags"/> structure when calling <see cref="IDsObjectPicker.Initialize"/>.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+    // ReSharper disable once InconsistentNaming
     internal struct DSOPUpLevelFilterFlags
     {
         /// <summary>

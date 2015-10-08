@@ -6,6 +6,7 @@ namespace Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS
     /// Filter flags to use in <see cref="DSOPFilterFlags"/> structure.
     /// </summary>
     [Flags]
+    // ReSharper disable InconsistentNaming
     internal enum DSOPFilter : uint
     {
         /// <summary>

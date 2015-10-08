@@ -6,6 +6,7 @@ namespace Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS
     /// Contains the filter flags to use for down-level scopes.
     /// </summary>
     [Flags]
+    // ReSharper disable once InconsistentNaming
     internal enum DSOPDownLevelFilter : uint
     {
         /// <summary>
@@ -83,6 +84,7 @@ namespace Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS
         /// This flag should be used for forward compatibility because it causes any other down-level,
         /// well-known SIDs that might be added in the future your code to automatically be included.
         /// </summary>
+        // ReSharper disable once InconsistentNaming
         AllWellKnownSIDs = 0x80020000,
         /// <summary>
         /// Includes the "Local Service" well-known security principal.

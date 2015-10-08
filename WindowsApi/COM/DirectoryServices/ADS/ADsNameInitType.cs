@@ -17,6 +17,7 @@
         /// <summary>
         /// Initializes a NameTranslate object by locating the global catalog that the object binds to.
         /// </summary>
+        // ReSharper disable once InconsistentNaming
         GC = 3
     }
 }

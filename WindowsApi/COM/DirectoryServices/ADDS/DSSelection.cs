@@ -7,6 +7,7 @@ namespace Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS
     /// Contains data about an object the user selected from an object picker dialog box.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+    // ReSharper disable once InconsistentNaming
     internal struct DSSelection
     {
         /// <summary>

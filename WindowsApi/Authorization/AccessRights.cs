@@ -225,7 +225,7 @@ namespace Wanderer.Library.WindowsApi.Authorization
             /// </summary>
             ModifyBootConfig = 0x0020,
             /// <summary>
-            /// Includes <see cref="AccessRights.StandardRightsRequired"/>, in addition to all access rights in this table.
+            /// Includes <see cref="StandardRightsRequired"/>, in addition to all access rights in this table.
             /// </summary>
             AllAccess = (StandardRightsRequired | Connect | CreateService | EnumerateService | Lock | QueryLockStatus | ModifyBootConfig)
         }
@@ -286,7 +286,7 @@ namespace Wanderer.Library.WindowsApi.Authorization
             /// </summary>
             UserDefinedControl = 0x0100,
             /// <summary>
-            /// Includes <see cref="AccessRights.StandardRightsRequired"/> in addition to all access rights in this table.
+            /// Includes <see cref="StandardRightsRequired"/> in addition to all access rights in this table.
             /// </summary>
             AllAccess =
                 (StandardRightsRequired | QueryConfig | ChangeConfig | QueryStatus | EnumerateDependents | Start | Stop | PauseContinue |

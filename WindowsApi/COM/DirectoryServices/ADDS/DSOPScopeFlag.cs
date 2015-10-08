@@ -6,6 +6,7 @@ namespace Wanderer.Library.WindowsApi.COM.DirectoryServices.ADDS
     /// Flags that indicate the format used to return ADsPath for objects selected from this scope.
     /// </summary>
     [Flags]
+    // ReSharper disable InconsistentNaming
     internal enum DSOPScopeFlag : uint
     {
         /// <summary>

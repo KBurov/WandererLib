@@ -4,6 +4,7 @@
     /// The NameType enumeration specifies the formats used for representing distinguished names.
     /// It is used by the <see cref="IADsNameTranslate"/> interface to convert the format of a distinguished name.
     /// </summary>
+    /// ReSharper disable InconsistentNaming
     internal enum ADsNameType
     {
         /// <summary>

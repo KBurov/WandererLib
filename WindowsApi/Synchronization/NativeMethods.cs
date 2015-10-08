@@ -21,7 +21,7 @@ namespace Wanderer.Library.WindowsApi.Synchronization
         #region WaitForSingleObject
         public static bool WaitForSingleObject(SafeTokenHandle tokenHandle, uint milliseconds = InfiniteTimeout)
         {
-            Contract.Requires<ArgumentNullException>(tokenHandle != null, "tokenHandle cannot be null");
+            Contract.Requires<ArgumentNullException>(tokenHandle != null, $"{nameof(tokenHandle)} cannot be null");
 
             var waitResult = (WaitResult) WaitForSingleObject(tokenHandle.DangerousGetHandle(), milliseconds);
 
