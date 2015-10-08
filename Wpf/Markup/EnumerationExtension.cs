@@ -21,7 +21,7 @@ namespace Wanderer.Library.Wpf.Markup
         /// <param name="enumType">enumeration type</param>
         public EnumerationExtension(Type enumType)
         {
-            Contract.Requires<ArgumentNullException>(enumType != null, "enumType");
+            Contract.Requires<ArgumentNullException>(enumType != null, $"{nameof(enumType)} cannot be null");
 
             EnumType = enumType;
         }
@@ -52,26 +52,25 @@ namespace Wanderer.Library.Wpf.Markup
         {
             var enumValues = Enum.GetValues(EnumType);
 
-            return (
-                       from object enumValue in enumValues
-                       select new EnumerationMember
-                                  {
-                                      Value = enumValue,
-                                      Description = GetDescription(enumValue)
-                                  }).ToArray();
+            return (from object enumValue in enumValues
+                    select new EnumerationMember
+                        {
+                            Value = enumValue,
+                            Description = GetDescription(enumValue)
+                        }).ToArray();
         }
 
         private string GetDescription(object enumValue)
         {
             var descriptionAttribute = EnumType
-                                           .GetField(enumValue.ToString())
-                                           .GetCustomAttributes(typeof (DescriptionAttribute), false)
-                                           .FirstOrDefault() as DescriptionAttribute;
+                .GetField(enumValue.ToString())
+                .GetCustomAttributes(typeof (DescriptionAttribute), false)
+                .FirstOrDefault() as DescriptionAttribute;
 
 
             return descriptionAttribute != null
-                       ? descriptionAttribute.Description
-                       : enumValue.ToString();
+                ? descriptionAttribute.Description
+                : enumValue.ToString();
         }
 
         private class EnumerationMember

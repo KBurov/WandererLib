@@ -26,29 +26,24 @@ namespace Wanderer.Library.Wpf
             T foundChild = null;
             var childrenCount = VisualTreeHelper.GetChildrenCount(parent);
 
-            for (var i = 0;i < childrenCount;i++)
-            {
+            for (var i = 0;i < childrenCount;i++) {
                 var child = VisualTreeHelper.GetChild(parent, i);
                 var typedChild = child as T;
 
-                if (typedChild == null)
-                {
+                if (typedChild == null) {
                     foundChild = FindChild<T>(child, childName);
 
                     if (foundChild != null) break;
                 }
-                else if (!string.IsNullOrEmpty(childName))
-                {
+                else if (!string.IsNullOrEmpty(childName)) {
                     var frameworkElement = child as FrameworkElement;
 
-                    if (frameworkElement != null && frameworkElement.Name == childName)
-                    {
+                    if (frameworkElement != null && frameworkElement.Name == childName) {
                         foundChild = typedChild;
                         break;
                     }
                 }
-                else
-                {
+                else {
                     foundChild = typedChild;
                     break;
                 }

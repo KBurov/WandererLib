@@ -53,7 +53,7 @@ namespace Wanderer.Library.Wpf
         /// <param name="canExecute">delegate for the <see cref="ICommand.CanExecute"/></param>
         public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
         {
-            Contract.Requires<ArgumentNullException>(execute != null, "execute");
+            Contract.Requires<ArgumentNullException>(execute != null, $"{nameof(execute)} cannot be null");
 
             _execute = execute;
             _canExecute = canExecute;

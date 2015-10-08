@@ -192,20 +192,16 @@ namespace Wanderer.Library.Wpf.Behaviors
         {
             var textBox = sender as TextBox;
 
-            if (textBox != null)
-            {
-                var expression = textBox.GetBindingExpression(TextBox.TextProperty);
+            var expression = textBox?.GetBindingExpression(TextBox.TextProperty);
 
-                if (expression != null)
-                    expression.UpdateSource();
-            }
+            expression?.UpdateSource();
         }
 
         private static string GetFullText(TextBox textBox, string inputText)
         {
             return textBox.SelectionLength > 0
-                       ? textBox.Text.Remove(textBox.SelectionStart, textBox.SelectionLength).Insert(textBox.SelectionStart, inputText)
-                       : textBox.Text.Insert(textBox.CaretIndex, inputText);
+                ? textBox.Text.Remove(textBox.SelectionStart, textBox.SelectionLength).Insert(textBox.SelectionStart, inputText)
+                : textBox.Text.Insert(textBox.CaretIndex, inputText);
         }
     }
 }

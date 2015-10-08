@@ -18,6 +18,7 @@ namespace Wanderer.Library.Wpf.Controls
             /// Drop-down menu appears at the bottom of button.
             /// </summary>
             Bottom,
+
             /// <summary>
             /// Drop-down menu appears from the right side of the button.
             /// </summary>
@@ -33,11 +34,7 @@ namespace Wanderer.Library.Wpf.Controls
         /// <summary>
         /// The <see cref="ContextMenu"/> object for drop-down menu.
         /// </summary>
-        public ContextMenu DropDown
-        {
-            get { return (ContextMenu) GetValue(DropDownProperty); }
-            set { SetValue(DropDownProperty, value); }
-        }
+        public ContextMenu DropDown { get { return (ContextMenu) GetValue(DropDownProperty); } set { SetValue(DropDownProperty, value); } }
 
         /// <summary>
         /// Attached property for <see cref="DropDown"/>.
@@ -53,24 +50,22 @@ namespace Wanderer.Library.Wpf.Controls
 
         private void OnDropDownChanged(DependencyPropertyChangedEventArgs e)
         {
-            if (DropDown != null)
-            {
+            if (DropDown != null) {
                 DropDown.PlacementTarget = this;
 
-                switch (DropDownPlacement)
-                {
+                switch (DropDownPlacement) {
+                    case Placement.Right:
+                        DropDown.Placement = PlacementMode.Right;
+                        break;
                     default:
                     case Placement.Bottom:
                         DropDown.Placement = PlacementMode.Bottom;
                         break;
-                    case Placement.Right:
-                        DropDown.Placement = PlacementMode.Right;
-                        break;
                 }
 
-                this.Checked += (a, b) => { DropDown.IsOpen = true; };
-                this.Unchecked += (a, b) => { DropDown.IsOpen = false; };
-                DropDown.Closed += (a, b) => { this.IsChecked = false; };
+                Checked += (a, b) => { DropDown.IsOpen = true; };
+                Unchecked += (a, b) => { DropDown.IsOpen = false; };
+                DropDown.Closed += (a, b) => { IsChecked = false; };
             }
         }
         #endregion
