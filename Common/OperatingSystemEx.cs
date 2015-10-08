@@ -41,8 +41,8 @@ namespace Wanderer.Library.Common
         /// <summary>
         /// Gets the concatenated string representation of the platform identifier, version, and service pack that are currently installed on the operating system.
         /// </summary>
-        /// <returns>the string representation of the values returned by the <see cref="OperatingSystemEx.Platform"/>, <see cref="OperatingSystemEx.Version"/>
-        /// and <see cref="OperatingSystemEx.ServicePack"/> properties</returns>
+        /// <returns>the string representation of the values returned by the <see cref="Platform"/>, <see cref="Version"/>
+        /// and <see cref="ServicePack"/> properties</returns>
         public string VersionString => _lazyVersionString.Value;
 
         /// <summary>
@@ -56,8 +56,8 @@ namespace Wanderer.Library.Common
         /// <exception cref="ArgumentNullException"><paramref name="version"/> is null</exception>
         public OperatingSystemEx(PlatformID platform, Version version, string servicePack, bool is64BitPlatform)
         {
-            Contract.Requires<ArgumentException>(Enum.IsDefined(typeof (PlatformID), platform), "platform contains incorrect value");
-            Contract.Requires<ArgumentNullException>(version != null, "version cannot be null");
+            Contract.Requires<ArgumentException>(Enum.IsDefined(typeof (PlatformID), platform), $"{nameof(platform)} contains incorrect value");
+            Contract.Requires<ArgumentNullException>(version != null, $"{nameof(version)} cannot be null");
             Contract.Ensures(Version != null);
 
             Platform = platform;
@@ -70,8 +70,8 @@ namespace Wanderer.Library.Common
         /// <summary>
         /// Converts the value of this <see cref="OperatingSystemEx"/> object to its equivalent string representation.
         /// </summary>
-        /// <returns>the string representation of the values returned by the <see cref="OperatingSystemEx.Platform"/>, <see cref="OperatingSystemEx.Version"/>
-        /// and <see cref="OperatingSystemEx.ServicePack"/> properties</returns>
+        /// <returns>the string representation of the values returned by the <see cref="Platform"/>, <see cref="Version"/>
+        /// and <see cref="ServicePack"/> properties</returns>
         public override string ToString()
         {
             return VersionString;
