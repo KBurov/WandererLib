@@ -3,20 +3,27 @@
 namespace Wanderer.Library.TestFramework
 {
     /// <summary>
-    /// Base class for unit or integration tests context classes.
+    /// Base class for unit or integration tests context classes with complex setup.
     /// </summary>
     [TestFixture]
-    public abstract class ContextBase
+    public abstract class StaticContextBase
     {
         /// <summary>
-        /// Setting up the test fixture (arrange) and run test action (<see cref="Arrange"/> and <see cref="Act"/>).
+        /// Run test action (<see cref="Act"/>).
         /// </summary>
         [SetUp]
         public void SetUp()
         {
-            Arrange();
-
             Act();
+        }
+
+        /// <summary>
+        /// Setting up the test fixture (<see cref="Arrange"/>).
+        /// </summary>
+        [TestFixtureSetUp]
+        public void FixtureSetUp()
+        {
+            Arrange();
         }
 
         /// <summary>
