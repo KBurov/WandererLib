@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Linq;
 
 namespace Wanderer.Library.Extensions
 {
@@ -12,10 +13,12 @@ namespace Wanderer.Library.Extensions
         private readonly IEnumerable<T>[] _sources;
         private readonly IComparer<T> _comparer;
 
+        private IEnumerator<T>[] _enumerators;
+        private T _current;
+
         /// <summary>
         /// Determines whether object already disposed or not.
         /// </summary>
-// ReSharper disable once MemberCanBePrivate.Global
         public bool IsDisposed { get; private set; }
 
         #region IEnumerator<T> implementation
@@ -28,7 +31,7 @@ namespace Wanderer.Library.Extensions
             {
                 Contract.Requires<ObjectDisposedException>(!IsDisposed, ObjectDisposedExceptionMessage);
 
-                throw new NotImplementedException();
+                return _current;
             }
         }
 
@@ -40,7 +43,50 @@ namespace Wanderer.Library.Extensions
         {
             Contract.Requires<ObjectDisposedException>(!IsDisposed, ObjectDisposedExceptionMessage);
 
-            throw new NotImplementedException();
+            var result = false;
+
+            if (_enumerators == null) {
+                var enumerators = _sources
+                    .Select(list => list.GetEnumerator())
+                    .Where(enumerator => enumerator.MoveNext())
+                    .ToArray();
+
+                if (enumerators.Length > 0) {
+                    Array.Sort(enumerators, (enumerator1, enumerator2) => _comparer.Compare(enumerator1.Current, enumerator2.Current));
+
+                    _enumerators = enumerators;
+                }
+            }
+            else {
+                if (_enumerators.Length > 0) {
+                    if (_enumerators[0].MoveNext()) {
+                        _enumerators[0].Dispose();
+
+                        _enumerators = _enumerators
+                            .Skip(1)
+                            .ToArray();
+                    }
+
+                    for (var i = 0;i < _enumerators.Length - 1;++i) {
+                        if (_comparer.Compare(_enumerators[i].Current, _enumerators[i + 1].Current) > 0) {
+                            var temp = _enumerators[i + 1];
+                            _enumerators[i + 1] = _enumerators[i];
+                            _enumerators[i] = temp;
+                        }
+                        else {
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (_enumerators != null && _enumerators.Length > 0) {
+                _current = _enumerators[0].Current;
+
+                result = true;
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -50,7 +96,9 @@ namespace Wanderer.Library.Extensions
         {
             Contract.Requires<ObjectDisposedException>(!IsDisposed, ObjectDisposedExceptionMessage);
 
-            throw new NotImplementedException();
+            DisposeEnumeratos();
+
+            _current = default(T);
         }
 
         /// <summary>
@@ -81,7 +129,7 @@ namespace Wanderer.Library.Extensions
             }
 
             if (disposing) {
-                //
+                DisposeEnumeratos();
             }
 
             IsDisposed = true;
@@ -101,6 +149,8 @@ namespace Wanderer.Library.Extensions
 
             _comparer = comparer;
             _sources = sources;
+            _enumerators = null;
+            _current = default(T);
         }
 
         /// <summary>
@@ -111,5 +161,18 @@ namespace Wanderer.Library.Extensions
             Dispose(false);
         }
         #endregion
+
+        private void DisposeEnumeratos()
+        {
+            var enumerators = _enumerators;
+
+            if (enumerators != null) {
+                _enumerators = null;
+
+                for (var i = 0;i < enumerators.Length;++i) {
+                    enumerators[i].Dispose();
+                }
+            }
+        }
     }
 }
