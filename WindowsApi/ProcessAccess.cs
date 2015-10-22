@@ -1,4 +1,5 @@
 ﻿using System;
+using Wanderer.Library.WindowsApi.SafeHandles;
 
 namespace Wanderer.Library.WindowsApi
 {
@@ -10,7 +11,7 @@ namespace Wanderer.Library.WindowsApi
         AllAccess = CreateThread | DuplicateHandle | QueryInformation | SetInformation | Terminate | VmOperation | VmRead | VmWrite | Synchronize,
         /// <summary>Required to create a thread.</summary>
         CreateThread = 0x002,
-        /// <summary>Required to duplicate a handle using <see cref="NativeMethods.DuplicateHandle"/>.</summary>
+        /// <summary>Required to duplicate a handle using <see cref="NativeMethods.DuplicateHandle(SafeTokenHandle, SafeTokenHandle, SafeTokenHandle, uint, bool, DuplicateOptions)"/>.</summary>
         DuplicateHandle = 0x040,
         /// <summary>Required to retrieve certain information about a process, such as its token, exit code, and priority class (<see cref="NativeMethods.OpenProcessToken"/>).</summary>
         QueryInformation = 0x400,

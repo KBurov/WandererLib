@@ -17,8 +17,6 @@ namespace Wanderer.Library.WindowsApi
         private const string Kernel32 = "kernel32.dll";
         private const string User32 = "user32.dll";
 
-        private const string ProcessHandleExceptionMessage = "processHandle cannot be null";
-
         public static void ReportWin32Exception()
         {
             throw new Win32Exception(Marshal.GetLastWin32Error());
@@ -29,10 +27,40 @@ namespace Wanderer.Library.WindowsApi
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool CloseHandle([In] IntPtr handle);
 
+        #region DuplicateHandle
+        public static SafeTokenHandle DuplicateHandle(SafeTokenHandle sourceProcessHandle, SafeTokenHandle sourceHandle, SafeTokenHandle targetProcessHandle,
+                                                      uint desiredAccess, bool inheritHandle, DuplicateOptions options)
+        {
+            Contract.Requires<ArgumentNullException>(sourceProcessHandle != null, "sourceProcessHandle cannot be null");
+            Contract.Requires<ArgumentNullException>(sourceHandle != null, "sourceHandle cannot be null");
+            Contract.Requires<ArgumentNullException>(targetProcessHandle != null, "targetProcessHandle cannot be null");
+
+            IntPtr handle;
+
+            if (!DuplicateHandle(sourceProcessHandle.DangerousGetHandle(), sourceHandle.DangerousGetHandle(), targetProcessHandle.DangerousGetHandle(),
+                                 out handle, desiredAccess, inheritHandle, (uint) options)) {
+                ReportWin32Exception();
+            }
+
+            return new SafeTokenHandle(handle);
+        }
+
+        [DllImport(Kernel32, SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool DuplicateHandle(
+            [In] IntPtr hSourceProcessHandle,
+            [In] IntPtr hSourceHandle,
+            [In] IntPtr hTargetProcessHandle,
+            [Out] out IntPtr lpTargetHandle,
+            [In] uint dwDesiredAccess,
+            [In, MarshalAs(UnmanagedType.Bool)] bool bInheritHandle,
+            [In] uint dwOptions);
+        #endregion
+
         #region GetExitCodeProcess
         public static uint GetExitCodeProcess(SafeTokenHandle processHandle)
         {
-            Contract.Requires<ArgumentNullException>(processHandle != null, ProcessHandleExceptionMessage);
+            Contract.Requires<ArgumentNullException>(processHandle != null, "processHandle cannot be null");
 
             uint exitCode;
 

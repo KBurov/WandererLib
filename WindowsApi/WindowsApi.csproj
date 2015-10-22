@@ -158,6 +158,7 @@
     <Compile Include="COM\DirectoryServices\ADS\IADsNameTranslate.cs" />
     <Compile Include="COM\NativeMethods.cs" />
     <Compile Include="Desktop\NativeMethods.cs" />
+    <Compile Include="DuplicateOptions.cs" />
     <Compile Include="ErrorCodes.cs" />
     <Compile Include="Helpers\IProcessExtendedContract.cs" />
     <Compile Include="Helpers\IProcessManagement.cs" />
