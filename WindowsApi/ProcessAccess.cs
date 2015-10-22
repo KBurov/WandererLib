@@ -4,7 +4,7 @@ namespace Wanderer.Library.WindowsApi
 {
     [Flags]
     // TODO: Fix functions references
-    internal enum ProcessAccess
+    internal enum ProcessAccess : uint
     {
         /// <summary>All possible access rights for a process object.</summary>
         AllAccess = CreateThread | DuplicateHandle | QueryInformation | SetInformation | Terminate | VmOperation | VmRead | VmWrite | Synchronize,
