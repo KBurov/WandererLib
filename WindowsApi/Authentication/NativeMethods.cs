@@ -17,8 +17,7 @@ namespace Wanderer.Library.WindowsApi.Authentication
         {
             IntPtr token;
 
-            if (!LogonUser(userName, domain, password, (int)logonType, (int)logonProvider, out token))
-            {
+            if (!LogonUser(userName, domain, password, (int) logonType, (int) logonProvider, out token)) {
                 WindowsApi.NativeMethods.ReportWin32Exception();
             }
 
