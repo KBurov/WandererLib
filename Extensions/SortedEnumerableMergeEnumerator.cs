@@ -8,13 +8,10 @@ namespace Wanderer.Library.Extensions
 {
     internal sealed class SortedEnumerableMergeEnumerator<T> : IEnumerator<T>
     {
-        private const string ObjectDisposedExceptionMessage = "IEnumerator already disposed";
-
         private readonly IEnumerable<T>[] _sources;
         private readonly IComparer<T> _comparer;
 
         private IEnumerator<T>[] _enumerators;
-        private T _current;
 
         /// <summary>
         /// Determines whether object already disposed or not.
@@ -25,15 +22,7 @@ namespace Wanderer.Library.Extensions
         /// <summary>
         /// Gets the element in the collection at the current position of the enumerator.
         /// </summary>
-        public T Current
-        {
-            get
-            {
-                Contract.Requires<ObjectDisposedException>(!IsDisposed, ObjectDisposedExceptionMessage);
-
-                return _current;
-            }
-        }
+        public T Current { get; private set; }
 
         /// <summary>
         /// Advances the enumerator to the next element of the collection.
@@ -41,8 +30,6 @@ namespace Wanderer.Library.Extensions
         /// <returns>true if the enumerator was successfully advanced to the next element; false if the enumerator has passed the end of the collection</returns>
         public bool MoveNext()
         {
-            Contract.Requires<ObjectDisposedException>(!IsDisposed, ObjectDisposedExceptionMessage);
-
             var result = false;
 
             if (_enumerators == null) {
@@ -81,7 +68,7 @@ namespace Wanderer.Library.Extensions
             }
 
             if (_enumerators != null && _enumerators.Length > 0) {
-                _current = _enumerators[0].Current;
+                Current = _enumerators[0].Current;
 
                 result = true;
             }
@@ -94,11 +81,9 @@ namespace Wanderer.Library.Extensions
         /// </summary>
         public void Reset()
         {
-            Contract.Requires<ObjectDisposedException>(!IsDisposed, ObjectDisposedExceptionMessage);
-
             DisposeEnumeratos();
 
-            _current = default(T);
+            Current = default(T);
         }
 
         /// <summary>
@@ -150,7 +135,7 @@ namespace Wanderer.Library.Extensions
             _comparer = comparer;
             _sources = sources;
             _enumerators = null;
-            _current = default(T);
+            Current = default(T);
         }
 
         /// <summary>
