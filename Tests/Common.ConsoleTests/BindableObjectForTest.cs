@@ -37,7 +37,7 @@ namespace Wanderer.Library.Common.ConsoleTests
 
         public string UseExpression
         {
-            get { return _useExpression; }
+            private get { return _useExpression; }
             set
             {
                 _useExpression = value;
@@ -48,7 +48,7 @@ namespace Wanderer.Library.Common.ConsoleTests
 
         public string UseExpressionVerified
         {
-            get { return _useExpressionVerified; }
+            private get { return _useExpressionVerified; }
             set
             {
                 _useExpressionVerified = value;

@@ -6,8 +6,9 @@ using Wanderer.Library.TestFramework;
 
 namespace Wanderer.Library.Common.UnitTests.given_Retry.with_not_null_action.with_numberOfRetries_greater_than_zero
 {
+    [TestFixture]
     [Category(TestCategory.Unit)]
-// ReSharper disable once InconsistentNaming
+    // ReSharper disable InconsistentNaming
     public class when_call_times : ContextBase
     {
         private const uint NumberOfRetries = 3u;

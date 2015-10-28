@@ -6,8 +6,9 @@ using Wanderer.Library.TestFramework;
 
 namespace Wanderer.Library.Common.UnitTests.given_Retry.with_null_action
 {
+    [TestFixture]
     [Category(TestCategory.Unit)]
-// ReSharper disable once InconsistentNaming
+    // ReSharper disable InconsistentNaming
     public class when_call_times : ContextBase
     {
         [Test]

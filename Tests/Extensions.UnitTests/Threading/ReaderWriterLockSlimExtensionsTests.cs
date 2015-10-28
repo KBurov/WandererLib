@@ -11,7 +11,7 @@ namespace Wanderer.Library.Extensions.UnitTests.Threading
         #region Variables
         private ReaderWriterLockSlim _locker;
         #endregion
-// ReSharper disable once InconsistentNaming
+        // ReSharper disable InconsistentNaming
         #region GetReadLock
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]

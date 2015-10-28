@@ -7,8 +7,9 @@ using Wanderer.Library.TestFramework;
 namespace Wanderer.Library.Common.UnitTests.given_DisposeAction.with_not_null_action
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable"), TestFixture]
+    [TestFixture]
     [Category(TestCategory.Unit)]
-// ReSharper disable once InconsistentNaming
+    // ReSharper disable InconsistentNaming
     public class when_call_dispose : ContextBase
     {
         private IDisposable _disposeAction;
