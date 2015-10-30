@@ -111,6 +111,11 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="given_EnumerableExtensions\with_empty_enumerable_sources\" />
+    <Folder Include="given_EnumerableExtensions\with_enumerable_sources_with_one element\" />
+    <Folder Include="given_EnumerableExtensions\with_not_empty_enumerable_sources\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
